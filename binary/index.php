@@ -15,9 +15,6 @@
    ?>
    <script>
       $(document).ready(function(){
-         $("#convert").click(function() {
-            $("#binaryOutput").val(Math.floor(Number($("#decimalInput").val())).toString(2));
-         });
          $("#decimalInput").change(function() {
             $("#binaryOutput").val(Math.floor(Number($("#decimalInput").val())).toString(2));
          });
@@ -30,8 +27,7 @@
    <h1>Decimal to Binary</h1>
    <form>
       Enter an integer:<br>
-      <input type="number" step="1" min="0" value="12" id="decimalInput" />
-      <input type="button" id="convert" value="Convert" /><br>
+      <input type="number" step="1" min="0" value="12" id="decimalInput" /><br>
       Binary Output:<br>
       <input type="text" id="binaryOutput" value="1100" readonly="true">
       
