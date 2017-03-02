@@ -2,7 +2,7 @@
 /*
  * Programmer:       Nathaniel Merck
  * Title:            style sheet page for Group Website Project
- * Date:             2/23/2017
+ * Date:             3/2/2017
  */
 
 /*	for the head	*/
@@ -78,6 +78,9 @@ nav ul {
     border: rgb(237, 28, 36);
     width: 100px;
     height: 30px;
+    position: relative;
+    left: 32%;
+    top: 10px;
 }
 
 #create {
@@ -85,10 +88,12 @@ nav ul {
     background-color: rgb(237, 28, 36);
     color: white;
     border: rgb(237, 28, 36);
-    position: absolute;
     height: 30px;
+    margin: auto;
     width: 150px;
-    left: 100px;
+    position: relative;
+    left: 24%;
+    top: 30px;
 }
 
 #createacc {
@@ -220,13 +225,26 @@ form table tr td {
     font-size: 25px;
 }
 #loginForm {
-    left: 62%;
+    right: 4%;
+    font-family: monospace;
     position: fixed;
+    top: 20px;
 }
+#loginForm table tr td {
+    color: white;
+    font-size: 20px;
+}
+
+#emailInput {
+    position: relative;
+    left: 33px;
+}
+
 #selectItBABY {
-    color: blue;
-    width: 300px;
+    color: rgb(237, 28, 36);
+    width: 355px;
     font-weight: bold;
     font-size: 20px;
-    background: pink;
+    background: white;
+    border: 2px solid;
 }

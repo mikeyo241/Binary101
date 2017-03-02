@@ -3,7 +3,7 @@
 /*
  * Programmer:       Nathaniel Merck
  * Title:            login/sign-up page for Group Website Project
- * Date:             2/23/2017
+ * Date:             3/2/2017
  */
 include('functionlib.php');
 
@@ -20,7 +20,6 @@ if (isset($_POST['createAcc'])) {
 if (isset($_POST['loginForm'])) {
 
 }
-
 
 
 
@@ -59,12 +58,12 @@ echo <<< HTML
       <form id="loginForm" action="$PHP_SELF" method="post">
         <table>
 		    <tr>
-		        <td colspan="2"><span for="lEmail">Email</span> <input type="email" name="lEmail" required>  </td>
+		        <td colspan="2"><span for="lEmail">Email:</span> <input id="emailInput" type="email" name="lEmail" required>  </td>
 		    </tr>
 		    <tr>
 		        <td><span for="lPass">Password:</span> <input type="password" name="lPass" required> </td>
 		    <tr>
-		        <td><input type="submit" value="logIn" id="submit" > </td>
+		        <td><input type="submit" value="Log In" id="submit" > </td>
 		    </tr>
 		</table>
 	  </form>
@@ -97,7 +96,7 @@ echo <<< HTML
             <option value="instructor">Instructor</option>  
         </select>
                 
-        <input type="submit" value="createAccount" id="create">
+        <input type="submit" value="Create Account" id="create">
     
     
     </form>
