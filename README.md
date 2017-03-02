@@ -32,7 +32,7 @@ https://git-scm.com/download/win
 
 Then go to settings > version control > git  
 place path in **Path to Git Executable** 
-Path: C:\Program Files\Git\bin\git.exe
+Path: C:\Program Files\Git\bin\git.exe **PATH MAY NOT BE THE SAME ON YOUR COMPUTER!** IF IT ISN'T SEARCH FOR git.exe
 
 Licensing Information: READ LICENSE
 ---
