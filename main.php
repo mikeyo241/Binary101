@@ -17,7 +17,7 @@ if (isset($_POST['createAcc'])) {
     $accType = $_POST['selectItBABY'];
 
 }
-if (isseet($_POST['loginForm'])) {
+if (isset($_POST['loginForm'])) {
 
 }
 
