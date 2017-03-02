@@ -8,7 +8,7 @@ Author & Contributor List
 Michael A Gardner   --      mikeyo241  
 Nathaniel Merck     --      nmerck1  
 Christian R. Cook   --      crcook  
-Cory Wilson         --      Unknown as of 3/1/2017
+Cory Wilson         --      coryw
 
 ##How to pull this repository from git hub!
 Download Git Hub for your computer here:   
@@ -29,5 +29,3 @@ and we all can review the changes that you have made to the project and we can t
 
 Licensing Information: READ LICENSE
 ---
-
-#I changed this
