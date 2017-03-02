@@ -1,29 +1,51 @@
 <?php
-
+                /******************************************************
+                ***          Login/Create Account Page             ***
+                ***                                                ***
+                ***    Created by:         Group 6                 ***
+                ***    Updated:            2 March 2017            ***
+                ***    Class:              CPT - 264-002           ***
+                ***    Document:           index.php               ***
+                ***    CSS:                course.css              ***
+                ***    jQuery:             course.js               ***
+                ***                                                ***
+                ******************************************************/
 /*
  * Programmer:       Nathaniel Merck
  * Title:            login/sign-up page for Group Website Project
  * Date:             3/2/2017
  */
+
+/* Michael A Gardner    -   login System    -   2 March 2017        */
 include('functionlib.php');
 
-if (isset($_POST['createAcc'])) {
-    $fName = $_POST['fName'];
-    $lName = $_POST['lName'];
-    $email = $_POST['email'];
-    $cfEmail= $_POST['cfEmail'];
-    $pass = $_POST['pass'];
-    $cfPass = $_POST['cfPass'];
-    $accType = $_POST['selectItBABY'];
+if (isset($_POST['createAcc'])) {       // If there is post data from the create account form.
+    $fName      =   cleanIt($_POST['fName']);           // Student or instructor's first Name
+    $mName      =   cleanIt($_POST['mName']);           // Middle Name
+    $lName      =   cleanIt($_POST['lName']);           // Last Name
+    $email      =   cleanIt($_POST['email']);           // Email address
+    $cfEmail    =   cleanIt($_POST['cfEmail']);         // Confirm Email address (Should be the same as email)
+    $pass       =   cleanIt($_POST['pass']);            // The user's Password
+    $cfPass     =   cleanIt($_POST['cfPass']);          // Confirm password field
+    $accType    =   cleanIt($_POST['selectItBABY']);    // Instructor or Student account type
+    $sName      =   cleanIt($_POST['sName']);           // School Name
+    $prefix     =   cleanIt($_POST['prefix']);
+    $suffix     =   cleanIt($_POST['suffix']);
+    $birthMonth =   cleanIt($_POST['birthMonth']);
+    $birthDay   =   cleanIt($_POST['birthDay']);
+    $birthYear  =   cleanIt($_POST['birthYear']);
+    $schoolID   =   cleanIt($_POST['schoolID']);        // Like Tri-County's T-Number
+    $userName   =   cleanIt($_POST['userName']);        // Unique Username
+
 
 }
 if (isset($_POST['loginForm'])) {
-    $lEmail = $_POST['lEmail'];
-    $lPass = $_POST['lPass'];
+    $lEmail     =   cleanIt($_POST['lEmail']);
+    $lPass      =   cleanIt($_POST['lPass']);
 
 }
 
-
+/*  End Login System  */
 
 
 
@@ -82,12 +104,16 @@ echo <<< HTML
       <h2> Create a New Account </h2>
       
         <input type="text" name="sName" placeholder="School Name" style="width:355px;" required>   <br>
-        <input type="text" name="prefix" placeholder="Prefix" required>
+        <input type="text" name="prefix" placeholder="Prefix">
         <input type="text" name="fName" placeholder="First name" required>
-        <input type="text" name="mName" placeholder="Middle name" required> 
+        <input type="text" name="mName" placeholder="Middle name" > 
         <input type="text" name="lName" placeholder="Last name" required>
-        <input type="text" name="suffix" placeholder="Suffix" required>
+        <input type="text" name="suffix" placeholder="Suffix" >
+        <input type="text" name="birthMonth" placeholder="Birth Month" >
+        <input type="text" name="birthDay" placeholder="Birth Day" >        
+        <input type="text" name="birthYear" placeholder="Birth Year" >
         <input type="text" name="schoolID" placeholder="Student ID" required>
+        <input type="text" name="userName" placeholder="User Name" required>
         
           
           <br>
