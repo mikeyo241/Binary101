@@ -14,7 +14,7 @@
 
 /** TEMPORARY CHAP 3 FILE!!!  */
 
-require ('../functionlib.php');
+require('../functionlib.php');
 echo <<< HTML
 
 <html lang="en">

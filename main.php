@@ -5,7 +5,7 @@
  * Title:            login/sign-up page for Group Website Project
  * Date:             2/23/2017
  */
-include ('functionlib.php');
+include('functionlib.php');
 
 if (isset($_POST['createAcc'])) {
     $fName = $_POST['fName'];

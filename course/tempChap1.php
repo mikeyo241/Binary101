@@ -16,7 +16,7 @@
  * Everything is going to be loaded on the course file!!!
  */
 
-require ('../functionlib.php');
+require('../functionlib.php');
 echo <<< HTML
 
 <html lang="en">
