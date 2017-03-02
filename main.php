@@ -18,6 +18,8 @@ if (isset($_POST['createAcc'])) {
 
 }
 if (isset($_POST['loginForm'])) {
+    $lEmail = $_POST['lEmail'];
+    $lPass = $_POST['lPass'];
 
 }
 
