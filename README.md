@@ -27,8 +27,9 @@ and we all can review the changes that you have made to the project and we can t
 
 ## Fix the git.exe error on PHPStorm
 
-In order to fix this problem you will have to download git here:
-https://git-scm.com/download/win
+In order to fix this problem you will have to download git here: https://git-scm.com/download/win  
+You will still need to download this if you have the Git-hub GUI!
+
 
 Then go to settings > version control > git  
 place path in **Path to Git Executable** 
