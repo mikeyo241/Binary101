@@ -41,15 +41,6 @@ echo <<< HTML
 
 <body>
 
-HTML;
-// The Courses will be populated by a function in the function library!!!!
-// You can change the function below to look at each chapter that I have created thus far.
-// You can view the code in the functionlib.php file!!
-// Current Functions:
-chap1();
-//chap4();     // Just remove the comment and then comment out the current to view the chapter!!
-
-echo <<< HTML
 </body>
 
 </html>
