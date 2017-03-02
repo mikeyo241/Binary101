@@ -82,9 +82,15 @@ echo <<< HTML
       <h2> Create a New Account </h2>
       
         <input type="text" name="sName" placeholder="School Name" style="width:355px;" required>   <br>
-        
+        <input type="text" name="prefix" placeholder="Prefix" required>
         <input type="text" name="fName" placeholder="First name" required>
-        <input type="text" name="lName" placeholder="Last name" required>  <br>
+        <input type="text" name="mName" placeholder="Middle name" required> 
+        <input type="text" name="lName" placeholder="Last name" required>
+        <input type="text" name="suffix" placeholder="Suffix" required>
+        <input type="text" name="schoolID" placeholder="Student ID" required>
+        
+          
+          <br>
         
         <input type="email" name="email" placeholder="Email" style="width:355px;" required>   <br>
         

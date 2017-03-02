@@ -25,7 +25,14 @@ Put a meaningful short summary about what you did to the file and a description 
 Click Commit to master if you are unsure about the change you are making create a branch and commit it to the branch  
 and we all can review the changes that you have made to the project and we can then change it if it is right.
 
+## Fix the git.exe error on PHPStorm
 
+In order to fix this problem you will have to download git here:
+https://git-scm.com/download/win
+
+Then go to settings > version control > git  
+place path in **Path to Git Executable** 
+Path: C:\Program Files\Git\bin\git.exe
 
 Licensing Information: READ LICENSE
 ---
