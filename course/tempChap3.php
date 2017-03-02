@@ -14,10 +14,11 @@
 
 /** TEMPORARY CHAP 3 FILE!!!  */
 
-require('../functionlib.php');
-echo <<< HTML
+//require('../functionlib.php');
+require('chapterQuestions.php');
+?>
 
-<html lang="en">
+<html>
 <head>
     <meta name="title" content="Chapter 3" /> <!-- In the future "Chapter 3" will be a variable!!!!  -->
     <meta name="author" content="Michael Gardner" />
@@ -32,8 +33,9 @@ echo <<< HTML
 
 
     <!--  ** Java ** -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="scripts/course.js" type="text/javascript"></script>
+    <script src="scripts/chap3Quiz.js" type="text/javascript"></script>
 
 </head>
 
@@ -55,7 +57,6 @@ echo <<< HTML
     <h2>Input any number here to see the binary number it produces</h2>
     
 <!-- Game Created by Cory Wilson!!! -->
-    <h1>Decimal to Binary</h1>
    <form>
       Enter an integer:<br>
       <input type="number" step="1" min="0" value="12" id="decimalInput" />
@@ -72,22 +73,49 @@ echo <<< HTML
     <h2>Check out Khan Academy's explanation on how to convert bigger numbers to Binary</h2>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/bvcXEJbEzSs?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
     <h2>Think you understand? Try it yourself!!!</h2>
-    <p>Chapter 3 quiz here!!! What is 8 in binary?
-    <br>
-    What is 35 in binary?
-    <br>
-    What is 156 in binary?
-    <br>
-    What is 284 in binary?
-    <br>
-    What is 4 in binary?
-    <br>
 
-    Questions could be randomized if necessary!!!</p>
+
+   <form>
+       <p id="questionNumber">Question 1</p>
+       <label for="question"><?php echo $questionNumbers[0]; ?></label><br>
+       <input type="text" id="question" class="quizInput" /><br>
+       <p id="success" hidden>You did it!</p>
+   </form>
 
 </body>
 
 </html>
-HTML;
+
+<script>
+    $(document).ready(function() {
+        var questionsArray = <?php echo json_encode($chap3Questions); ?>;
+        var questionNumbers = <?php echo json_encode($questionNumbers); ?>;
+        var currentQuestion = 0;
+        var quizzing = true;
+
+        $(".quizInput").keyup(function() {
+            if ($(this).val() == questionsArray[questionNumbers[currentQuestion]]) {
+                $(this).css('background-color', 'LightGreen');
+                currentQuestion++;
+                if (currentQuestion >= 16) {
+                    $(this).attr("readonly", "true");
+                    $("#success").show();
+                    return;
+                }
+                $("label[for=question]").text(questionNumbers[currentQuestion]);
+                $("#question").val("");
+
+                $("#questionNumber").text("Question " + (currentQuestion + 1));
+
+            }
+            else if ($(this).val().length >= 4) {
+                $(this).css('background-color', 'LightCoral');
+                $(this).val("");
+            }
+            else
+                $(this).css('background-color', 'white');
+        });
+    });
 
 
+</script>
