@@ -78,9 +78,6 @@ nav ul {
     border: rgb(237, 28, 36);
     width: 100px;
     height: 30px;
-    position: absolute;
-    top: 100px;
-    left: 1183px;
 }
 
 #create {
@@ -95,12 +92,11 @@ nav ul {
 }
 
 #createacc {
-    position: absolute;
     color: black;
-    top: 150px;
-    left: 540px;
     font-family: Andale Mono, monospace;
-    display: inline-block;
+    display: inherit;
+    margin: auto;
+    width: 400px;
 }
 
 #footnote {
@@ -209,4 +205,28 @@ body {
 
 footer, head, body {
     width: 100%;
+}
+
+
+#createAccForm {
+    width: 100%;
+    top: 170px;
+    /* margin: auto; */
+    position: absolute;
+}
+/*  Login Table Styles */
+form table tr td {
+    color: white;
+    font-size: 25px;
+}
+#loginForm {
+    left: 62%;
+    position: fixed;
+}
+#selectItBABY {
+    color: blue;
+    width: 300px;
+    font-weight: bold;
+    font-size: 20px;
+    background: pink;
 }

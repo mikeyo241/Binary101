@@ -17,6 +17,7 @@ function dbConnect($hostname = 'localhost',$db_user='CIT',$db_pword='CPT283',$db
     return $link;
 }
 
+$PHP_SELF = htmlspecialchars($_SERVER['PHP_SELF']);
 /**  Function:      cleanIT
  * Last Modified:   2 November 2016
  * @param     Binarydata - Will be trim(),stripslashes(), and htmlspacialchar() so that nothing bad remains in the variable.
