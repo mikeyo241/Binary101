@@ -126,8 +126,19 @@ function chap4(){
     </p>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/LpuPe81bc2w?rel=0&amp;controls=0&amp;showinfo=0;end=235" frameborder="0" allowfullscreen></iframe>
     <p>Flip the switches to see how turning on and off bits in the nibble changes the number.</p>
-    <h3 style=" color: red;">BINARY SWITCHES GAME HERE</h3>
-    <div id="binGame"></div>
+<!-- Flip the switches game by Cory Wilson!!!  -->
+    <form>
+      Flip the switches:<br>
+      <input type="button" id="8" class="binaryButton" value="0" />
+      <input type="button" id="4" class="binaryButton" value="0" />
+      <input type="button" id="2" class="binaryButton" value="0" />
+      <input type="button" id="1" class="binaryButton" value="0" /><br>
+      Decimal Output:<br>
+      <input type="text" id="decimalOutput" value="0" readonly="true">
+      
+   </form> 
+<!-- End of Flip the Switches Game -->
+
     <br>
     <p>It is important to learn how to quickly calculate nibbles of binary quickly because nibbles will be used more in later chapters and later in your career.
 

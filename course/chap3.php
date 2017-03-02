@@ -14,7 +14,7 @@
 
 /** TEMPORARY CHAP 3 FILE!!!  */
 
-
+require ('../functionlib.php');
 echo <<< HTML
 
 <html lang="en">
@@ -32,6 +32,7 @@ echo <<< HTML
 
 
     <!--  ** Java ** -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="scripts/course.js" type="text/javascript"></script>
 
 </head>
@@ -52,6 +53,20 @@ echo <<< HTML
     <h2>Check out this video from Khan Academy on how to convert Decimal numbers to Binary</h2>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/H4BstqvgBow?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
     <h2>Input any number here to see the binary number it produces</h2>
+    
+<!-- Game Created by Cory Wilson!!! -->
+    <h1>Decimal to Binary</h1>
+   <form>
+      Enter an integer:<br>
+      <input type="number" step="1" min="0" value="12" id="decimalInput" />
+      <input type="button" id="convert" value="Convert" /><br>
+      Binary Output:<br>
+      <input type="text" id="binaryOutput" value="1100" readonly="true">
+      
+   </form> 
+<!--  End of Game Created by Cory Wilson  -->
+
+
     <p>Little number conversion game here!</p><br>
     <img src="../img/decimalToBinary2.PNG">
     <h2>Check out Khan Academy's explanation on how to convert bigger numbers to Binary</h2>

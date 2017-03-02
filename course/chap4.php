@@ -10,7 +10,7 @@
  ***    jQuery:             jQuery.js, Alpha.js     ***
  ***                                                ***
  ******************************************************/
-
+require ('../functionlib.php');
 
 /** TEMPORARY CHAP 4 FILE!!!  */
 
@@ -31,6 +31,7 @@ echo <<< HTML
 
 
     <!--  ** Java ** -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="scripts/course.js" type="text/javascript"></script>
 
 </head>
