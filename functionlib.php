@@ -126,13 +126,6 @@ function getSchoolID(){}
 function setSchoolID(){}
 function getUserName(){}
 function setUserName(){}
-function (){}
-function (){}
-
-
-
-
-
 
 
 
