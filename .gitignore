@@ -79,3 +79,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/windows,phpstorm,notepadpp
+.idea/Bin101.iml

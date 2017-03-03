@@ -66,10 +66,7 @@ function checkUser()  {
 
 }
 
-function addAccount($){
-
-
-    }
+// function addAccount($){}
 
 function reDir($location) {
     header("Location: $location");
