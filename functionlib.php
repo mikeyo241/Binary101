@@ -76,16 +76,11 @@ function checkUser()  {
 
 }
 
-<<<<<<< HEAD
-// function addAccount($){}
-
-=======
 /*function addAccount($){
 
 
     }
 */
->>>>>>> origin/master
 function reDir($location) {
     header("Location: $location");
 }
