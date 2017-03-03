@@ -35,13 +35,11 @@ require('chapterQuestions.php');
     <!--  ** Java ** -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="scripts/course.js" type="text/javascript"></script>
-    <script src="scripts/chap3Quiz.js" type="text/javascript"></script>
 
 </head>
 
 <body>
-
-<!-- Everything below this point will be imputed with a function in the function library!! This is a temporary page 
+<!-- Everything below this point will be imputed with a function in the function library!! This is a temporary page
    - so that we can create a good css template.  
    -->
    
@@ -86,36 +84,3 @@ require('chapterQuestions.php');
 
 </html>
 
-<script>
-    $(document).ready(function() {
-        var questionsArray = <?php echo json_encode($chap3Questions); ?>;
-        var questionNumbers = <?php echo json_encode($questionNumbers); ?>;
-        var currentQuestion = 0;
-        var quizzing = true;
-
-        $(".quizInput").keyup(function() {
-            if ($(this).val() == questionsArray[questionNumbers[currentQuestion]]) {
-                $(this).css('background-color', 'LightGreen');
-                currentQuestion++;
-                if (currentQuestion >= 16) {
-                    $(this).attr("readonly", "true");
-                    $("#success").show();
-                    return;
-                }
-                $("label[for=question]").text(questionNumbers[currentQuestion]);
-                $("#question").val("");
-
-                $("#questionNumber").text("Question " + (currentQuestion + 1));
-
-            }
-            else if ($(this).val().length >= 4) {
-                $(this).css('background-color', 'LightCoral');
-                $(this).val("");
-            }
-            else
-                $(this).css('background-color', 'white');
-        });
-    });
-
-
-</script>
