@@ -9,8 +9,12 @@ echo <<< HTML
 <head>
 	<!-- All Links, Meta data, scripts, and css goes inside the <head> tags.  -->
 <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	
+<!--  ** Java ** -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="script/main.js" type="text/javascript"></script>
+
 <!-- <header> and <nav> shouldn't be in the head it should be in the <body>  -->
 
 </head>
@@ -45,7 +49,7 @@ echo <<< HTML
                     <a href="chap2.php"> Chapter 2 </a>
                 </li>
                 <li>
-                    <a href="chap3.php"> Chapter 3 </a>
+                    <a href="#" id="chapter3"> Chapter 3 </a>
                 </li>
                 <li>
                     <a href="chap4.php"> Chapter 4 </a>
