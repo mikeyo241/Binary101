@@ -1,5 +1,15 @@
 <?php
-
+/******************************************************
+ ***              Function Library                  ***
+ ***                                                ***
+ ***    Created by:         Group 6                 ***
+ ***    Updated:            2 March 2017            ***
+ ***    Class:              CPT - 264-002           ***
+ ***    Document:           functionlib.php         ***
+ ***    CSS:                none                    ***
+ ***    jQuery:             none                    ***
+ ***                                                ***
+ ******************************************************/
 
 
 /** Function:       dbConnect
@@ -66,11 +76,68 @@ function checkUser()  {
 
 }
 
+<<<<<<< HEAD
 // function addAccount($){}
 
+=======
+/*function addAccount($){
+
+
+    }
+*/
+>>>>>>> origin/master
 function reDir($location) {
     header("Location: $location");
 }
+
+
+
+function createAccount ($fName, $mName, $lName, $email, $pass, $accType, $schoolName, $prefix, $suffix,
+                        $birthMonth, $birthYear, $birthday, $schoolID, $userName)
+{
+
+}
+
+function getFirstName(){}
+function setFirstName(){}
+function getMiddleName(){}
+function setMiddleName(){}
+function getLastName(){}
+function setLastName(){}
+function getEmail(){}
+function setEmail(){}
+function getPassword(){}
+function setPassword(){}
+function getAccountType(){}
+function setAccountType(){}
+function getSchoolName(){}
+function setSchoolName(){}
+function getPrefix(){}
+function setPrefix(){}
+function getSuffix(){}
+function setSuffix(){}
+function getBirthMonth(){}
+function setBirthMonth(){}
+function getBirthDay(){}
+function setBirthDay(){}
+function getBirthYear(){}
+function setBirthYear(){}
+function getSchoolID(){}
+function setSchoolID(){}
+function getUserName(){}
+function setUserName(){}
+function (){}
+function (){}
+
+
+
+
+
+
+
+
+
+
 
 /** Function:
  * Last Modified:

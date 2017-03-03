@@ -131,13 +131,14 @@ nav ul li a {
 }
 
 #navbar {
-    position: absolute;
-    width: 251px;
+    position: relative;
+    width: 250px;
     height: 100%;
     background: black;
-    top: 138px;
-    left: 0px;
-    z-index: -1;
+    top: 131px;
+    left: -9px;
+    float: left;
+    border: 3px solid rgb(227, 0, 237);
 }
 
 #icon {
@@ -165,31 +166,41 @@ nav ul li a {
 
 #titlediv {
     color: black;
-    border-bottom: 3px solid rgb(237, 28, 36);
-    border-top: 3px solid rgb(237, 28, 36);
-    position: absolute;
-    top: 150px;
-    left: 260px;
-    width: 1082px;
+    /* border-bottom: 3px solid rgb(237, 28, 36);
+    border-top: 3px solid rgb(237, 28, 36);  */
+    position: relative;
+    top: 15px;
+    margin: auto;
+    width: 95%;
     height: 44px;
+    border: 3px solid rgb(227, 0, 237);
 }
 
 #title {
     color: black;
     font-size: 22px;
     font-family: sans-serif;
-    text-align: center;
     line-height: 0.5em;
 }
 
-#content {
-    width: 1082px;
+#contentSection {
+    position: relative;
+    top: 131px;
+    left: 240px;
+    width: 75%;
     height: 100%;
-    position: absolute;
-    top: 211px;
+    border: 3px solid rgb(227, 0, 237);
+}
+
+#content {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    /* top: 211px;
     left: 260px;
-    border-left: 3px solid rgb(23, 23, 23);
-    border-right: 3px solid rgb(23, 23, 23);
+     border-left: 3px solid rgb(23, 23, 23);
+    border-right: 3px solid rgb(23, 23, 23);  */
+    border: 3px solid rgb(227, 0, 237);
 }
 
 /*	for the body	*/

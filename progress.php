@@ -2,8 +2,6 @@
 
 /*
  * Programmer:       Nathaniel Merck
- * Title:            login/sign-up page for Group Website Project
- * Date:             2/23/2017
  */
 
 echo <<< HTML
