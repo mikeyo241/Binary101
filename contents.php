@@ -26,7 +26,8 @@ echo <<< HTML
 	</header>
 	
 	
-    <section id="navbar">
+    <section>
+        <div id="linkBar">
             <ul>
                 <li>
                     <a href="progress.php"> Progress </a>
@@ -34,8 +35,8 @@ echo <<< HTML
                 <li>
                     <a href="profile.php"> Profile </a>
                 </li>
-                <li id="toc">
-                    <a href="contents.php" > Table of Contents </a>
+                <li >
+                    <a id="currentPage" href="contents.php" > Table of Contents </a>
                 </li>
                 <li>
                     <a href="chap1.php"> Chapter 1 </a>
@@ -72,18 +73,18 @@ echo <<< HTML
                 </li>
             
             </ul>
-    </section>
-	
-	
-	<aside id="contentSection">
-	    <div id="titlediv">
-            <h2 id="title">[ Table of Contents ]</h2>
         </div>
-    
-        <div id="content">
+        
+        <div id="rightSideDiv">
             
+                <h2 id="title">[ Table of Contents ]</h2>
+                
+                <p id="content">
+                    < main content here >
+                </p>
         </div>
-    </aside>
+        
+    </section>
     
 </body>
 

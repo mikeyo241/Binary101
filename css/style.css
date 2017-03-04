@@ -10,10 +10,19 @@
 header {
     background: rgb(0, 0, 0);
     height: 139px;
-    width: 100%; /* width: 1349px; */
-    position: absolute;
+    width: 100%;
+    position: relative;
     left: 0px;
     top: 0px;
+}
+
+body {
+    margin: auto;
+}
+
+section {
+    position: relative;
+    height: 520px;
 }
 
 h1 {
@@ -112,33 +121,15 @@ nav ul {
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
-
-
-nav {
-    position: absolute;
-    width: 100px;
-}
-
-nav ul {
-    text-decoration: none;
-    color: white;
+ul {
     font-family: monospace;
+    list-style-type: none;
+}
+
+ul li a {
+    color: white;
+    text-decoration: none;
     font-size: 20px;
-}
-
-nav ul li a {
-    font-size: 18px;
-}
-
-#navbar {
-    position: relative;
-    width: 250px;
-    height: 100%;
-    background: black;
-    top: 131px;
-    left: -9px;
-    float: left;
-    border: 3px solid rgb(227, 0, 237);
 }
 
 #icon {
@@ -173,14 +164,22 @@ nav ul li a {
     margin: auto;
     width: 95%;
     height: 44px;
-    border: 3px solid rgb(227, 0, 237);
+   /*  border: 3px solid rgb(227, 0, 237); */
 }
 
 #title {
+    margin: auto;
+    position: relative;
+    width: 95%;
+    height: 50px;
+    top: 5px;
+    text-align: center;
+    line-height: 2;
     color: black;
     font-size: 22px;
     font-family: sans-serif;
-    line-height: 0.5em;
+    border-bottom: 2px solid rgb(237, 28, 36);
+    border-top: 2px solid rgb(237, 28, 36);
 }
 
 #contentSection {
@@ -189,18 +188,16 @@ nav ul li a {
     left: 240px;
     width: 75%;
     height: 100%;
-    border: 3px solid rgb(227, 0, 237);
+    /* border: 3px solid rgb(227, 0, 237); */
 }
 
 #content {
-    width: 50px;
-    height: 50px;
+    width: 95%;
+    height: 86%;
     position: relative;
-    /* top: 211px;
-    left: 260px;
-     border-left: 3px solid rgb(23, 23, 23);
-    border-right: 3px solid rgb(23, 23, 23);  */
-    border: 3px solid rgb(227, 0, 237);
+    margin: auto;
+    top: 10px;
+    color: black;
 }
 
 /*	for the body	*/
@@ -259,3 +256,29 @@ form table tr td {
     background: white;
     border: 2px solid;
 }
+
+#linkBar {
+    position: relative;
+    width: 20%;
+    height: 100%;
+    float: left;
+    background: black;
+    /* border: 3px solid rgb(227, 0, 237); */
+}
+
+#rightSideDiv {
+    position: relative;
+    width: 79%;
+    float: right;
+    height: 100%;
+}
+
+#currentPage {
+    color: rgb(237, 28, 36);
+}
+
+/* temporary for fixing */ /*
+body, header, nav, section, footer, p, div {
+     border: 1px solid rgb(227, 0, 237);
+}
+*/
