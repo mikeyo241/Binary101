@@ -13,7 +13,7 @@
 /*
  * Programmer:       Nathaniel Merck
  * Title:            login/sign-up page for Group Website Project
- * Date:             3/2/2017
+ * Date:             3/4/2017
  */
 
 /* Michael A Gardner    -   login System    -   2 March 2017        */
