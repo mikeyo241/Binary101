@@ -18,7 +18,7 @@
 
 /* Michael A Gardner    -   login System    -   2 March 2017        */
 include('functionlib.php');
-
+$displayAlert = '';
 if (isset($_POST['createAcc'])) {       // If there is post data from the create account form.
     $fName      =   cleanIt($_POST['fName']);           // Student or instructor's first Name
     $mName      =   cleanIt($_POST['mName']);           // Middle Name
@@ -37,7 +37,12 @@ if (isset($_POST['createAcc'])) {       // If there is post data from the create
     $schoolID   =   cleanIt($_POST['schoolID']);        // Like Tri-County's T-Number
     $userName   =   cleanIt($_POST['userName']);        // Unique Username
 
-
+    if(createAccount($fName,$mName,$lName,'na',$email,$pass,$accType,$sName,
+        $prefix,$suffix,$birthMonth,$birthYear,$birthDay,$schoolID, $userName,'na')) {
+        $displayAlert = 'Account Created!';
+    }else {
+        $displayAlert = 'Error';
+    }
 }
 if (isset($_POST['loginForm'])) {
     $lEmail     =   cleanIt($_POST['lEmail']);
@@ -135,6 +140,13 @@ echo <<< HTML
     
     </form>
     </div>
+    
+    <div id=" alertMessage">
+    <h1 style="color: red; size: 40px;">$displayAlert</h1>
+    </div>
+
+
+
 </body>
 
 </html>

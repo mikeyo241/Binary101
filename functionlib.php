@@ -97,14 +97,41 @@ function checkUser()  {
 function reDir($location) {
     header("Location: $location");
 }
-function checkUsername($un) {
+function checkUsername($userName) {
+//      ** Check input for database exploits **
+    fixSql($userName);
 
+
+
+//      *** Establish a connection to the database  ***
+    $link = dbConnect();
+
+//      *** Database Query's    ***
+    $qry = "SELECT * FROM ACCOUNT WHERE ACC_USERNAME = '$userName'";
+
+    if($result = mysqli_query($link,$qry)) {                // Implement the query
+        if (mysqli_num_rows($result) == 1) {                // There can only be 1 entry for email no duplicates.
+            $res = mysqli_fetch_assoc($result);             // Put the result into an array
+            $link->close();
+            return false;
+        }else if (mysqli_num_rows($result) == 0) {
+            $link->close();
+            return true;}
+    }else {             // Query Failed - Error Messages Not shown !!!!
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
+    return false;
 }
 
 
-function createAccount ($fName, $mName, $lName, $email, $pass, $accType, $schoolName, $prefix, $suffix,
-                        $birthMonth, $birthYear, $birthday, $schoolID, $userName)
+function createAccount ($fName, $mName, $lName, $maiden, $email, $pass, $accType, $schoolName, $prefix, $suffix,
+                        $birthMonth, $birthYear, $birthday, $schoolID, $userName, $honnary)
 {
+    $userName = fixSql($userName);
+
+
     if(checkUsername($userName)) {
         $fName = fixSql($fName);
         $mName = fixSql($mName);
@@ -119,20 +146,31 @@ function createAccount ($fName, $mName, $lName, $email, $pass, $accType, $school
         $birthday = fixSql($birthday);
         $birthYear = fixSql($birthYear);
         $schoolID = fixSql($schoolID);
+        $maiden = fixSql($maiden);
+        $honnary = fixSql($honnary);
+
+        if (checkPass($pass)) {
+            $pass = md5($pass);
+        }
+
+        $DOB = $birthYear . "-" . $birthMonth . "-" . $birthday;
 
 //      *** Establish a connection to the database  ***
         $link = dbConnect();
 
 //      *** Database Query's  ***
-        $qry = "INSERT";
+        $qry = "INSERT INTO ACCOUNT VALUES ('$userName', '$fName','$lName','$suffix','$mName','$maiden','$prefix','$honnary','$DOB'
+                , '$schoolID','$schoolName','$pass','$accType')";
+        $qry2 = "INSERT INTO EMAIL VALUES  ('$email','$userName')";
 
 //      *** Implement Query's   ***
         mysqli_query($link, $qry);
+        mysqli_query($link, $qry2);
 
 //      ***     Close Connection    ***
         $link->close();
         return true;
-    }
+    }else return false;
 }
 
 function getFirstName($userID){
