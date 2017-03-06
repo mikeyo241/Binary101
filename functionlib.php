@@ -41,6 +41,19 @@ function cleanIt($data) {
     return $data;
 }
 
+/** Function:       fixSql
+ * Last Modified:   26 November 2016
+ * @param           $data -  The data tha needs to be filtered.
+ * @return          string - Characters encoded are NUL (ASCII 0), \n, \r, \, ', ", and Control-Z.
+ * Description:     Used to clean any form input that will go into the database.
+ */
+function fixSql($data) {
+    $data = cleanIt($data);
+    $link = dbConnect();
+    $data = mysqli_real_escape_string($link, $data);/*  Characters encoded are NUL (ASCII 0), \n, \r, \, ', ", and Control-Z.   */
+    $link->close();
+    return $data;
+}
 /** Function:   checkPass
  * Last Modified:   2 November 2016
  * @param       $txt -   Password    -- Before md5 Encryption --
@@ -84,31 +97,50 @@ function checkUser()  {
 function reDir($location) {
     header("Location: $location");
 }
+function checkUsername($un) {
 
+}
 
 
 function createAccount ($fName, $mName, $lName, $email, $pass, $accType, $schoolName, $prefix, $suffix,
                         $birthMonth, $birthYear, $birthday, $schoolID, $userName)
 {
+    if(checkUsername($userName)) {
+        $fName = fixSql($fName);
+        $mName = fixSql($mName);
+        $lName = fixSql($lName);
+        $email = fixSql($email);
+        $pass = fixSql($pass);
+        $accType = fixSql($accType);
+        $schoolName = fixSql($schoolName);
+        $prefix = fixSql($prefix);
+        $suffix = fixSql($suffix);
+        $birthMonth = fixSql($birthMonth);
+        $birthday = fixSql($birthday);
+        $birthYear = fixSql($birthYear);
+        $schoolID = fixSql($schoolID);
 
-}
+//      *** Establish a connection to the database  ***
+        $link = dbConnect();
 
-function getFirstName($userID){
-    $link = dbConnect();
-    $qry = "SELECT * FROM ACCOUNT WHERE ACC_USERNAME = '$userID'";
-    if($result = mysqli_query($link,$qry)) {
-        $res = mysqli_fetch_assoc($result);
+//      *** Database Query's  ***
+        $qry = "INSERT";
+
+//      *** Implement Query's   ***
+        mysqli_query($link, $qry);
+
+//      ***     Close Connection    ***
         $link->close();
-        return $res;
-
-    }else {    // Query Failed - Error Messages Not shown !!!!
-        echo "Error: " . $qry . "<br>" . mysqli_error($link);
-        $link->close();
-        return false;
+        return true;
     }
 }
 
+function getFirstName($userID){
+
+}
+
 function setFirstName($userID, $fName){
+    $fName = fixSql($fName);
 //      *** Establish a connection to the database  ***
     $link = dbConnect();
 
@@ -125,6 +157,7 @@ function setFirstName($userID, $fName){
 
 function getMiddleName(){}
 function setMiddleName($middleName, $userID){
+    $middleName = fixSql($middleName);
 //      *** Establish a connection to the database  ***
     $link = dbConnect();
 
@@ -136,9 +169,12 @@ function setMiddleName($middleName, $userID){
 
 //      ***     Close Connection    ***
     $link->close();
-    return true;}
+    return true;
+}
+
 function getLastName(){}
 function setLastName($lastName, $userID){
+    $lastName = fixSql($lastName);
 //      *** Establish a connection to the database  ***
     $link = dbConnect();
 
@@ -150,9 +186,12 @@ function setLastName($lastName, $userID){
 
 //      ***     Close Connection    ***
     $link->close();
-    return true;}
+    return true;
+}
+
 function getEmail(){}
 function setEmail($email, $userID){
+    $email = fixSql($email);
 //      *** Establish a connection to the database  ***
     $link = dbConnect();
 
@@ -167,6 +206,7 @@ function setEmail($email, $userID){
     return true;}
 function getPassword(){}
 function setPassword($pass, $userID){
+    $pass = fixSql($pass);
     if (checkPass($pass)){
         $pass = md5($pass);
         //      *** Establish a connection to the database  ***
@@ -186,6 +226,7 @@ function setPassword($pass, $userID){
 }
 function getAccountType(){}
 function setAccountType($accountType, $userID){
+    $accountType = fixSql($accountType);
 //      *** Establish a connection to the database  ***
     $link = dbConnect();
 
@@ -197,9 +238,12 @@ function setAccountType($accountType, $userID){
 
 //      ***     Close Connection    ***
     $link->close();
-    return true;}
+    return true;
+}
+
 function getSchoolName(){}
 function setSchoolName($schoolName, $userID){
+    $schoolName = fixSql($schoolName);
 //      *** Establish a connection to the database  ***
     $link = dbConnect();
 
@@ -211,9 +255,12 @@ function setSchoolName($schoolName, $userID){
 
 //      ***     Close Connection    ***
     $link->close();
-    return true;}
+    return true;
+}
+
 function getPrefix(){}
 function setPrefix($prefix, $userID){
+    $prefix = fixSql($prefix);
 //      *** Establish a connection to the database  ***
     $link = dbConnect();
 
@@ -225,9 +272,12 @@ function setPrefix($prefix, $userID){
 
 //      ***     Close Connection    ***
     $link->close();
-    return true;}
+    return true;
+}
+
 function getSuffix(){}
 function setSuffix($suffix,$userID){
+    $suffix = fixSql($suffix);
 //      *** Establish a connection to the database  ***
     $link = dbConnect();
 
@@ -239,9 +289,14 @@ function setSuffix($suffix,$userID){
 
 //      ***     Close Connection    ***
     $link->close();
-    return true;}
+    return true;
+}
+
 function getBirthday(){}
 function setBirthday($month, $day, $year, $userID){
+    $month = fixSql($month);
+    $day = fixSql($day);
+    $year = fixSql($year);
 
     $birthdaySuit = $year . "-" . $month . "-" . $day;
 
@@ -256,10 +311,12 @@ function setBirthday($month, $day, $year, $userID){
 
 //      ***     Close Connection    ***
     $link->close();
-    return true;}
+    return true;
+}
 
 function getSchoolID(){}
 function setSchoolID($schoolID, $userID){
+    $schoolID = fixSql($schoolID);
 //      *** Establish a connection to the database  ***
     $link = dbConnect();
 
@@ -271,7 +328,8 @@ function setSchoolID($schoolID, $userID){
 
 //      ***     Close Connection    ***
     $link->close();
-    return true;}
+    return true;
+}
 
 
 
