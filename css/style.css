@@ -279,6 +279,9 @@ form table tr td {
     color: rgb(237, 28, 36);
 }
 
+#wel {
+    color: white;
+}
 /* temporary for fixing */ /*
 body, header, nav, section, footer, p, div {
      border: 1px solid rgb(227, 0, 237);
