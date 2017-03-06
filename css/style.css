@@ -26,7 +26,7 @@ section {
 }
 
 h1 {
-    color: rgb(255, 255, 255);
+    color: black;
     font-style: italic;
     font-weight: bold;
     font-size: 50px;
@@ -35,9 +35,11 @@ h1 {
 
 h2 {
     font-size: 30px;
+    color: black;
 }
 
 h4 {
+    color: black;
     font-family: Andale Mono, monospace;
 }
 /* nav bar */
