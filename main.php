@@ -17,39 +17,53 @@
  */
 
 /* Michael A Gardner    -   login System    -   2 March 2017        */
-include('functionlib.php');
+require('functionLib.php');
 $displayAlert = '';
-if (isset($_POST['createAcc'])) {       // If there is post data from the create account form.
-    $fName      =   cleanIt($_POST['fName']);           // Student or instructor's first Name
-    $mName      =   cleanIt($_POST['mName']);           // Middle Name
-    $lName      =   cleanIt($_POST['lName']);           // Last Name
-    $email      =   cleanIt($_POST['email']);           // Email address
-    $cfEmail    =   cleanIt($_POST['cfEmail']);         // Confirm Email address (Should be the same as email)
-    $pass       =   cleanIt($_POST['pass']);            // The user's Password
-    $cfPass     =   cleanIt($_POST['cfPass']);          // Confirm password field
-    $accType    =   cleanIt($_POST['selectItBABY']);    // Instructor or Student account type
-    $sName      =   cleanIt($_POST['sName']);           // School Name
-    $prefix     =   cleanIt($_POST['prefix']);
-    $suffix     =   cleanIt($_POST['suffix']);
-    $birthMonth =   cleanIt($_POST['birthMonth']);
-    $birthDay   =   cleanIt($_POST['birthDay']);
-    $birthYear  =   cleanIt($_POST['birthYear']);
-    $schoolID   =   cleanIt($_POST['schoolID']);        // Like Tri-County's T-Number
-    $userName   =   cleanIt($_POST['userName']);        // Unique Username
+if ($_SERVER['REQUEST_METHOD']=='POST') {
+    if (!empty($_POST['create'])) {       // If there is post data from the create account form.
+        $fName = cleanIt($_POST['fName']);           // Student or instructor's first Name
+        $mName = cleanIt($_POST['mName']);           // Middle Name
+        $lName = cleanIt($_POST['lName']);           // Last Name
+        $email = cleanIt($_POST['email']);           // Email address
+        $cfEmail = cleanIt($_POST['cfEmail']);         // Confirm Email address (Should be the same as email)
+        $pass = cleanIt($_POST['pass']);            // The user's Password
+        $cfPass = cleanIt($_POST['cfPass']);          // Confirm password field
+        $accType = cleanIt($_POST['selectItBABY']);    // Instructor or Student account type
+        $sName = cleanIt($_POST['sName']);           // School Name
+        $prefix = cleanIt($_POST['prefix']);
+        $suffix = cleanIt($_POST['suffix']);
+        $birthMonth = cleanIt($_POST['birthMonth']);
+        $birthDay = cleanIt($_POST['birthDay']);
+        $birthYear = cleanIt($_POST['birthYear']);
+        $schoolID = cleanIt($_POST['schoolID']);        // Like Tri-County's T-Number
+        $userName = cleanIt($_POST['userName']);        // Unique Username
 
-    if(createAccount($fName,$mName,$lName,'na',$email,$pass,$accType,$sName,
-        $prefix,$suffix,$birthMonth,$birthYear,$birthDay,$schoolID, $userName,'na')) {
-        $displayAlert = 'Account Created!';
-    }else {
-        $displayAlert = 'Error';
+        if (createAccount($fName, $mName, $lName, 'na', $email, $pass, $accType, $sName,
+            $prefix, $suffix, $birthMonth, $birthYear, $birthDay, $schoolID, $userName, 'na')) {
+            $displayAlert = 'Account Created!';
+        } else {
+            $displayAlert = 'Error';
+        }
+    }
+    if (isset($_POST['loginSubmit'])) {
+        $userNameL = cleanIt($_POST['userNameL']);
+        $lPass = cleanIt($_POST['lPass']);
+
+        if(checkLogin($userNameL, $lPass)) {
+
+            $displayAlert = "Login Success";
+            $_SESSION['islogged'] = 'TuIlI';
+
+          //  reDir(getAccountType($userNameL).".php");
+
+
+
+
+        }
+
+
     }
 }
-if (isset($_POST['loginForm'])) {
-    $lEmail     =   cleanIt($_POST['lEmail']);
-    $lPass      =   cleanIt($_POST['lPass']);
-
-}
-
 /*  End Login System  */
 
 
@@ -87,12 +101,12 @@ echo <<< HTML
       <form id="loginForm" action="$PHP_SELF" method="post">
         <table>
 		    <tr>
-		        <td colspan="2"><span for="lEmail">Email:</span> <input id="emailInput" type="email" name="lEmail" required>  </td>
+		        <td colspan="2"><span for="lEmail">Username:</span> <input type="text" name="userNameL" id="userNameL" required>  </td>
 		    </tr>
 		    <tr>
 		        <td><span for="lPass">Password:</span> <input type="password" name="lPass" required> </td>
 		    <tr>
-		        <td><input type="submit" value="Log In" id="submit" > </td>
+		        <td><input type="submit" value="Log In" id="loginSubmit" name="loginSubmit" > </td>
 		    </tr>
 		</table>
 	  </form>
@@ -104,7 +118,7 @@ echo <<< HTML
 	
     
     <div id="createAccForm">
-    <form action="$PHP_SELF" id="createAcc" method="post">
+    <form action="$PHP_SELF" name="createAcc" id="createAcc" method="post">
     
       <h2> Create a New Account </h2>
       
@@ -127,15 +141,15 @@ echo <<< HTML
         
         <input type="email" name="cfEmail" placeholder="Re-enter Email" style="width:355px;" required>    <br>
         
-        <input type="password" id="pass" name="regPass" placeholder="Password" style="width:355px;" required>   <br>
+        <input type="password" id="pass" name="pass" placeholder="Password" style="width:355px;" required>   <br>
         
-        <input type="password" ="cfPassword" name="cfPassword" placeholder="Confirm Password" style="width: 355px;" required>   <br>
+        <input type="password" ="cfPass" name="cfPass" placeholder="Confirm Password" style="width: 355px;" required>   <br>
         <select required name="selectItBABY" id="selectItBABY">
             <option value="student" selected >Student</option>
             <option value="instructor">Instructor</option>  
         </select>
                 
-        <input type="submit" value="Create Account" id="create">
+        <input type="submit" value="Create Account" id="create" name="create">
     
     
     </form>
