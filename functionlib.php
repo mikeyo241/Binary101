@@ -148,7 +148,7 @@ function getFirstName($userID){
     // close connection
     $link->close();
 
-    // return the first name
+    // return result
     return $result;
 }
 
@@ -180,7 +180,7 @@ function getMiddleName($userID){// connect to db
     // close connection
     $link->close();
 
-    // return the first name
+    // return result
     return $result;
 }
 
@@ -213,7 +213,7 @@ function getLastName($userID){
     // close connection
     $link->close();
 
-    // return the first name
+    // return result
     return $result;
 }
 
@@ -246,7 +246,7 @@ function getEmail($userID){
     // close connection
     $link->close();
 
-    // return the first name
+    // return result
     return $result;
 }
 
@@ -263,8 +263,26 @@ function setEmail($email, $userID){
 
 //      ***     Close Connection    ***
     $link->close();
-    return true;}
-function getPassword($userID){}
+    return true;
+}
+
+function getPassword($userID){
+    // connect to db
+    $link = dbConnect();
+
+    // db query
+    $qry = "SELECT ACC_PASS FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
+
+    // query that code
+    $result = mysqli_query($link, $qry);
+
+    // close connection
+    $link->close();
+
+    // return result
+    return $result;
+}
+
 function setPassword($pass, $userID){
     $pass = fixSql($pass);
     if (checkPass($pass)){
@@ -297,7 +315,7 @@ function getAccountType($userID){
     // close connection
     $link->close();
 
-    // return the first name
+    // return result
     return $result;
 }
 
@@ -330,7 +348,7 @@ function getSchoolName($userID){
     // close connection
     $link->close();
 
-    // return the first name
+    // return result
     return $result;
 }
 
@@ -363,7 +381,7 @@ function getPrefix($userID){
     // close connection
     $link->close();
 
-    // return the first name
+    // return result
     return $result;
 }
 
@@ -396,7 +414,7 @@ function getSuffix($userID){
     // close connection
     $link->close();
 
-    // return the first name
+    // return result
     return $result;
 }
 
@@ -429,7 +447,7 @@ function getBirthday($userID){
     // close connection
     $link->close();
 
-    // return the first name
+    // return result
     return $result;
 }
 
@@ -467,7 +485,7 @@ function getSchoolID($userID){
     // close connection
     $link->close();
 
-    // return the first name
+    // return result
     return $result;
 }
 
