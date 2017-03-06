@@ -136,7 +136,20 @@ function createAccount ($fName, $mName, $lName, $email, $pass, $accType, $school
 }
 
 function getFirstName($userID){
+    // connect to db
+    $link = dbConnect();
 
+    // db query
+    $qry = "SELECT ACC_FNAME FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
+
+    // query that code
+    $result = mysqli_query($link, $qry);
+
+    // close connection
+    $link->close();
+
+    // return the first name
+    return $result;
 }
 
 function setFirstName($userID, $fName){
@@ -155,7 +168,22 @@ function setFirstName($userID, $fName){
     return true;
 }
 
-function getMiddleName(){}
+function getMiddleName($userID){// connect to db
+    $link = dbConnect();
+
+    // db query
+    $qry = "SELECT ACC_MIDDLE FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
+
+    // query that code
+    $result = mysqli_query($link, $qry);
+
+    // close connection
+    $link->close();
+
+    // return the first name
+    return $result;
+}
+
 function setMiddleName($middleName, $userID){
     $middleName = fixSql($middleName);
 //      *** Establish a connection to the database  ***
@@ -172,7 +200,23 @@ function setMiddleName($middleName, $userID){
     return true;
 }
 
-function getLastName(){}
+function getLastName($userID){
+    // connect to db
+    $link = dbConnect();
+
+    // db query
+    $qry = "SELECT ACC_LNAME FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
+
+    // query that code
+    $result = mysqli_query($link, $qry);
+
+    // close connection
+    $link->close();
+
+    // return the first name
+    return $result;
+}
+
 function setLastName($lastName, $userID){
     $lastName = fixSql($lastName);
 //      *** Establish a connection to the database  ***
@@ -189,7 +233,23 @@ function setLastName($lastName, $userID){
     return true;
 }
 
-function getEmail(){}
+function getEmail($userID){
+    // connect to db
+    $link = dbConnect();
+
+    // db query
+    $qry = "SELECT EMA_ADDRESS FROM EMAIL WHERE ACC_USERNAME = '$userID' ";
+
+    // query that code
+    $result = mysqli_query($link, $qry);
+
+    // close connection
+    $link->close();
+
+    // return the first name
+    return $result;
+}
+
 function setEmail($email, $userID){
     $email = fixSql($email);
 //      *** Establish a connection to the database  ***
@@ -204,7 +264,7 @@ function setEmail($email, $userID){
 //      ***     Close Connection    ***
     $link->close();
     return true;}
-function getPassword(){}
+function getPassword($userID){}
 function setPassword($pass, $userID){
     $pass = fixSql($pass);
     if (checkPass($pass)){
@@ -224,7 +284,23 @@ function setPassword($pass, $userID){
 
     }else return false;
 }
-function getAccountType(){}
+function getAccountType($userID){
+    // connect to db
+    $link = dbConnect();
+
+    // db query
+    $qry = "SELECT ACC_TYPE FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
+
+    // query that code
+    $result = mysqli_query($link, $qry);
+
+    // close connection
+    $link->close();
+
+    // return the first name
+    return $result;
+}
+
 function setAccountType($accountType, $userID){
     $accountType = fixSql($accountType);
 //      *** Establish a connection to the database  ***
@@ -241,7 +317,23 @@ function setAccountType($accountType, $userID){
     return true;
 }
 
-function getSchoolName(){}
+function getSchoolName($userID){
+    // connect to db
+    $link = dbConnect();
+
+    // db query
+    $qry = "SELECT ACC_SCHOOLNAME FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
+
+    // query that code
+    $result = mysqli_query($link, $qry);
+
+    // close connection
+    $link->close();
+
+    // return the first name
+    return $result;
+}
+
 function setSchoolName($schoolName, $userID){
     $schoolName = fixSql($schoolName);
 //      *** Establish a connection to the database  ***
@@ -258,7 +350,23 @@ function setSchoolName($schoolName, $userID){
     return true;
 }
 
-function getPrefix(){}
+function getPrefix($userID){
+    // connect to db
+    $link = dbConnect();
+
+    // db query
+    $qry = "SELECT ACC_PREFIX FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
+
+    // query that code
+    $result = mysqli_query($link, $qry);
+
+    // close connection
+    $link->close();
+
+    // return the first name
+    return $result;
+}
+
 function setPrefix($prefix, $userID){
     $prefix = fixSql($prefix);
 //      *** Establish a connection to the database  ***
@@ -275,7 +383,23 @@ function setPrefix($prefix, $userID){
     return true;
 }
 
-function getSuffix(){}
+function getSuffix($userID){
+    // connect to db
+    $link = dbConnect();
+
+    // db query
+    $qry = "SELECT ACC_SUFIX FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
+
+    // query that code
+    $result = mysqli_query($link, $qry);
+
+    // close connection
+    $link->close();
+
+    // return the first name
+    return $result;
+}
+
 function setSuffix($suffix,$userID){
     $suffix = fixSql($suffix);
 //      *** Establish a connection to the database  ***
@@ -292,7 +416,23 @@ function setSuffix($suffix,$userID){
     return true;
 }
 
-function getBirthday(){}
+function getBirthday($userID){
+    // connect to db
+    $link = dbConnect();
+
+    // db query
+    $qry = "SELECT ACC_DOB FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
+
+    // query that code
+    $result = mysqli_query($link, $qry);
+
+    // close connection
+    $link->close();
+
+    // return the first name
+    return $result;
+}
+
 function setBirthday($month, $day, $year, $userID){
     $month = fixSql($month);
     $day = fixSql($day);
@@ -314,7 +454,23 @@ function setBirthday($month, $day, $year, $userID){
     return true;
 }
 
-function getSchoolID(){}
+function getSchoolID($userID){
+    // connect to db
+    $link = dbConnect();
+
+    // db query
+    $qry = "SELECT ACC_SCHOOLID FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
+
+    // query that code
+    $result = mysqli_query($link, $qry);
+
+    // close connection
+    $link->close();
+
+    // return the first name
+    return $result;
+}
+
 function setSchoolID($schoolID, $userID){
     $schoolID = fixSql($schoolID);
 //      *** Establish a connection to the database  ***
