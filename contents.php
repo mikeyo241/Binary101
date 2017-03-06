@@ -21,11 +21,11 @@ echo <<< HTML
 <body>
 
 	<header>
-		<img id="logo" src="img/logo.PNG" alt="Website Logo" align="top-left">   
+		<img id="logo" src="/Binary101/img/logo.PNG" alt="Website Logo" align="top-left">   
             
         <h4 id="wel">Welcome <!-- <?php echo "(dollar sign)name";    ?>     THIS IS THE VARIABLE FOR THE FIRST NAME --></h4>
         
-        <img id="icon" src="img/icon.png" alt="Profile Icon" align="top-left"> <!-- Directory changes name -->
+        <img id="icon" src="/Binary101/img/icon.png" alt="Profile Icon" align="top-left"> <!-- Directory changes name -->
                 
 	</header>
 	
@@ -43,52 +43,44 @@ echo <<< HTML
                     <a id="currentPage" href="contents.php" > Table of Contents </a>
                 </li>
                 <li>
-                    <a href="chap1.php"> Chapter 1 </a>
+                    <a href="/Binary101/course/chap1.php"> Chapter 1 </a>
                 </li>
                 <li>
-                    <a href="chap2.php"> Chapter 2 </a>
+                    <a href="/Binary101/course/chap2.php"> Chapter 2 </a>
                 </li>
                 <li>
-                    <a href="#" id="chapter3"> Chapter 3 </a>
+                    <a href="/Binary101/course/chap3.php"> Chapter 3 </a>
                 </li>
                 <li>
-                    <a href="chap4.php"> Chapter 4 </a>
+                    <a href="/Binary101/course/chap4.php"> Chapter 4 </a>
                 </li>
                 <li>
-                    <a href="chap5.php"> Chapter 5 </a>
+                    <a href="/Binary101/course/chap5.php"> Chapter 5 </a>
                 </li>
                 <li>
-                    <a href="chap6.php"> Chapter 6 </a>
+                    <a href="/Binary101/course/chap6.php"> Chapter 6 </a>
                 </li>
                 <li>
-                    <a href="chap7.php"> Chapter 7 </a>
+                    <a href="/Binary101/course/chap7.php"> Chapter 7 </a>
                 </li>
                 <li>
-                    <a href="chap8.php"> Chapter 8 </a>
+                    <a href="/Binary101/course/chap8.php"> Chapter 8 </a>
                 </li>
                 <li>
-                    <a href="chap9.php"> Chapter 9 </a>
+                    <a href="/Binary101/course/chap9.php"> Chapter 9 </a>
                 </li>
                 <li>
-                    <a href="chap10.php"> Chapter 10 </a>
+                    <a href="/Binary101/course/chap10.php"> Chapter 10 </a>
                 </li>
                 <li>
-                    <a href="chap11.php"> Chapter 11 </a>
+                    <a href="/Binary101/course/chap11.php"> Chapter 11 </a>
                 </li>
             
             </ul>
         </div>
         
-        <div id="rightSideDiv">
-            
-                <h2 id="title">[ Table of Contents ]</h2>
-                
-                <p id="content">
-                    < main content here >
-                </p>
-        </div>
-        
-    </section>
+
+   
     
 </body>
 
