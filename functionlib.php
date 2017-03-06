@@ -93,34 +93,185 @@ function createAccount ($fName, $mName, $lName, $email, $pass, $accType, $school
 
 }
 
-function getFirstName(){}
-function setFirstName(){}
+function getFirstName($userID){
+    $link = dbConnect();
+    $qry = "SELECT * FROM ACCOUNT WHERE ACC_USERNAME = '$userID'";
+    if($result = mysqli_query($link,$qry)) {
+        $res = mysqli_fetch_assoc($result);
+        $link->close();
+        return $res;
+
+    }else {    // Query Failed - Error Messages Not shown !!!!
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
+}
+
+function setFirstName($userID, $fName){
+//      *** Establish a connection to the database  ***
+    $link = dbConnect();
+
+//      *** Database Query's  ***
+    $qry = "UPDATE ACCOUNT SET ACC_FNAME = '$fName' WHERE ACC_USERNAME = '$userID'";
+
+//      *** Implement Query's   ***
+    mysqli_query($link, $qry);
+
+//      ***     Close Connection    ***
+    $link->close();
+    return true;
+}
+
 function getMiddleName(){}
-function setMiddleName(){}
+function setMiddleName($middleName, $userID){
+//      *** Establish a connection to the database  ***
+    $link = dbConnect();
+
+//      *** Database Query's  ***
+    $qry = "UPDATE ACCOUNT SET ACC_MIDDLE = '$middleName' WHERE ACC_USERNAME = '$userID'";
+
+//      *** Implement Query's   ***
+    mysqli_query($link, $qry);
+
+//      ***     Close Connection    ***
+    $link->close();
+    return true;}
 function getLastName(){}
-function setLastName(){}
+function setLastName($lastName, $userID){
+//      *** Establish a connection to the database  ***
+    $link = dbConnect();
+
+//      *** Database Query's  ***
+    $qry = "UPDATE ACCOUNT SET ACC_LNAME = '$lastName' WHERE ACC_USERNAME = '$userID'";
+
+//      *** Implement Query's   ***
+    mysqli_query($link, $qry);
+
+//      ***     Close Connection    ***
+    $link->close();
+    return true;}
 function getEmail(){}
-function setEmail(){}
+function setEmail($email, $userID){
+//      *** Establish a connection to the database  ***
+    $link = dbConnect();
+
+//      *** Database Query's  ***
+    $qry = "UPDATE EMAIL SET EMA_ADDRESS = '$email' WHERE ACC_USERNAME = '$userID'";
+
+//      *** Implement Query's   ***
+    mysqli_query($link, $qry);
+
+//      ***     Close Connection    ***
+    $link->close();
+    return true;}
 function getPassword(){}
-function setPassword(){}
+function setPassword($pass, $userID){
+    if (checkPass($pass)){
+        $pass = md5($pass);
+        //      *** Establish a connection to the database  ***
+        $link = dbConnect();
+
+//      *** Database Query's  ***
+        $qry = "UPDATE ACCOUNT SET ACC_PASS = '$pass' WHERE ACC_USERNAME = '$userID'";
+
+//      *** Implement Query's   ***
+        mysqli_query($link, $qry);
+
+//      ***     Close Connection    ***
+        $link->close();
+        return true;
+
+    }else return false;
+}
 function getAccountType(){}
-function setAccountType(){}
+function setAccountType($accountType, $userID){
+//      *** Establish a connection to the database  ***
+    $link = dbConnect();
+
+//      *** Database Query's  ***
+    $qry = "UPDATE ACCOUNT SET ACC_TYPE = '$accountType' WHERE ACC_USERNAME = '$userID'";
+
+//      *** Implement Query's   ***
+    mysqli_query($link, $qry);
+
+//      ***     Close Connection    ***
+    $link->close();
+    return true;}
 function getSchoolName(){}
-function setSchoolName(){}
+function setSchoolName($schoolName, $userID){
+//      *** Establish a connection to the database  ***
+    $link = dbConnect();
+
+//      *** Database Query's  ***
+    $qry = "UPDATE ACCOUNT SET ACC_SCHOOLNAME = '$schoolName' WHERE ACC_USERNAME = '$userID'";
+
+//      *** Implement Query's   ***
+    mysqli_query($link, $qry);
+
+//      ***     Close Connection    ***
+    $link->close();
+    return true;}
 function getPrefix(){}
-function setPrefix(){}
+function setPrefix($prefix, $userID){
+//      *** Establish a connection to the database  ***
+    $link = dbConnect();
+
+//      *** Database Query's  ***
+    $qry = "UPDATE ACCOUNT SET ACC_PREFIX = '$prefix' WHERE ACC_USERNAME = '$userID'";
+
+//      *** Implement Query's   ***
+    mysqli_query($link, $qry);
+
+//      ***     Close Connection    ***
+    $link->close();
+    return true;}
 function getSuffix(){}
-function setSuffix(){}
-function getBirthMonth(){}
-function setBirthMonth(){}
-function getBirthDay(){}
-function setBirthDay(){}
-function getBirthYear(){}
-function setBirthYear(){}
+function setSuffix($suffix,$userID){
+//      *** Establish a connection to the database  ***
+    $link = dbConnect();
+
+//      *** Database Query's  ***
+    $qry = "UPDATE ACCOUNT SET ACC_SUFFIX = '$suffix' WHERE ACC_USERNAME = '$userID'";
+
+//      *** Implement Query's   ***
+    mysqli_query($link, $qry);
+
+//      ***     Close Connection    ***
+    $link->close();
+    return true;}
+function getBirthday(){}
+function setBirthday($month, $day, $year, $userID){
+
+    $birthdaySuit = $year . "-" . $month . "-" . $day;
+
+//      *** Establish a connection to the database  ***
+    $link = dbConnect();
+
+//      *** Database Query's  ***
+    $qry = "UPDATE ACCOUNT SET ACC_DOB = '$birthdaySuit' WHERE ACC_USERNAME = '$userID'";
+
+//      *** Implement Query's   ***
+    mysqli_query($link, $qry);
+
+//      ***     Close Connection    ***
+    $link->close();
+    return true;}
+
 function getSchoolID(){}
-function setSchoolID(){}
-function getUserName(){}
-function setUserName(){}
+function setSchoolID($schoolID, $userID){
+//      *** Establish a connection to the database  ***
+    $link = dbConnect();
+
+//      *** Database Query's  ***
+    $qry = "UPDATE ACCOUNT SET ACC_SCHOOLID = '$schoolID' WHERE ACC_USERNAME = '$userID'";
+
+//      *** Implement Query's   ***
+    mysqli_query($link, $qry);
+
+//      ***     Close Connection    ***
+    $link->close();
+    return true;}
 
 
 
