@@ -71,10 +71,8 @@ nav ul {
     list-style-type: none;
 }
 
-#username {
-    position: absolute;
-    top: 22px;
-    left: 890px;
+#userNameL, #passWordL {
+    width: 170px;
 }
 
 #password {
@@ -240,6 +238,7 @@ form table tr td {
     font-family: monospace;
     position: fixed;
     top: 20px;
+    width: 290px;
 }
 #loginForm table tr td {
     color: white;

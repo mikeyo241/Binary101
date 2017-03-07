@@ -97,10 +97,10 @@ echo <<< HTML
       <form id="loginForm" action="$PHP_SELF" method="post">
         <table>
 		    <tr>
-		        <td colspan="2"><span for="lEmail">Username:</span> <input type="text" name="userNameL" id="userNameL" required>  </td>
+		        <td colspan="2"><span for="lEmail">Username:</span> <input  type="text" name="userNameL" id="userNameL" required>  </td>
 		    </tr>
 		    <tr>
-		        <td><span for="lPass">Password:</span> <input type="password" name="lPass" required> </td>
+		        <td><span for="lPass">Password:</span> <input id="passWordL" type="password" name="lPass" required> </td>
 		    <tr>
 		        <td><input type="submit" value="Log In" id="loginSubmit" name="loginSubmit" > </td>
 		    </tr>
