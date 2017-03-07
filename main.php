@@ -22,21 +22,13 @@ $displayAlert = '';
 if ($_SERVER['REQUEST_METHOD']=='POST') {
     if (!empty($_POST['create'])) {       // If there is post data from the create account form.
         $fName = cleanIt($_POST['fName']);           // Student or instructor's first Name
-        $mName = cleanIt($_POST['mName']);           // Middle Name
         $lName = cleanIt($_POST['lName']);           // Last Name
         $email = cleanIt($_POST['email']);           // Email address
-        $cfEmail = cleanIt($_POST['cfEmail']);         // Confirm Email address (Should be the same as email)
+                // Confirm Email address (Should be the same as email)
         $pass = cleanIt($_POST['pass']);            // The user's Password
         $cfPass = cleanIt($_POST['cfPass']);          // Confirm password field
         $accType = cleanIt($_POST['selectItBABY']);    // Instructor or Student account type
-        $sName = cleanIt($_POST['sName']);           // School Name
-        $prefix = cleanIt($_POST['prefix']);
-        $suffix = cleanIt($_POST['suffix']);
-        $birthMonth = cleanIt($_POST['birthMonth']);
-        $birthDay = cleanIt($_POST['birthDay']);
-        $birthYear = cleanIt($_POST['birthYear']);
-        $schoolID = cleanIt($_POST['schoolID']);        // Like Tri-County's T-Number
-        $userName = cleanIt($_POST['userName']);        // Unique Username
+
 
         if (createAccount($fName, $mName, $lName, 'na', $email, $pass, $accType, $sName,
             $prefix, $suffix, $birthMonth, $birthYear, $birthDay, $schoolID, $userName, 'na')) {
@@ -126,46 +118,30 @@ echo <<< HTML
     
       <h2> Create a New Account </h2>
       
-     
-<!--        <input type="text" name="prefix" placeholder="Prefix">
-        <input type="text" name="suffix" placeholder="Suffix" >
-        -->
-        <select required name="selectItBABY" id="selectItBABY">
-            <option value="student" selected >Student</option>
-            <option value="instructor">Instructor</option>  
-        </select>
+        
         <table>
         <tr>
             <td> <input type="text" name="fName" placeholder="First name" required> </td>
             <td> <input type="text" name="lName" placeholder="Last name" required>  </td>
         </tr>
-        <!-- Do we need to know the birthday?  -->
-        <tr>
-            <td> <input type="text" name="birthMonth" placeholder="Birth Month" >           </td>
-            <td> <input type="text" name="birthDay" placeholder="Birth Day" width="20px">   </td>
-            <td> <input type="text" name="birthYear" placeholder="Birth Year" >             </td>
+     <!--   <tr>   Do we need to know the birthday? I don't think so!
+            <td>Birthday</td>
+            <td><input type="date" name="bDay" id="bDay"></td>
+       </tr> 
+        <tr> <td colspan="3"> <input type="text" name="sName" placeholder="School Name"  required> </td></tr>
+        <tr> <td colspan="3"> <input type="text" name="userName" placeholder="User Name" required> </td> </tr>
+     -->
+        <tr> <td colspan="3"> <input type="email" name="email" placeholder="Email"  required></td> </tr>
+        <tr> 
+             <td> <input type="password" id="pass" name="pass" placeholder="Password" required> </td> 
+             <td> <input type="password" ="cfPass" name="cfPass" placeholder="Confirm Password" required></td>
         </tr>
-        <tr><td colspan="3"><input type="text" name="sName" placeholder="School Name" style="width:355px;" required> </td></tr>
-       
-        <!-- Do we need to know the school id?  -->
-        <!-- <input type="text" name="schoolID" placeholder="Student ID" required> -->
-
-  <!--      
-        <br>Birthday:
-         <input type="date" name="bday">
-         <input type="text" name="userName" placeholder="User Name" required>
-    -->    
-          
- 
-        <tr>
-            <td colspan="3"> <input type="email" name="email" placeholder="Email" style="width:355px;" required></td>
-        </tr>
-        <tr>
-            <td colspan="3"> <input type="password" id="pass" name="pass" placeholder="Password" style="width:355px;" required> </td>
-        </tr>
-        <tr>
-            <td colspan="3"> <input type="submit" value="Create Account" id="create" name="create"> </td>
-        </tr>
+        <tr><td colspan="2"> <select required name="selectItBABY" id="selectItBABY">
+            <option value="student" selected >Student</option>
+            <option value="instructor">Instructor</option>  
+        </select></td></tr>
+        
+        <tr> <td colspan="3"> <input type="submit" value="Create Account" id="create" name="create"> </td> </tr>
 
     </table>
     </form>
