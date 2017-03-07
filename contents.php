@@ -79,8 +79,14 @@ echo <<< HTML
             </ul>
         </div>
         
-
-   
+        <div id="rightSideDiv">
+            
+                <h2 id="title">[ Table of Contents ]</h2>
+                
+                <p id="content">
+                    < main content here >
+                </p>
+        </div>
     
 </body>
 

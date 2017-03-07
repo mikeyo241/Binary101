@@ -112,10 +112,14 @@ echo <<< HTML
       <form id="loginForm" action="$PHP_SELF" method="post">
         <table>
 		    <tr>
+<<<<<<< HEAD
 		        <td colspan="2"><span for="lEmail">E-Mail:</span> <input type="text" name="loginEmail" id="loginEmail" required>  </td>
+=======
+		        <td colspan="2"><span for="lEmail">Username:</span> <input  type="text" name="userNameL" id="userNameL" required>  </td>
+>>>>>>> origin/master
 		    </tr>
 		    <tr>
-		        <td><span for="lPass">Password:</span> <input type="password" name="lPass" required> </td>
+		        <td><span for="lPass">Password:</span> <input id="passWordL" type="password" name="lPass" required> </td>
 		    <tr>
 		        <td><input type="submit" value="Log In" id="loginSubmit" name="loginSubmit" > </td>
 		    </tr>
@@ -163,7 +167,7 @@ echo <<< HTML
     </div>
     
     <div id=" alertMessage">
-    <h1 style="color: red; size: 40px;">$displayAlert</h1>
+        <h1 style="color: red; size: 40px;">$displayAlert</h1>
     </div>
 
 
