@@ -148,7 +148,7 @@ echo <<< HTML
     </div>
     
     <div id=" alertMessage">
-    <h1 style="color: red; size: 40px;">$displayAlert</h1>
+        <h1 style="color: red; size: 40px;">$displayAlert</h1>
     </div>
 
 
