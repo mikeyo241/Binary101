@@ -105,12 +105,12 @@ function checkLogin($id , $pass){
     $link = dbConnect();
 
 //      *** Database Query's    ***
-    $qry = "SELECT * FROM ACCOUNT WHERE ACC_USERNAME = '$id'";
+    $qry = "SELECT * FROM ACCOUNT WHERE ACC_EMAIL = '$id'";
 
     if($result = mysqli_query($link,$qry)) {                // Implement the query
         if (mysqli_num_rows($result) == 1) {                // There can only be 1 entry for email no duplicates.
             $res = mysqli_fetch_assoc($result);             // Put the result into an array
-            if($pass == $res['ACC_PASS'] && $id == $res['ACC_USERNAME']) return true;
+            if($pass == $res['ACC_PASS'] && $id == $res['ACC_EMAIL']) return true;
         }
     }else {             // Query Failed - Error Messages Not shown !!!!
         echo "Error: " . $qry . "<br>" . mysqli_error($link);
@@ -203,9 +203,9 @@ function checkStudentsEnrolled($classID) {
     }
 }
 
-function checkUsername($userName) {
+function checkEMail($eMail) {
 //      ** Check input for database exploits **
-    fixSql($userName);
+    fixSql($eMail);
 
 
 
@@ -213,11 +213,10 @@ function checkUsername($userName) {
     $link = dbConnect();
 
 //      *** Database Query's    ***
-    $qry = "SELECT * FROM ACCOUNT WHERE ACC_USERNAME = '$userName'";
+    $qry = "SELECT * FROM ACCOUNT WHERE ACC_EMAIL = '$eMail'";
 
     if($result = mysqli_query($link,$qry)) {                // Implement the query
         if (mysqli_num_rows($result) == 1) {                // There can only be 1 entry for email no duplicates.
-            $res = mysqli_fetch_assoc($result);             // Put the result into an array
             $link->close();
             return false;
         }else if (mysqli_num_rows($result) == 0) {
@@ -232,46 +231,30 @@ function checkUsername($userName) {
 }
 
 
-function createAccount ($fName, $mName, $lName, $maiden, $email, $pass, $accType, $schoolName, $prefix, $suffix,
-                        $birthMonth, $birthYear, $birthday, $schoolID, $userName, $honnary)
-{
-    $userName = fixSql($userName);
+function createAccount ($fName, $lName,  $email, $pass, $accType) {
 
+    $email = fixSql($email);
 
-    if(checkUsername($userName)) {
+    if(checkEMail($email)) {
         $fName = fixSql($fName);
-        $mName = fixSql($mName);
         $lName = fixSql($lName);
-        $email = fixSql($email);
         $pass = fixSql($pass);
         $accType = fixSql($accType);
-        $schoolName = fixSql($schoolName);
-        $prefix = fixSql($prefix);
-        $suffix = fixSql($suffix);
-        $birthMonth = fixSql($birthMonth);
-        $birthday = fixSql($birthday);
-        $birthYear = fixSql($birthYear);
-        $schoolID = fixSql($schoolID);
-        $maiden = fixSql($maiden);
-        $honnary = fixSql($honnary);
 
         if (checkPass($pass)) {
             $pass = md5($pass);
         }
 
-        $DOB = $birthYear . "-" . $birthMonth . "-" . $birthday;
-
 //      *** Establish a connection to the database  ***
         $link = dbConnect();
 
 //      *** Database Query's  ***
-        $qry = "INSERT INTO ACCOUNT VALUES ('$userName', '$fName','$lName','$suffix','$mName','$maiden','$prefix','$honnary','$DOB'
-                , '$schoolID','$schoolName','$pass','$accType')";
-        $qry2 = "INSERT INTO EMAIL VALUES  ('$email','$userName')";
+        $qry = "INSERT INTO ACCOUNT VALUES ('$email','$pass','$fName','$lName','$accType')";
+        $qry2 = "INSERT INTO $accType VALUES ('$email')";
 
 //      *** Implement Query's   ***
         mysqli_query($link,$qry);
-        mysqli_query($link, $qry2);
+        mysqli_query($link,$qry2);
 
 //      ***     Close Connection    ***
         $link->close();
@@ -279,21 +262,28 @@ function createAccount ($fName, $mName, $lName, $maiden, $email, $pass, $accType
     }else return false;
 }
 
-function getFirstName($userID){
-    // connect to db
+function getFirstName($eMail){
+    //      ** Check input for database exploits **
+    fixSql($eMail);
+//      *** Establish a connection to the database  ***
     $link = dbConnect();
 
-    // db query
-    $qry = "SELECT ACC_FNAME FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
+//      *** Database Query's    ***
+    $qry = "SELECT * FROM ACCOUNT WHERE ACC_EMAIL = '$eMail'";
 
-    // query that code
-    $result = mysqli_query($link, $qry);
-
-    // close connection
-    $link->close();
-
-    // return result
-    return $result;
+    if($result = mysqli_query($link,$qry)) {
+        if (mysqli_num_rows($result) == 1) {
+            $res = mysqli_fetch_assoc($result);
+            $fName = $res['ACC_FNAME'];
+            $link->close();
+            return $fName;
+        }
+    }else {             // Query Failed - Error Messages Not shown !!!!
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
+    return false;
 }
 
 function setFirstName($userID, $fName){
@@ -344,21 +334,28 @@ function setMiddleName($middleName, $userID){
     return true;
 }
 
-function getLastName($userID){
-    // connect to db
+function getLastName($eMail){
+    //      ** Check input for database exploits **
+    fixSql($eMail);
+//      *** Establish a connection to the database  ***
     $link = dbConnect();
 
-    // db query
-    $qry = "SELECT ACC_LNAME FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
+//      *** Database Query's    ***
+    $qry = "SELECT * FROM ACCOUNT WHERE ACC_EMAIL = '$eMail'";
 
-    // query that code
-    $result = mysqli_query($link, $qry);
-
-    // close connection
-    $link->close();
-
-    // return result
-    return $result;
+    if($result = mysqli_query($link,$qry)) {
+        if (mysqli_num_rows($result) == 1) {
+            $res = mysqli_fetch_assoc($result);
+            $lName = $res['ACC_LNAME'];
+            $link->close();
+            return $lName;
+        }
+    }else {             // Query Failed - Error Messages Not shown !!!!
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
+    return false;
 }
 
 function setLastName($lastName, $userID){
@@ -446,21 +443,31 @@ function setPassword($pass, $userID){
 
     }else return false;
 }
-function getAccountType($userID){
-    // connect to db
+function getAccountType($eMail){
+    //      ** Check input for database exploits **
+    fixSql($eMail);
+
+
+
+//      *** Establish a connection to the database  ***
     $link = dbConnect();
 
-    // db query
-    $qry = "SELECT ACC_TYPE FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
+//      *** Database Query's    ***
+    $qry = "SELECT * FROM ACCOUNT WHERE ACC_EMAIL = '$eMail'";
 
-    // query that code
-    $result = mysqli_query($link, $qry);
-
-    // close connection
-    $link->close();
-
-    // return result
-    return $result;
+    if($result = mysqli_query($link,$qry)) {
+        if (mysqli_num_rows($result) == 1) {
+            $res = mysqli_fetch_assoc($result);
+            $accType = $res['ACC_TYPE'];
+            $link->close();
+            return $accType;
+        }
+    }else {             // Query Failed - Error Messages Not shown !!!!
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
+    return false;
 }
 
 function setAccountType($accountType, $userID){

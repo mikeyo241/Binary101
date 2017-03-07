@@ -17,8 +17,14 @@
  */
 
 /* Michael A Gardner    -   login System    -   2 March 2017        */
+session_start();
 require('functionLib.php');
 $displayAlert = '';
+
+if(isset($_SESSION['islogged']) && isset($_SESSION['LOGCHECK']) && isset($_SESSION['email']) && isset($_SESSION['fName']) ){
+    if($_SESSION['accType'] == 'INSTRUCTOR')reDir("instruct/instructorProfile.php");
+    if($_SESSION['accType'] == 'STUDENT') reDir("student/studentProfile.php");
+}
 if ($_SERVER['REQUEST_METHOD']=='POST') {
     if (!empty($_POST['create'])) {       // If there is post data from the create account form.
         $fName = cleanIt($_POST['fName']);           // Student or instructor's first Name
@@ -30,27 +36,36 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         $accType = cleanIt($_POST['selectItBABY']);    // Instructor or Student account type
 
 
-        if (createAccount($fName, $mName, $lName, 'na', $email, $pass, $accType, $sName,
-            $prefix, $suffix, $birthMonth, $birthYear, $birthDay, $schoolID, $userName, 'na')) {
+        if (createAccount($fName,$lName,$email,$pass,$accType)) {
             $displayAlert = 'Account Created!';
+            $_SESSION['isLogged'] = 'TuIlI';   // TuIlI = "The user Is logged In"
+            $_SESSION['LOGCHECK'] = true;
+            $_SESSION['email'] = $email;
+            $_SESSION['fName'] = getFirstName($email);
+            $_SESSION['accType'] = $accType;
+            if($accType == 'INSTRUCTOR')reDir("instruct/instructorProfile.php");
+            if($accType == 'STUDENT') reDir("student/studentProfile.php");
+
         } else {
             $displayAlert = 'Error';
         }
     }
     if (isset($_POST['loginSubmit'])) {
-        $userNameL = cleanIt($_POST['userNameL']);
+        $loginEmail = cleanIt($_POST['loginEmail']);
         $lPass = cleanIt($_POST['lPass']);
 
-        if(checkLogin($userNameL, $lPass)) {
+        if(checkLogin($loginEmail, $lPass)) {
             $displayAlert = "Login Success";
-            $_SESSION['islogged'] = 'TuIlI';   // TuIlI = "The user Is logged In"
+            $_SESSION['isLogged'] = 'TuIlI';   // TuIlI = "The user Is logged In"
             $_SESSION['LOGCHECK'] = true;
-            $_SESSION['userName'] = $userNameL;
-            $_SESSION['fName'] = getFirstName($userNameL);
-            $accountType = getAccountType($userNameL);
-            reDir($accountType.".php");
+            $_SESSION['email'] = $loginEmail;
+            $_SESSION['fName'] = getFirstName($loginEmail);
+            $accountType = getAccountType($loginEmail);
+            $_SESSION['accType'] = $accountType;
+            if($accountType == 'INSTRUCTOR')reDir("instruct/instructorProfile.php");
+            if($accountType == 'STUDENT') reDir("student/studentProfile.php");
         }else {
-            $_SESSION['islogged'] = false;
+            $_SESSION['isLogged'] = false;
             $_SESSION['LOGCHECK'] = false;
             $displayAlert = "Login Fail";
         }
@@ -97,7 +112,7 @@ echo <<< HTML
       <form id="loginForm" action="$PHP_SELF" method="post">
         <table>
 		    <tr>
-		        <td colspan="2"><span for="lEmail">Username:</span> <input type="text" name="userNameL" id="userNameL" required>  </td>
+		        <td colspan="2"><span for="lEmail">E-Mail:</span> <input type="text" name="loginEmail" id="loginEmail" required>  </td>
 		    </tr>
 		    <tr>
 		        <td><span for="lPass">Password:</span> <input type="password" name="lPass" required> </td>
@@ -137,8 +152,8 @@ echo <<< HTML
              <td> <input type="password" ="cfPass" name="cfPass" placeholder="Confirm Password" required></td>
         </tr>
         <tr><td colspan="2"> <select required name="selectItBABY" id="selectItBABY">
-            <option value="student" selected >Student</option>
-            <option value="instructor">Instructor</option>  
+            <option value="STUDENT" selected >Student</option>
+            <option value="INSTRUCTOR">Instructor</option>  
         </select></td></tr>
         
         <tr> <td colspan="3"> <input type="submit" value="Create Account" id="create" name="create"> </td> </tr>

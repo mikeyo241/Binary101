@@ -1,6 +1,6 @@
 <?php
-
-require ('functionlib.php');
+session_start();
+require ('../functionLib.php');
 
 /******************************************************
 ***               Instructor Profile                  ***
@@ -13,28 +13,33 @@ require ('functionlib.php');
 ***    jQuery:             jQuery.js, Alpha.js     ***
 ***                                                ***
 ******************************************************/
-if ($_SESSION['islogged'] != 'TuIlI' ||  $_SESSION['LOGCHECK']!= true) {  // Make sure the user is logged in!!! This is a private page!!
+if ($_SESSION['isLogged'] != 'TuIlI' ||
+    !$_SESSION['LOGCHECK']) {  // Make sure the user is logged in!!! This is a private page!!
     session_destroy();
     reDir('../main.php');
 }
 
 
 
+$fName = getFirstName($_SESSION['email']);
+$lName = getLastName($_SESSION['email']);
 
-$userName = $_SESSION['userName'];
-$_SESSION['islogged'];
-$_SESSION['LOGCHECK'];
-$classes = checkClass($userName);
+//$classes = checkClass($userName);
 
-
+if ($_SERVER['REQUEST_METHOD']=='POST') {
+    if (!empty($_POST['logOutSubmit'])) {
+    session_destroy();
+    }
+}
 
 echo <<< HTML
 <html>
 <head>
-    <title>welcome $name</title>
+    <title>$fName $lName</title>
 
 </head>
 <body>
+<h1>Welcome $fName !!!</h1>
     <div id="classes" name="classes" >
         <table>
             <tr>
@@ -47,6 +52,9 @@ echo <<< HTML
             
         </table>
     </div>
+    <form id="signOutForm" action="$PHP_SELF" method="post">
+  <input type="submit" value="Log Out" id="logOutSubmit" name="logOutSubmit">
+</form>
 </body>
 </html>
 
