@@ -282,6 +282,13 @@ form table tr td {
 #wel {
     color: white;
 }
+
+/** Select required fields **/
+input:required {
+    font-weight: bold;
+}
+
+
 /* temporary for fixing */ /*
 body, header, nav, section, footer, p, div {
      border: 1px solid rgb(227, 0, 237);

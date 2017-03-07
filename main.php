@@ -89,7 +89,11 @@ echo <<< HTML
 	<!-- All Links, Meta data, scripts, and css goes inside the <head> tags.  -->
 <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
-	
+        
+<!-- JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="script/main.js" type="text/javascript"></script>
+
 <!-- <header> and <nav> shouldn't be in the head it should be in the <body>  -->
 
 </head>
@@ -124,14 +128,15 @@ echo <<< HTML
       
         <input type="text" name="sName" placeholder="School Name" style="width:355px;" required>   <br>
         <input type="text" name="prefix" placeholder="Prefix">
+        <input type="text" name="suffix" placeholder="Suffix" >
         <input type="text" name="fName" placeholder="First name" required>
         <input type="text" name="mName" placeholder="Middle name" > 
         <input type="text" name="lName" placeholder="Last name" required>
-        <input type="text" name="suffix" placeholder="Suffix" >
-        <input type="text" name="birthMonth" placeholder="Birth Month" >
-        <input type="text" name="birthDay" placeholder="Birth Day" >        
-        <input type="text" name="birthYear" placeholder="Birth Year" >
         <input type="text" name="schoolID" placeholder="Student ID" required>
+
+        
+        <br>Birthday:
+          <input type="date" name="bday">
         <input type="text" name="userName" placeholder="User Name" required>
         
           
