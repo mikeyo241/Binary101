@@ -13,7 +13,7 @@ echo <<< HTML
 	
 <!--  ** Java ** -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="script/main.js" type="text/javascript"></script>
+<script src="/Binary101/script/main.js" type="text/javascript"></script>
 
 <!-- <header> and <nav> shouldn't be in the head it should be in the <body>  -->
 

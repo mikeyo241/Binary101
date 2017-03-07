@@ -4,10 +4,11 @@
 
 // Chapter 3 Decimal-to-Binary converter
 $(document).ready(function(){
-    $("#decimalInput").change(function() {
+    var $decimalInput = $("#decimalInput");
+    $decimalInput.change(function() {
         $("#binaryOutput").val(Math.floor(Number($("#decimalInput").val())).toString(2));
     });
-    $("#decimalInput").keyup(function() {
+    $decimalInput.keyup(function() {
         $("#binaryOutput").val(Math.floor(Number($("#decimalInput").val())).toString(2));
     });
 });
