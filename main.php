@@ -50,18 +50,18 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         $lPass = cleanIt($_POST['lPass']);
 
         if(checkLogin($userNameL, $lPass)) {
-
             $displayAlert = "Login Success";
-            $_SESSION['islogged'] = 'TuIlI';
-
-          //  reDir(getAccountType($userNameL).".php");
-
-
-
-
+            $_SESSION['islogged'] = 'TuIlI';   // TuIlI = "The user Is logged In"
+            $_SESSION['LOGCHECK'] = true;
+            $_SESSION['userName'] = $userNameL;
+            $_SESSION['fName'] = getFirstName($userNameL);
+            $accountType = getAccountType($userNameL);
+            reDir($accountType.".php");
+        }else {
+            $_SESSION['islogged'] = false;
+            $_SESSION['LOGCHECK'] = false;
+            $displayAlert = "Login Fail";
         }
-
-
     }
 }
 /*  End Login System  */

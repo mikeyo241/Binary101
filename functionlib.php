@@ -127,6 +127,82 @@ function checkLogin($id , $pass){
 function reDir($location) {
     header("Location: $location");
 }
+
+function checkClass($userName) {
+
+//      ** Check input for database exploits **
+    $userName = fixSql($userName);
+
+//      *** Establish a connection to the database  ***
+    $link = dbConnect();
+
+//      *** Database Query **
+    $qry = "SELECT CLS_ID, CLS_NAME, CLS_SDATE, CLS_EDATE, CLS_MAXENROLLMENT FROM CLASS WHERE ACC_USERNAME = '$userName'";
+
+    if ($result = mysqli_query($link, $qry)) {       // Implement query
+        if (mysqli_num_rows($result) >= 1) {       // If there is 1 or more clans with the name entered return all the clans with that name
+            $link->close();
+            return $result;
+        }
+    } else {     // Query Failed - Error Messages Not shown !!!!
+//        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
+}
+function checkCourse($classID) {
+
+//      ** Check input for database exploits **
+    $classID = fixSql($classID);
+
+//      *** Establish a connection to the database  ***
+    $link = dbConnect();
+
+//      *** Database Query **
+    $qry = "SELECT CRS_ID, CRS_NAME FROM COURSE WHERE CLS_ID = '$classID'";
+
+    if ($result = mysqli_query($link, $qry)) {       // Implement query
+        if (mysqli_num_rows($result) >= 1) {       // If there is 1 or more clans with the name entered return all the clans with that name
+            $link->close();
+            return $result;
+        }
+    } else {     // Query Failed - Error Messages Not shown !!!!
+//        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
+}
+
+function checkStudentsEnrolled($classID) {
+
+//      ** Check input for database exploits **
+    $classID = fixSql($classID);
+
+//      *** Establish a connection to the database  ***
+    $link = dbConnect();
+
+//      *** Database Query **
+    $qry = "SELECT GRD_CODE FROM STUDENT WHERE CLS_ID = '$classID'";
+
+    if ($result = mysqli_query($link, $qry)) {       // Implement query
+        if (mysqli_num_rows($result) >= 1) {       // If there is 1 or more clans with the name entered return all the clans with that name
+            $students = mysqli_num_rows($result);
+            $total = 0;
+            foreach($result as $grade){
+                $total = $total + $grade;
+            }
+            $averageGrade = $total / $students;
+            $returnValue = array ( $students , $averageGrade);
+            $link->close();
+            return $returnValue;
+        }
+    } else {     // Query Failed - Error Messages Not shown !!!!
+//        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
+}
+
 function checkUsername($userName) {
 //      ** Check input for database exploits **
     fixSql($userName);
