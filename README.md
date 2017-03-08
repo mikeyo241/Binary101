@@ -5,10 +5,10 @@
 
 Author & Contributor List
 -----
-Michael A Gardner   --      mikeyo241  
-Nathaniel Merck     --      nmerck1  
-Christian R. Cook   --      crcook  
-Cory Wilson         --      coryw
+Michael A Gardner &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      mikeyo241  &nbsp;- **Back End PHP**  
+Nathaniel Merck  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      nmerck1 &nbsp;&nbsp;&nbsp;&nbsp; - **Design HTML, CSS**  
+Christian R. Cook   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      crcook &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - **Database Management**  
+Cory Wilson  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      coryw &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **JavaScript**
 
 ## Testing Logins and Sign up features
 
