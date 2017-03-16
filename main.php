@@ -100,6 +100,11 @@ echo <<< HTML
 <!-- JavaScript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="script/main.js" type="text/javascript"></script>
+<script>
+   function alertIt() {
+      alert("click");
+   }
+</script>
 
 <!-- <header> and <nav> shouldn't be in the head it should be in the <body>  -->
 
@@ -115,7 +120,7 @@ echo <<< HTML
 		        <td><span for="lEmail">E-Mail:</span> </td><td><input type="text" name="loginEmail" id="loginEmail" required>  </td>
 		    </tr>
 		    <tr>
-		        <td><span for="lPass">Password:</span></td><td> <input type="password" name="lPass" id="loginPass" required> </td>
+		        <td><span for="lPass">Password:</span></td><td> <input type="password" name="loginPass" id="loginPass" required> </td>
 		    </tr>
 		    <tr>
 		        <td><input type="submit" value="Log In" id="loginSubmit" name="loginSubmit" > </td>
@@ -130,7 +135,7 @@ echo <<< HTML
 	
     
     <div id="createAccForm">
-    <form action="$PHP_SELF" onsubmit="hideToolTips()" name="createAcc" id="createAcc" method="post">
+    <form action="$PHP_SELF" onsubmit="validateCreateAcc()" name="createAcc" id="createAcc" method="post">
     
       <h2> Create a New Account </h2>
       

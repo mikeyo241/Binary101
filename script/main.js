@@ -7,6 +7,7 @@ $(document).ready(function(){
     var $pass = $('input[name=pass]');
     var $cfPass = $('input[name=cfPass]');
     var $create = $('#create');
+    var $createAcc = $('#createAcc');
 
     var $tooltips = $(".tooltiptext");
     var $fNameError = $("#fNameError");
@@ -16,10 +17,10 @@ $(document).ready(function(){
     var $cfPasswordError = $("#cfPasswordError");
 
     $fName.focus(function() {
-       hideTooltips();
+        hideTooltips();
     });
     $lName.focus(function() {
-       hideTooltips();
+        hideTooltips();
     });
     $email.keyup(function () {
         hideTooltips();
@@ -57,22 +58,37 @@ $(document).ready(function(){
             hideTooltips();
     });
 
+    $createAcc.submit(validateCreateAcc());
 
-    $create.click(function() {
-        if ($fName.val().length == 0)
+
+
+    function validateCreateAcc() {
+        if ($fName.val().length == 0) {
             showTooltip($fNameError);
-        else if ($lName.val().length == 0)
-            showTooltip($lNameError);
-        else if (!validateEmail($email))
-            showTooltip($emailError);
-        else if (!validatePassword($pass))
-            showTooltip($passwordError);
-        else if (!checkInputs($pass, $cfPass))
-            showTooltip($cfPasswordError);
-        else {
-           $("#createAccForm").submit();
+            return (false);
         }
-    });
+        else if ($lName.val().length == 0) {
+            showTooltip($lNameError);
+            return (false);
+        }
+        else if (!validateEmail($email)) {
+            showTooltip($emailError);
+            return (false);
+        }
+        else if (!validatePassword($pass)) {
+            showTooltip($passwordError);
+            return (false);
+        }
+        else if (!checkInputs($pass, $cfPass)) {
+            showTooltip($cfPasswordError);
+            return (false);
+        }
+        else {
+            alert("Good!");
+            $createAcc.submit();
+            return (true);
+        }
+    }
 
 
     // Validates confirmation fields by comparing their values
