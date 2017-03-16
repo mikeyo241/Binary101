@@ -22,7 +22,7 @@ body {
 
 section {
     position: relative;
-    /* height: 520px; */
+    height: 520px;
 }
 
 h1 {
@@ -350,9 +350,4 @@ body, header, nav, section, footer, p, div {
     border-width: 5px;
     border-style: solid;
     border-color: #555 transparent transparent transparent;
-}
-
-#loginEmail, #loginPass {
-    width: 200px;
-    position: relative;
 }

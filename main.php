@@ -115,7 +115,7 @@ echo <<< HTML
 		        <td><span for="lEmail">E-Mail:</span> </td><td><input type="text" name="loginEmail" id="loginEmail" required>  </td>
 		    </tr>
 		    <tr>
-		        <td><span for="lPass">Password:</span></td><td> <input type="password" name="lPass" id="loginPass" required> </td>
+		        <td><span for="lPass">Password:</span></td><td> <input type="password" name="lPass" required> </td>
 		    </tr>
 		    <tr>
 		        <td><input type="button" value="Log In" id="loginSubmit" name="loginSubmit" > </td>
