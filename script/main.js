@@ -70,7 +70,7 @@ $(document).ready(function(){
         else if (!checkInputs($pass, $cfPass))
             showTooltip($cfPasswordError);
         else {
-           $("#createAcc").submit();
+           $("#createAccForm").submit();
         }
     });
 

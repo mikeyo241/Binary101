@@ -1,15 +1,15 @@
 <?php
-                /******************************************************
-                ***          Login/Create Account Page             ***
-                ***                                                ***
-                ***    Created by:         Group 6                 ***
-                ***    Updated:            2 March 2017            ***
-                ***    Class:              CPT - 264-002           ***
-                ***    Document:           index.php               ***
-                ***    CSS:                course.css              ***
-                ***    jQuery:             course.js               ***
-                ***                                                ***
-                ******************************************************/
+/******************************************************
+ ***          Login/Create Account Page             ***
+ ***                                                ***
+ ***    Created by:         Group 6                 ***
+ ***    Updated:            2 March 2017            ***
+ ***    Class:              CPT - 264-002           ***
+ ***    Document:           index.php               ***
+ ***    CSS:                course.css              ***
+ ***    jQuery:             course.js               ***
+ ***                                                ***
+ ******************************************************/
 /*
  * Programmer:       Nathaniel Merck
  * Title:            login/sign-up page for Group Website Project
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         $fName = cleanIt($_POST['fName']);           // Student or instructor's first Name
         $lName = cleanIt($_POST['lName']);           // Last Name
         $email = cleanIt($_POST['email']);           // Email address
-                // Confirm Email address (Should be the same as email)
+        // Confirm Email address (Should be the same as email)
         $pass = cleanIt($_POST['pass']);            // The user's Password
         $cfPass = cleanIt($_POST['cfPass']);          // Confirm password field
         $accType = cleanIt($_POST['selectItBABY']);    // Instructor or Student account type
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
     }
     if (isset($_POST['loginSubmit'])) {
         $loginEmail = cleanIt($_POST['loginEmail']);
-        $lPass = cleanIt($_POST['lPass']);
+        $lPass = cleanIt($_POST['loginPass']);
 
         if(checkLogin($loginEmail, $lPass)) {
             $displayAlert = "Login Success";
@@ -118,7 +118,7 @@ echo <<< HTML
 		        <td><span for="lPass">Password:</span></td><td> <input type="password" name="lPass" id="loginPass" required> </td>
 		    </tr>
 		    <tr>
-		        <td><input type="button" value="Log In" id="loginSubmit" name="loginSubmit" > </td>
+		        <td><input type="submit" value="Log In" id="loginSubmit" name="loginSubmit" > </td>
             </tr>
 		</table>
 	  </form>
@@ -130,7 +130,7 @@ echo <<< HTML
 	
     
     <div id="createAccForm">
-    <form action="#" name="createAcc" id="createAcc" method="post">
+    <form action="$PHP_SELF" onsubmit="hideToolTips()" name="createAcc" id="createAcc" method="post">
     
       <h2> Create a New Account </h2>
       
