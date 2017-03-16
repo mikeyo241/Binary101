@@ -58,9 +58,10 @@ $(document).ready(function(){
             hideTooltips();
     });
 
-    $createAcc.submit(validateCreateAcc());
-
-
+    $createAcc.submit(function(e) {
+        if (!validateCreateAcc())
+            e.preventDefault();
+    });
 
     function validateCreateAcc() {
         if ($fName.val().length == 0) {
@@ -84,8 +85,6 @@ $(document).ready(function(){
             return (false);
         }
         else {
-            alert("Good!");
-            $createAcc.submit();
             return (true);
         }
     }

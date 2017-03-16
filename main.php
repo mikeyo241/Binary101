@@ -26,7 +26,9 @@ if(isset($_SESSION['islogged']) && isset($_SESSION['LOGCHECK']) && isset($_SESSI
     if($_SESSION['accType'] == 'STUDENT') reDir("student/studentProfile.php");
 }
 if ($_SERVER['REQUEST_METHOD']=='POST') {
-    if (!empty($_POST['create'])) {       // If there is post data from the create account form.
+    if (!empty($_POST['fName']) && !empty($_POST['lName']) && !empty($_POST['email'])
+        && !empty($_POST['pass']) && !empty($_POST['cfPass']) && !empty($_POST['selectItBABY'])) {       // If there is post data from the create account form.
+        echo "Submitted!";
         $fName = cleanIt($_POST['fName']);           // Student or instructor's first Name
         $lName = cleanIt($_POST['lName']);           // Last Name
         $email = cleanIt($_POST['email']);           // Email address
@@ -135,7 +137,7 @@ echo <<< HTML
 	
     
     <div id="createAccForm">
-    <form action="$PHP_SELF" onsubmit="validateCreateAcc()" name="createAcc" id="createAcc" method="post">
+    <form action="$PHP_SELF" name="createAcc" id="createAcc" method="post">
     
       <h2> Create a New Account </h2>
       
@@ -170,7 +172,7 @@ echo <<< HTML
             <option value="INSTRUCTOR">Instructor</option>  
         </select></td></tr>
         
-        <tr> <td colspan="3"> <input type="button" value="Create Account" id="create" name="create"> </td> </tr>
+        <tr> <td colspan="3"> <input type="submit" onclick="validateCreateAcc()" value="Create Account" id="create" name="create" > </td> </tr>
 
     </table>
     </form>
