@@ -115,10 +115,10 @@ echo <<< HTML
 		        <td><span for="lEmail">E-Mail:</span> </td><td><input type="text" name="loginEmail" id="loginEmail" required>  </td>
 		    </tr>
 		    <tr>
-		        <td><span for="lPass">Password:</span></td><td> <input type="password" name="lPass" required> </td>
+		        <td><span for="lPass">Password:</span></td><td> <input type="password" name="lPass" id="loginPass" required> </td>
 		    </tr>
 		    <tr>
-		        <td><input type="submit" value="Log In" id="loginSubmit" name="loginSubmit" > </td>
+		        <td><input type="button" value="Log In" id="loginSubmit" name="loginSubmit" > </td>
             </tr>
 		</table>
 	  </form>
@@ -130,15 +130,17 @@ echo <<< HTML
 	
     
     <div id="createAccForm">
-    <form action="$PHP_SELF" name="createAcc" id="createAcc" method="post">
+    <form action="#" name="createAcc" id="createAcc" method="post">
     
       <h2> Create a New Account </h2>
       
         
         <table>
         <tr>
-            <td> <input type="text" name="fName" placeholder="First name" required> </td>
-            <td> <input type="text" name="lName" placeholder="Last name" required>  </td>
+            <td><div class="tooltip" id="fNameTooltip"><span class="tooltiptext" id="fNameError">Please enter your first name.</span> 
+            <input type="text" name="fName" placeholder="First name" required> </td></div>
+            <td><div class="tooltip" id="lNameTooltip"><span class="tooltiptext" id="lNameError">Please enter your last name.</span>
+            <input type="text" name="lName" placeholder="Last name" required>  </td></div>
         </tr>
      <!--   <tr>   Do we need to know the birthday? I don't think so!
             <td>Birthday</td>
@@ -147,17 +149,23 @@ echo <<< HTML
         <tr> <td colspan="3"> <input type="text" name="sName" placeholder="School Name"  required> </td></tr>
         <tr> <td colspan="3"> <input type="text" name="userName" placeholder="User Name" required> </td> </tr>
      -->
-        <tr> <td colspan="3"> <input type="email" name="email" placeholder="Email"  required></td> </tr>
+        
+        <tr>
+              <td colspan="2"><div class="tooltip" id="emailTooltip"><span class="tooltiptext" id="emailError">Please enter a valid .edu email address.</span>
+              <input type="email" name="email" placeholder="Email"  required></td> </div></tr>
         <tr> 
-             <td> <input type="password" id="pass" name="pass" placeholder="Password" required> </td> 
-             <td> <input type="password" ="cfPass" name="cfPass" placeholder="Confirm Password" required></td>
+             <td><div class="tooltip" id="passwordTooltip"><span class="tooltiptext" id="passwordError">Password must be 8 characters long and contain at least 1 uppercase character.</span>
+             <input type="password" id="pass" name="pass" placeholder="Password" required> </td> </div>
+             
+             <td><div class="tooltip" id="cfPasswordTooltip"><span class="tooltiptext" id="cfPasswordError">Passwords don't match.</span>
+             <input type="password" ="cfPass" name="cfPass" placeholder="Confirm Password" required></td></tr></div>
         </tr>
         <tr><td colspan="2"> <select required name="selectItBABY" id="selectItBABY">
             <option value="STUDENT" selected >Student</option>
             <option value="INSTRUCTOR">Instructor</option>  
         </select></td></tr>
         
-        <tr> <td colspan="3"> <input type="submit" value="Create Account" id="create" name="create"> </td> </tr>
+        <tr> <td colspan="3"> <input type="button" value="Create Account" id="create" name="create"> </td> </tr>
 
     </table>
     </form>
