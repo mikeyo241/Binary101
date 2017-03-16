@@ -21,7 +21,7 @@ session_start();
 require('functionLib.php');
 $displayAlert = '';
 
-if(isset($_SESSION['islogged']) && isset($_SESSION['LOGCHECK']) && isset($_SESSION['email']) && isset($_SESSION['fName']) ){
+if(isset($_SESSION['isLogged']) && isset($_SESSION['LOGCHECK']) && isset($_SESSION['email']) && isset($_SESSION['fName']) ){
     if($_SESSION['accType'] == 'INSTRUCTOR')reDir("instruct/instructorProfile.php");
     if($_SESSION['accType'] == 'STUDENT') reDir("student/studentProfile.php");
 }
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
 echo <<< HTML
 <html>
 <head>
-	<!-- All Links, Meta data, scripts, and css goes inside the <head> tags.  -->
+   <!-- All Links, Meta data, scripts, and css goes inside the <head> tags.  -->
 <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
         
@@ -113,28 +113,28 @@ echo <<< HTML
 </head>
 
 <body>
-	<header>           
+   <header>           
             <img id="logo" src="img/logo.PNG" alt="Website Logo" align="top-left">
             
       <form id="loginForm" action="$PHP_SELF" method="post">
         <table>
-		    <tr>
-		        <td><span for="lEmail">E-Mail:</span> </td><td><input type="text" name="loginEmail" id="loginEmail" required>  </td>
-		    </tr>
-		    <tr>
-		        <td><span for="lPass">Password:</span></td><td> <input type="password" name="loginPass" id="loginPass" required> </td>
-		    </tr>
-		    <tr>
-		        <td><input type="submit" value="Log In" id="loginSubmit" name="loginSubmit" > </td>
+          <tr>
+              <td><span for="lEmail">E-Mail:</span> </td><td><input type="text" name="loginEmail" id="loginEmail" required>  </td>
+          </tr>
+          <tr>
+              <td><span for="lPass">Password:</span></td><td> <input type="password" name="loginPass" id="loginPass" required> </td>
+          </tr>
+          <tr>
+              <td><input type="submit" value="Log In" id="loginSubmit" name="loginSubmit" > </td>
             </tr>
-		</table>
-	  </form>
-	
-	</header>
+      </table>
+     </form>
+   
+   </header>
 
-	<nav>   
-	</nav>
-	
+   <nav>   
+   </nav>
+   
     
     <div id="createAccForm">
     <form action="$PHP_SELF" name="createAcc" id="createAcc" method="post">
@@ -145,9 +145,9 @@ echo <<< HTML
         <table>
         <tr>
             <td><div class="tooltip" id="fNameTooltip"><span class="tooltiptext" id="fNameError">Please enter your first name.</span> 
-            <input type="text" name="fName" placeholder="First name" required> </td></div>
+            <input type="text" name="fName" placeholder="First name" > </td></div>
             <td><div class="tooltip" id="lNameTooltip"><span class="tooltiptext" id="lNameError">Please enter your last name.</span>
-            <input type="text" name="lName" placeholder="Last name" required>  </td></div>
+            <input type="text" name="lName" placeholder="Last name" >  </td></div>
         </tr>
      <!--   <tr>   Do we need to know the birthday? I don't think so!
             <td>Birthday</td>
@@ -159,13 +159,13 @@ echo <<< HTML
         
         <tr>
               <td colspan="2"><div class="tooltip" id="emailTooltip"><span class="tooltiptext" id="emailError">Please enter a valid .edu email address.</span>
-              <input type="email" name="email" placeholder="Email"  required></td> </div></tr>
+              <input type="email" name="email" placeholder="Email"  ></td> </div></tr>
         <tr> 
              <td><div class="tooltip" id="passwordTooltip"><span class="tooltiptext" id="passwordError">Password must be 8 characters long and contain at least 1 uppercase character.</span>
-             <input type="password" id="pass" name="pass" placeholder="Password" required> </td> </div>
+             <input type="password" id="pass" name="pass" placeholder="Password" > </td> </div>
              
              <td><div class="tooltip" id="cfPasswordTooltip"><span class="tooltiptext" id="cfPasswordError">Passwords don't match.</span>
-             <input type="password" ="cfPass" name="cfPass" placeholder="Confirm Password" required></td></tr></div>
+             <input type="password" ="cfPass" name="cfPass" placeholder="Confirm Password" ></td></tr></div>
         </tr>
         <tr><td colspan="2"> <select required name="selectItBABY" id="selectItBABY">
             <option value="STUDENT" selected >Student</option>
