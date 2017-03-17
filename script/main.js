@@ -1,3 +1,17 @@
+var $fName = $('input[name=fName]');
+var $lName = $('input[name=lName]');
+var $email = $('input[name=email]');
+var $pass = $('input[name=pass]');
+var $cfPass = $('input[name=cfPass]');
+var $create = $('#create');
+var $createAcc = $('#createAcc');
+
+var $tooltips = $(".tooltiptext");
+var $fNameError = $("#fNameError");
+var $lNameError = $("#lNameError");
+var $emailError = $("#emailError");
+var $passwordError = $("#passwordError");
+var $cfPasswordError = $("#cfPasswordError");
 
 $(document).ready(function(){
 
@@ -58,11 +72,11 @@ $(document).ready(function(){
             hideTooltips();
     });
 
-    $createAcc.submit(function(e) {
-        if (!validateCreateAcc())
-            e.preventDefault();
-    });
-
+    //$createAcc.submit(function(e) {
+    //    if (!validateCreateAcc())
+    //        e.preventDefault();
+    // });
+});
     function validateCreateAcc() {
         if ($fName.val().length == 0) {
             showTooltip($fNameError);
@@ -85,7 +99,8 @@ $(document).ready(function(){
             return (false);
         }
         else {
-            return (true);
+            document.getElementById("createAcc").submit();
+            //return (true);
         }
     }
 
@@ -147,5 +162,5 @@ $(document).ready(function(){
 
 
 
-});
+
 

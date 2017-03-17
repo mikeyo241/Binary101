@@ -1,6 +1,6 @@
 <?php
 session_start();
-require ('../functionLib.php');
+require ('../functionlib.php');
 
 /******************************************************
 ***               Instructor Profile                  ***
