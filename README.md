@@ -21,7 +21,7 @@ project to your folder on the CIT server it will still work.
 
 
 
-##How to pull this repository from git hub!
+## How to pull this repository from git hub!
 Download Git Hub for your computer here:   
 **Windows** https://github-windows.s3.amazonaws.com/GitHubSetup.exe  
 **Mac** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;https://central.github.com/mac/latest
