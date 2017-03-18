@@ -18,7 +18,7 @@
 
 /* Michael A Gardner    -   login System    -   2 March 2017        */
 session_start();                    // Start a session with the server.
-require('functionlib.php');         //  The entire function library for the project.
+require('functionLib.php');         //  The entire function library for the project.
 $displayAlert = '';                 //  Variable used to tell the user what is going on if a account creation fails.
 
 
