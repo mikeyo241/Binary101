@@ -99,9 +99,7 @@ echo <<< HTML
 <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
         
-<!-- JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="script/main.js" type="text/javascript"></script>
+
 
 </head>
 
@@ -189,6 +187,9 @@ echo <<< HTML
 
 
 </body>
+
+<!-- JavaScript -->
+    <script src="script/main.js" type="text/javascript"></script>
 </html>
 
 HTML;
