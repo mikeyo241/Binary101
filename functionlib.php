@@ -128,22 +128,19 @@ function reDir($location) {
     header("Location: $location");
 }
 
-function checkClass($userName) {
-
-//      ** Check input for database exploits **
-    $userName = fixSql($userName);
+function checkClass($email, $className) {
 
 //      *** Establish a connection to the database  ***
     $link = dbConnect();
 
 //      *** Database Query **
-    $qry = "SELECT CLS_ID, CLS_NAME, CLS_SDATE, CLS_EDATE, CLS_MAXENROLLMENT FROM CLASS WHERE ACC_USERNAME = '$userName'";
+    $qry = "SELECT CLS_NAME FROM CLASS WHERE ACC_email = '$email' and CLS_NAME = '$className'";
 
     if ($result = mysqli_query($link, $qry)) {       // Implement query
         if (mysqli_num_rows($result) >= 1) {       // If there is 1 or more clans with the name entered return all the clans with that name
             $link->close();
-            return $result;
-        }
+            return false;
+        }else return true;
     } else {     // Query Failed - Error Messages Not shown !!!!
 //        echo "Error: " . $qry . "<br>" . mysqli_error($link);
         $link->close();
@@ -182,7 +179,7 @@ function checkStudentsEnrolled($classID) {
     $link = dbConnect();
 
 //      *** Database Query **
-    $qry = "SELECT GRD_CODE FROM STUDENT WHERE CLS_ID = '$classID'";
+    $qry = "SELECT ACC_EMAIL FROM ENROLLMENT WHERE CLS_ID = '$classID'";
 
     if ($result = mysqli_query($link, $qry)) {       // Implement query
         if (mysqli_num_rows($result) >= 1) {       // If there is 1 or more clans with the name entered return all the clans with that name
@@ -206,8 +203,6 @@ function checkStudentsEnrolled($classID) {
 function checkEMail($eMail) {
 //      ** Check input for database exploits **
     fixSql($eMail);
-
-
 
 //      *** Establish a connection to the database  ***
     $link = dbConnect();
@@ -286,13 +281,13 @@ function getFirstName($eMail){
     return false;
 }
 
-function setFirstName($userID, $fName){
+function setFirstName($email, $fName){
     $fName = fixSql($fName);
 //      *** Establish a connection to the database  ***
     $link = dbConnect();
 
 //      *** Database Query's  ***
-    $qry = "UPDATE ACCOUNT SET ACC_FNAME = '$fName' WHERE ACC_USERNAME = '$userID'";
+    $qry = "UPDATE ACCOUNT SET ACC_FNAME = '$fName' WHERE ACC_EMAIL = '$email'";
 
 //      *** Implement Query's   ***
     mysqli_query($link, $qry);
@@ -302,37 +297,6 @@ function setFirstName($userID, $fName){
     return true;
 }
 
-function getMiddleName($userID){// connect to db
-    $link = dbConnect();
-
-    // db query
-    $qry = "SELECT ACC_MIDDLE FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
-
-    // query that code
-    $result = mysqli_query($link, $qry);
-
-    // close connection
-    $link->close();
-
-    // return result
-    return $result;
-}
-
-function setMiddleName($middleName, $userID){
-    $middleName = fixSql($middleName);
-//      *** Establish a connection to the database  ***
-    $link = dbConnect();
-
-//      *** Database Query's  ***
-    $qry = "UPDATE ACCOUNT SET ACC_MIDDLE = '$middleName' WHERE ACC_USERNAME = '$userID'";
-
-//      *** Implement Query's   ***
-    mysqli_query($link, $qry);
-
-//      ***     Close Connection    ***
-    $link->close();
-    return true;
-}
 
 function getLastName($eMail){
     //      ** Check input for database exploits **
@@ -374,38 +338,6 @@ function setLastName($lastName, $userID){
     return true;
 }
 
-function getEmail($userID){
-    // connect to db
-    $link = dbConnect();
-
-    // db query
-    $qry = "SELECT EMA_ADDRESS FROM EMAIL WHERE ACC_USERNAME = '$userID' ";
-
-    // query that code
-    $result = mysqli_query($link, $qry);
-
-    // close connection
-    $link->close();
-
-    // return result
-    return $result;
-}
-
-function setEmail($email, $userID){
-    $email = fixSql($email);
-//      *** Establish a connection to the database  ***
-    $link = dbConnect();
-
-//      *** Database Query's  ***
-    $qry = "UPDATE EMAIL SET EMA_ADDRESS = '$email' WHERE ACC_USERNAME = '$userID'";
-
-//      *** Implement Query's   ***
-    mysqli_query($link, $qry);
-
-//      ***     Close Connection    ***
-    $link->close();
-    return true;
-}
 
 function getPassword($userID){
     // connect to db
@@ -486,177 +418,119 @@ function setAccountType($accountType, $userID){
     return true;
 }
 
-function getSchoolName($userID){
-    // connect to db
+
+
+function createClass($className, $instructorEmail, $startDate, $endDate, $maxEnrollment ) {
+    $className = fixSql($className);    $instructorEmail = fixSql($instructorEmail);    $startDate = fixSql($startDate);
+    $endDate = fixSql($endDate);    $maxEnrollment = fixSql($maxEnrollment);
+
+//      *** Establish a connection to the database  ***
+        $link = dbConnect();
+
+//      *** Database Query's  ***
+        $qry = "INSERT INTO CLASS (CLS_NAME, ACC_EMAIL, CLS_SDATE, CLS_EDATE, CLS_MAXENROLLMENT) VALUES ('$className','$instructorEmail','$startDate','$endDate','$maxEnrollment')";
+
+//      *** Implement Query   ***
+        if(mysqli_query($link,$qry)) {
+//      ***     Close Connection    ***
+            $link->close();
+            return true;
+        } else {
+ //      ***     Close Connection    ***
+            echo "Error: " . $qry . "<br>" . mysqli_error($link);
+            $link->close();
+            return false;
+        }
+}
+
+function getClassNum($instructorEmail) {
+    if ($instructorEmail == 'test@testing.com') return 1;
     $link = dbConnect();
 
     // db query
-    $qry = "SELECT ACC_SCHOOLNAME FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
+    $qry = "SELECT CLS_ID FROM CLASS WHERE ACC_EMAIL = '$instructorEmail' ";
 
     // query that code
-    $result = mysqli_query($link, $qry);
-
-    // close connection
-    $link->close();
-
-    // return result
-    return $result;
+    if($result = mysqli_query($link,$qry)) {
+        $classes = mysqli_num_rows($result);
+        $link->close();
+        return $classes;
+    } else {
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
 }
 
-function setSchoolName($schoolName, $userID){
-    $schoolName = fixSql($schoolName);
+
+/**Function:        getClassData()
+ * Last Modified:   20 March 2017
+ * Description:     This function searches for a specified class and returns the data associated with the class from the database.
+ */
+function getClassData($instructorEmail){
 //      *** Establish a connection to the database  ***
     $link = dbConnect();
 
-//      *** Database Query's  ***
-    $qry = "UPDATE ACCOUNT SET ACC_SCHOOLNAME = '$schoolName' WHERE ACC_USERNAME = '$userID'";
+//      *** Database Query **
+    $qry = "SELECT CLS_ID, CLS_NAME, CLS_MAXENROLLMENT FROM CLASS WHERE ACC_EMAIL = '$instructorEmail'";
 
-//      *** Implement Query's   ***
-    mysqli_query($link, $qry);
-
-//      ***     Close Connection    ***
-    $link->close();
-    return true;
+    if($result = mysqli_query($link,$qry)) {       // Implement query
+        if (mysqli_num_rows($result) >= 1) {       // If there is 1 or more classes  return all the class data;
+            $link->close();
+            return $result;
+        }
+    }else {     // Query Failed - Error Messages Not shown !!!!
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
 }
 
-function getPrefix($userID){
-    // connect to db
+function getStudentEnrollment($classID) {
+    //      *** Establish a connection to the database  ***
     $link = dbConnect();
 
-    // db query
-    $qry = "SELECT ACC_PREFIX FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
+//      *** Database Query **
+    $qry = "SELECT * FROM ENROLLMENT WHERE CLS_ID = '$classID'";
 
-    // query that code
-    $result = mysqli_query($link, $qry);
-
-    // close connection
-    $link->close();
-
-    // return result
-    return $result;
+    if($result = mysqli_query($link,$qry)) {       // Implement query
+        $studentsEnrolled = mysqli_num_rows($result);
+            $link->close();
+            return $studentsEnrolled;
+        }
+    else {     // Query Failed - Error Messages Not shown !!!!
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
 }
 
-function setPrefix($prefix, $userID){
-    $prefix = fixSql($prefix);
-//      *** Establish a connection to the database  ***
+function getClassAverage($classID) {
+    //      *** Establish a connection to the database  ***
     $link = dbConnect();
+    $gradeSum = 0.0;
 
-//      *** Database Query's  ***
-    $qry = "UPDATE ACCOUNT SET ACC_PREFIX = '$prefix' WHERE ACC_USERNAME = '$userID'";
+//      *** Database Query **
+    $qry = "SELECT COM_SCORE FROM VIEW_CLASS_GRADES WHERE CLS_ID = '$classID'";
 
-//      *** Implement Query's   ***
-    mysqli_query($link, $qry);
-
-//      ***     Close Connection    ***
-    $link->close();
-    return true;
+    if($result = mysqli_query($link,$qry)) {       // Implement query
+        $classTotal = mysqli_num_rows($result);
+        if(mysqli_num_rows($result) == 0) {
+            return -1;
+        }else {
+            while ($row = $result->fetch_assoc()) {
+                $gradeSum = $gradeSum + $row['COM_SCORE'];
+            }
+        }
+        $link->close();
+        return ( $gradeSum / $classTotal );
+    }
+    else {     // Query Failed - Error Messages Not shown !!!!
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
 }
-
-function getSuffix($userID){
-    // connect to db
-    $link = dbConnect();
-
-    // db query
-    $qry = "SELECT ACC_SUFIX FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
-
-    // query that code
-    $result = mysqli_query($link, $qry);
-
-    // close connection
-    $link->close();
-
-    // return result
-    return $result;
-}
-
-function setSuffix($suffix,$userID){
-    $suffix = fixSql($suffix);
-//      *** Establish a connection to the database  ***
-    $link = dbConnect();
-
-//      *** Database Query's  ***
-    $qry = "UPDATE ACCOUNT SET ACC_SUFFIX = '$suffix' WHERE ACC_USERNAME = '$userID'";
-
-//      *** Implement Query's   ***
-    mysqli_query($link, $qry);
-
-//      ***     Close Connection    ***
-    $link->close();
-    return true;
-}
-
-function getBirthday($userID){
-    // connect to db
-    $link = dbConnect();
-
-    // db query
-    $qry = "SELECT ACC_DOB FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
-
-    // query that code
-    $result = mysqli_query($link, $qry);
-
-    // close connection
-    $link->close();
-
-    // return result
-    return $result;
-}
-
-function setBirthday($month, $day, $year, $userID){
-    $month = fixSql($month);
-    $day = fixSql($day);
-    $year = fixSql($year);
-
-    $birthdaySuit = $year . "-" . $month . "-" . $day;
-
-//      *** Establish a connection to the database  ***
-    $link = dbConnect();
-
-//      *** Database Query's  ***
-    $qry = "UPDATE ACCOUNT SET ACC_DOB = '$birthdaySuit' WHERE ACC_USERNAME = '$userID'";
-
-//      *** Implement Query's   ***
-    mysqli_query($link, $qry);
-
-//      ***     Close Connection    ***
-    $link->close();
-    return true;
-}
-
-function getSchoolID($userID){
-    // connect to db
-    $link = dbConnect();
-
-    // db query
-    $qry = "SELECT ACC_SCHOOLID FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
-
-    // query that code
-    $result = mysqli_query($link, $qry);
-
-    // close connection
-    $link->close();
-
-    // return result
-    return $result;
-}
-
-function setSchoolID($schoolID, $userID){
-    $schoolID = fixSql($schoolID);
-//      *** Establish a connection to the database  ***
-    $link = dbConnect();
-
-//      *** Database Query's  ***
-    $qry = "UPDATE ACCOUNT SET ACC_SCHOOLID = '$schoolID' WHERE ACC_USERNAME = '$userID'";
-
-//      *** Implement Query's   ***
-    mysqli_query($link, $qry);
-
-//      ***     Close Connection    ***
-    $link->close();
-    return true;
-}
-
-
 
 
 

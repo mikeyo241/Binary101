@@ -22,6 +22,7 @@ $lName = getLastName($_SESSION['email']);
 if ($_SERVER['REQUEST_METHOD']=='POST') {
     if (!empty($_POST['logOutSubmit'])) {
         session_destroy();
+        reDir('../main.php');
     }
 }
 
