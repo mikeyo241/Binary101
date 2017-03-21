@@ -1,6 +1,7 @@
 <?php
-session_start();
 require ('../functionlib.php');
+session_start();
+
 
 /******************************************************
 ***               Instructor Profile                  ***
@@ -21,8 +22,9 @@ if ($_SESSION['isLogged'] != 'TuIlI' || !$_SESSION['LOGCHECK']) {  // Make sure 
 
 /*  Variables  */
 $fName = $_SESSION['fName'];
-$lName = getLastName($_SESSION['email']);
+$lName = $_SESSION['lName'];
 $email = $_SESSION['email'];
+$user = $_SESSION['user'];
 $classCreated = '';
 $classesStyle = 'display: block;';
 
@@ -47,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
     }
     if(isset($_POST['createAClassSubmit'])){
         if(checkClass($email, $_POST['className'])){
-            if(createClass($_POST['className'], $_SESSION['email'], $_POST['sDate'], $_POST['eDate'], $_POST['maxEnrollment'])){
+            if($user->createClass($_POST['className'], $_POST['sDate'], $_POST['eDate'], $_POST['maxEnrollment'])){
                 $classCreated = 'Class Created Successfully';
             }else $classCreated = 'Class was not created successfully';
         }else $classCreated = 'Duplicate Class Name';
