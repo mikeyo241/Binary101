@@ -71,7 +71,7 @@ if (getClassData($email) != false) {
             $totalStudents = getStudentEnrollment($row['CLS_ID']);
             $maxEnrollment = $row['CLS_MAXENROLLMENT'];
             $seatsAvailable = $maxEnrollment - $totalStudents;
-            if (getClassAverage($row['CLS_ID']) == -1) {
+            if (getClassAverage($row['CLS_ID']) == -1) {  // getClassAverage returns -1 when the glass doesn't any grade data.
                 $classAverage = 'No Grades Yet';
             } else $classAverage = getClassAverage($row['CLS_ID']);
             $classInfo[$i] = "
@@ -81,6 +81,7 @@ if (getClassData($email) != false) {
                     <td>$totalStudents</td>
                     <td>$seatsAvailable</td>
                     <td>$classAverage</td>
+                    <td>$clsID</td>
                 </tr>";
             $i++;
         }
@@ -104,7 +105,8 @@ echo <<< HTML
                 <td>Course</td>               
                 <td>Students Enrolled</td>
                 <td>Available Seats</td>
-                <td>Class Grade Average</td>          
+                <td>Class Grade Average</td>
+                <td>Class Link</td>
             </thead>
                 <form id="gradeBook" name="gradeBook" action="$PHP_SELF" method="post">
                    

@@ -134,7 +134,7 @@ function checkClass($email, $className) {
     $link = dbConnect();
 
 //      *** Database Query **
-    $qry = "SELECT CLS_NAME FROM CLASS WHERE ACC_email = '$email' and CLS_NAME = '$className'";
+    $qry = "SELECT CLS_NAME FROM CLASS WHERE ACC_EMAIL = '$email' and CLS_NAME = '$className'";
 
     if ($result = mysqli_query($link, $qry)) {       // Implement query
         if (mysqli_num_rows($result) >= 1) {       // If there is 1 or more clans with the name entered return all the clans with that name
@@ -418,7 +418,24 @@ function setAccountType($accountType, $userID){
     return true;
 }
 
+function checkClassID($classID){
+    $link = dbConnect();
 
+    $qry = "SELECT * FROM CLASS WHERE CLS_ID = '$classID' ";
+
+    // query that code
+    if($result = mysqli_query($link,$qry)) {
+        if(mysqli_num_rows($result) >= 1) {
+            $link->close();
+            return false;
+
+        }else return true;
+    } else {
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
+}
 
 function createClass($className, $instructorEmail, $startDate, $endDate, $maxEnrollment ) {
     $className = fixSql($className);    $instructorEmail = fixSql($instructorEmail);    $startDate = fixSql($startDate);
@@ -426,9 +443,11 @@ function createClass($className, $instructorEmail, $startDate, $endDate, $maxEnr
 
 //      *** Establish a connection to the database  ***
         $link = dbConnect();
-
+        do{
+        $classID = rand(1111111111, 9999999999);
+        }while(!checkClassID($classID));
 //      *** Database Query's  ***
-        $qry = "INSERT INTO CLASS (CLS_NAME, ACC_EMAIL, CLS_SDATE, CLS_EDATE, CLS_MAXENROLLMENT) VALUES ('$className','$instructorEmail','$startDate','$endDate','$maxEnrollment')";
+        $qry = "INSERT INTO CLASS VALUES ('$classID','$className','$instructorEmail','$startDate','$endDate','$maxEnrollment')";
 
 //      *** Implement Query   ***
         if(mysqli_query($link,$qry)) {
@@ -533,6 +552,24 @@ function getClassAverage($classID) {
 }
 
 
+function getClassDataById($classId){
+    //      *** Establish a connection to the database  ***
+    $link = dbConnect();
+
+//      *** Database Query **
+    $qry = "SELECT * FROM CLASS WHERE CLS_ID = '$classId'";
+
+    if($result = mysqli_query($link,$qry)) {       // Implement query
+        if (mysqli_num_rows($result) == 1) {       // If there is 1 or more classes  return all the class data;
+            $link->close();
+            return $result;
+        }
+    }else {     // Query Failed - Error Messages Not shown !!!!
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
+}
 
 
 /** Function:
