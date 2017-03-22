@@ -61,9 +61,7 @@ echo <<< HTML
         
    
 </style>
-        
-
-
+       
 </head>
 
 <body>
@@ -71,10 +69,13 @@ echo <<< HTML
       <img id="logo" src="../img/logo.PNG" alt="Website Logo" align="top-left">
    </header>
    
+   <div id="line">
+        <!-- simply for aesthetics  -->
+   </div>
    
    <div id="resetPassword" ">
      
-        <h3 style="color: black;">$userNotify</h3>
+        <h3>$userNotify</h3>
    <form id="resetPasswordForm" action="$PHP_SELF" method="post">
         <table>    
           <tr>

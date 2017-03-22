@@ -38,6 +38,11 @@ h2 {
     color: black;
 }
 
+h3 {
+    color: black;
+    font-family: Andale Mono, monospace;
+}
+
 h4 {
     color: black;
     font-family: Andale Mono, monospace;
@@ -89,8 +94,8 @@ nav ul {
     width: 100px;
     height: 30px;
     position: relative;
-    left: 32%;
-    top: 10px;
+    left: 65px;
+    top: 95px;
 }
 
 #create {
@@ -237,7 +242,6 @@ form table tr td {
     right: 4%;
     font-family: monospace;
     position: fixed;
-    top: 20px;
     width: 290px;
 }
 #loginForm table tr td {
@@ -354,5 +358,38 @@ body, header, nav, section, footer, p, div {
 
 #loginEmail, #loginPass {
     width: 200px;
+    position: relative;
+}
+
+#forgotPass {
+    text-decoration: none;
+    color: rgb(237, 36, 20);
+    position: relative;
+    top: 95px;
+    right: -3px;
+    font-size: 17px;
+}
+
+#line {
+    width: 100%;
+    height: 2px;
+    background: rgb(237, 36, 20);
+    position: relative;
+}
+
+#resetSubmit {
+    border-radius: 10%;
+    background-color: rgb(237, 28, 36);
+    color: white;
+    border: rgb(237, 28, 36);
+    width: 100px;
+    height: 30px;
+    position: relative;
+    margin: auto;
+    left: 90px;
+}
+
+#footer {
+    color: black;
     position: relative;
 }
