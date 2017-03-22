@@ -20,8 +20,9 @@ if ($_SESSION['isLogged'] != 'TuIlI' || !$_SESSION['LOGCHECK']) {  // Make sure 
 
 
 /*  Variables  */
+$user = $_SESSION['user'];
 $fName = $_SESSION['fName'];
-$lName = getLastName($_SESSION['email']);
+$lName = $_SESSION['lName'];
 $email = $_SESSION['email'];
 $classCreated = '';
 $classesStyle = 'display: block;';

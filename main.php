@@ -50,12 +50,15 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             $_SESSION['isLogged'] = 'TuIlI';        // TuIlI = "The user Is logged In"
             $_SESSION['LOGCHECK'] = true;           // This must be true for the user to be logged in.
             $_SESSION['email'] = $email;            // Email Variable
-            $_SESSION['fName'] = $fName;            // The users first name
-            $_SESSION['accType'] = $accType;        // The users account type MUST BE 'INSTRUCTOR' OR 'STUDENT'
+            $_SESSION['fName'] = $fName;            // The user's first name
+            $_SESSION['lName'] = $lName;            // The user's last name
+            $_SESSION['accType'] = $accType;        // The user's account type MUST BE 'INSTRUCTOR' OR 'STUDENT'
             if($accType == 'INSTRUCTOR') {
+                $_SESSION['user'] = new Instructor($email, $pass, $fName, $lName);
                 reDir("instruct/instructorProfile.php");
             }
             else if($accType == 'STUDENT') {
+                $_SESSION['user'] = new Student($email, $pass, $fName, $lName);
                 reDir("student/studentProfile.php");
             }
 

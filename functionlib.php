@@ -388,7 +388,7 @@ function getStudentGradeByClass($studentEmail, $classID) {
     $gradeSum = 0.0;
 
     // Database Query 
-    $qry = "SELECT COM_SCORE FROM VIEW_GRADEBOOK WHERE CLS_ID = '$classID' AND ACC_EMAIL='$studentEmail'";
+    $qry = "SELECT COM_SCORE FROM VIEW_GRADEBOOK WHERE CLS_ID = '$classID' AND STUD_EMAIL='$studentEmail'";
 
     if($result = mysqli_query($link,$qry)) {       // Implement query
         $classTotal = mysqli_num_rows($result);
@@ -402,7 +402,7 @@ function getStudentGradeByClass($studentEmail, $classID) {
         $link->close();
         if ($gradeSum == 0)
             return "-";
-        return ( $gradeSum / $classTotal );
+        return number_format(( $gradeSum / $classTotal ), 1);
     }
     else {     // Query Failed - Error Messages Not shown !!!!
         echo "Error: " . $qry . "<br>" . mysqli_error($link);
