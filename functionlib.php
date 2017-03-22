@@ -10,8 +10,27 @@
  ***    jQuery:             none                    ***
  ***                                                ***
  ******************************************************/
-require_once('Account.php');
+require_once('account.php');
+require_once('student.php');
+require_once('instructor.php');
+session_start();
 
+
+if(isset($_SESSION['user'])) {
+    $user = $_SESSION['user'];
+    $fName = $user->getFirstName();
+    $lName = $user->getLastName();
+    $email = $user->getEmail();
+}
+
+
+function checkIfLoggedIn()
+{
+    if ($_SESSION['isLogged'] != 'TuIlI' || !$_SESSION['LOGCHECK']) {  // Make sure the user is logged in!!! This is a private page!!
+        session_destroy();
+        reDir('../main.php');
+    }
+}
 /** Function:       dbConnect
  * Last Modified:   23 February 2017
  * @param string    $hostname - host name of the server.
@@ -135,9 +154,9 @@ function getUser($id , $pass){
             $res = mysqli_fetch_assoc($result);             // Put the result into an array
             if($pass == $res['ACC_PASS'] && $id == $res['ACC_EMAIL']) {
                 if ($res['ACC_TYPE'] == "STUDENT")
-                    return new Student($id, $pass, $res['ACC_FNAME'], $res['ACC_LNAME']);
+                    return new Student($id);
                 else
-                    return new Instructor($id, $pass, $res['ACC_FNAME'], $res['ACC_LNAME']);
+                    return new Instructor($id);
             }
         }
     }else {             // Query Failed - Error Messages Not shown !!!!
@@ -437,7 +456,7 @@ function getStudentGradeByClass($studentEmail, $classID) {
     if($result = mysqli_query($link,$qry)) {       // Implement query
         $classTotal = mysqli_num_rows($result);
         if(mysqli_num_rows($result) == 0) {
-            return -1;
+            return "-";
         }else {
             while ($row = $result->fetch_assoc()) {
                 $gradeSum = $gradeSum + $row['COM_SCORE'];

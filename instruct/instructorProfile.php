@@ -1,6 +1,6 @@
 <?php
 require ('../functionlib.php');
-session_start();
+
 
 
 /******************************************************
@@ -14,27 +14,13 @@ session_start();
 ***    jQuery:             jQuery.js, Alpha.js     ***
 ***                                                ***
 ******************************************************/
-if ($_SESSION['isLogged'] != 'TuIlI' || !$_SESSION['LOGCHECK']) {  // Make sure the user is logged in!!! This is a private page!!
-    session_destroy();
-    reDir('../main.php');
-}
+
+checkIfLoggedIn();
 
 
-/*  Variables  */
-$fName = $_SESSION['fName'];
-$lName = $_SESSION['lName'];
-$email = $_SESSION['email'];
-$user = $_SESSION['user'];
 $classCreated = '';
 $classesStyle = 'display: block;';
 
-
-// TEST ENVIRONMENT Variables
-//$fName = 'TEST ENVIRONMENT';
-//$lName = ' ';
-//$email = 'test@testing.com';
-
-/** Check to see if the instructor has any classes */
 if (getClassNum($email) == 0){
     $classesStyle = 'display: none;';
 } else $classesStyle = 'display: block;';
@@ -62,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         }
     }
 }
+
 if (getClassData($email) != false) {
 
     $searchResult = getClassData($email);

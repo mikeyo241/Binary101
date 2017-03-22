@@ -18,7 +18,7 @@
 
 /* Michael A Gardner    -   login System    -   2 March 2017        */
 require('functionlib.php');         //  The entire function library for the project.
-session_start();                    // Start a session with the server.
+//session_start();                    // Start a session with the server.
 $displayAlert = '';                 //  Variable used to tell the user what is going on if a account creation fails.
 
 /* This will check if the user is already logged in and redirect them back to their profiles from the home page  */
@@ -76,18 +76,15 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             $displayAlert = "Login Success";
             $_SESSION['isLogged'] = 'TuIlI';     // TuIlI = "The user Is logged In"
             $_SESSION['LOGCHECK'] = true;       // extra login check this must be set to true for the user to be logged in.
-            $user = getUser($loginEmail, $lPass);
-            $_SESSION['user'] = $user;
-            $_SESSION['email'] = $loginEmail;
-            $_SESSION['fName'] = $user->getFirstName();
-            $_SESSION['lName'] = $user->getLastName();
-            $accountType = $user->getAccountType();
-            $_SESSION['accType'] = $accountType;
-            
-            if($accountType == 'INSTRUCTOR')
+            $user = new Account($loginEmail);
+
+            if ($user->getAccountType() == 'INSTRUCTOR') {
+                $_SESSION['user'] = new Instructor($loginEmail);
                 reDir("instruct/instructorProfile.php");
-            if($accountType == 'STUDENT')
+            } else if ($user->getAccountType() == 'STUDENT') {
+                $_SESSION['user'] = new Student($loginEmail);
                 reDir("student/studentProfile.php");
+            }
         }else {
             // If the login fails then make sure the user can't go to secured pages
             $_SESSION['isLogged'] = false;

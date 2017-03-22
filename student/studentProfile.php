@@ -1,6 +1,5 @@
 <?php
    require ('../functionlib.php');
-   session_start();
    /******************************************************
    ***               Private Profile                  ***
    ***                                                ***
@@ -52,7 +51,7 @@
          $isEmpty = "block";
       }
       if (isset($_POST['enrollSubmit'])) {
-         enrollStudent($_SESSION['email'], $_SESSION['classID']);
+         enrollStudent($email, $_SESSION['classID']);
          $_POST['enrollSubmit'] = null;
       }
    }
@@ -64,7 +63,7 @@
 
    </head>
    <body>
-   <h1>Welcome $user->fName !!!</h1>
+   <h1>Welcome $fName !!!</h1>
      <form id="signOutForm" action="$PHP_SELF" method="post" >
       <input type="submit" value="Log Out" id="logOutSubmit" name="logOutSubmit">
      </form>
