@@ -353,16 +353,26 @@ function getClassAverage($classID) {
     $link = dbConnect();
     $gradeSum = 0.0;
 
-<<<<<<< HEAD
-//      *** Database Query's  ***
-    $qry = "UPDATE ACCOUNT SET ACC_TYPE = '$accountType' WHERE ACC_USERNAME = '$userID'";
+//      *** Database Query **
+    $qry = "SELECT COM_SCORE FROM VIEW_CLASS_GRADES WHERE CLS_ID = '$classID'";
 
-//      *** Implement Query's   ***
-    mysqli_query($link, $qry);
-
-//      ***     Close Connection    ***
-    $link->close();
-    return true;
+    if($result = mysqli_query($link,$qry)) {       // Implement query
+        $classTotal = mysqli_num_rows($result);
+        if(mysqli_num_rows($result) == 0) {
+            return -1;
+        }else {
+            while ($row = $result->fetch_assoc()) {
+                $gradeSum = $gradeSum + $row['COM_SCORE'];
+            }
+        }
+        $link->close();
+        return ( $gradeSum / $classTotal );
+    }
+    else {     // Query Failed - Error Messages Not shown !!!!
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
 }
 
 function checkClassID($classID){
@@ -389,30 +399,20 @@ function createClass($className, $instructorEmail, $startDate, $endDate, $maxEnr
     $endDate = fixSql($endDate);    $maxEnrollment = fixSql($maxEnrollment);
 
 //      *** Establish a connection to the database  ***
-        $link = dbConnect();
-        do{
+    $link = dbConnect();
+    do{
         $classID = rand(1111111111, 9999999999);
-        }while(!checkClassID($classID));
+    }while(!checkClassID($classID));
 //      *** Database Query's  ***
-        $qry = "INSERT INTO CLASS VALUES ('$classID','$className','$instructorEmail','$startDate','$endDate','$maxEnrollment')";
-=======
-//      *** Database Query **
-    $qry = "SELECT COM_SCORE FROM VIEW_CLASS_GRADES WHERE CLS_ID = '$classID'";
->>>>>>> origin/master
+    $qry = "INSERT INTO CLASS VALUES ('$classID','$className','$instructorEmail','$startDate','$endDate','$maxEnrollment')";
 
-    if($result = mysqli_query($link,$qry)) {       // Implement query
-        $classTotal = mysqli_num_rows($result);
-        if(mysqli_num_rows($result) == 0) {
-            return -1;
-        }else {
-            while ($row = $result->fetch_assoc()) {
-                $gradeSum = $gradeSum + $row['COM_SCORE'];
-            }
-        }
+//      *** Implement Query   ***
+    if(mysqli_query($link,$qry)) {
+//      ***     Close Connection    ***
         $link->close();
-        return ( $gradeSum / $classTotal );
-    }
-    else {     // Query Failed - Error Messages Not shown !!!!
+        return true;
+    } else {
+        //      ***     Close Connection    ***
         echo "Error: " . $qry . "<br>" . mysqli_error($link);
         $link->close();
         return false;

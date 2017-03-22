@@ -58,7 +58,7 @@ class Account {
    }
 
    public function setLastName($lName){
-      $lastName = fixSql($lastName);
+      $lastName = fixSql($lName);
       //      *** Establish a connection to the database  ***
       $link = dbConnect();
 
