@@ -54,11 +54,11 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             $_SESSION['lName'] = $lName;            // The user's last name
             $_SESSION['accType'] = $accType;        // The user's account type MUST BE 'INSTRUCTOR' OR 'STUDENT'
             if($accType == 'INSTRUCTOR') {
-                $_SESSION['user'] = new Instructor($email, $pass, $fName, $lName);
+                $_SESSION['user'] = new Instructor($email, $fName, $lName);
                 reDir("instruct/instructorProfile.php");
             }
             else if($accType == 'STUDENT') {
-                $_SESSION['user'] = new Student($email, $pass, $fName, $lName);
+                $_SESSION['user'] = new Student($email, $fName, $lName);
                 reDir("student/studentProfile.php");
             }
 

@@ -2,20 +2,18 @@
 require_once('functionlib.php');
 
 class Account {
-   public $email;
-   public $password;
-   public $fName;
-   public $lName;
-   public $accountType;
+   private $email;
+   private $fName;
+   private $lName;
+   private $accountType;
 
-   public function Account($loginEmail, $password, $fName, $lName) {
+   public function Account($loginEmail, $fName, $lName) {
       $this->email = $loginEmail;
-      $this->password = $password;
       $this->fName = $fName;
       $this->lName = $lName;
    }
 
-   public function getPassword() { return $this->password; }
+   public function getEmail() { return $this->email; }
    public function getFirstName() { return $this->fName; }
    public function getLastName() { return $this->lName; }
    public function getAccountType() { return $this->accountType; }
@@ -35,7 +33,6 @@ class Account {
 
    //      ***     Close Connection    ***
            $link->close();
-           $this->password = $pass;
            return true;
 
        }else return false;
@@ -92,8 +89,8 @@ class Account {
 }
 
 class Student extends Account {
-   public function Student($loginEmail, $pass, $fName, $lName) {
-      Account::Account($loginEmail, $pass, $fName, $lName);
+   public function Student($loginEmail, $fName, $lName) {
+      Account::Account($loginEmail, $fName, $lName);
       $this->accountType = "STUDENT";
    }
 
@@ -140,8 +137,8 @@ class Student extends Account {
 }
 
 class Instructor extends Account {
-   public function Instructor($loginEmail, $pass, $fName, $lName) {
-      Account::Account($loginEmail, $pass, $fName, $lName);
+   public function Instructor($loginEmail, $fName, $lName) {
+      Account::Account($loginEmail, $fName, $lName);
       $this->accountType = "INSTRUCTOR";
    }
 
@@ -155,7 +152,7 @@ class Instructor extends Account {
       $link = dbConnect();
 
       //      *** Create random integer for class ID
-      $classID = rand(10000,32767);
+      $classID = rand(111111111,999999999);
 
       //      *** Database Query's  ***
       $qry = "INSERT INTO CLASS (CLS_ID, CLS_NAME, ACC_EMAIL, CLS_SDATE, CLS_EDATE, CLS_MAXENROLLMENT) VALUES ('$classID', '$className','$this->email','$startDate','$endDate','$maxEnrollment')";

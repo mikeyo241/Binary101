@@ -135,9 +135,9 @@ function getUser($id , $pass){
             $res = mysqli_fetch_assoc($result);             // Put the result into an array
             if($pass == $res['ACC_PASS'] && $id == $res['ACC_EMAIL']) {
                 if ($res['ACC_TYPE'] == "STUDENT")
-                    return new Student($id, $pass, $res['ACC_FNAME'], $res['ACC_LNAME']);
+                    return new Student($id, $res['ACC_FNAME'], $res['ACC_LNAME']);
                 else
-                    return new Instructor($id, $pass, $res['ACC_FNAME'], $res['ACC_LNAME']);
+                    return new Instructor($id, $res['ACC_FNAME'], $res['ACC_LNAME']);
             }
         }
     }else {             // Query Failed - Error Messages Not shown !!!!
@@ -437,7 +437,7 @@ function getStudentGradeByClass($studentEmail, $classID) {
     if($result = mysqli_query($link,$qry)) {       // Implement query
         $classTotal = mysqli_num_rows($result);
         if(mysqli_num_rows($result) == 0) {
-            return -1;
+            return "-";
         }else {
             while ($row = $result->fetch_assoc()) {
                 $gradeSum = $gradeSum + $row['COM_SCORE'];
