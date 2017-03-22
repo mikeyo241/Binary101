@@ -154,9 +154,15 @@ function getUser($id , $pass){
             $res = mysqli_fetch_assoc($result);             // Put the result into an array
             if($pass == $res['ACC_PASS'] && $id == $res['ACC_EMAIL']) {
                 if ($res['ACC_TYPE'] == "STUDENT")
+<<<<<<< HEAD
                     return new Student($id);
                 else
                     return new Instructor($id);
+=======
+                    return new Student($id, $res['ACC_FNAME'], $res['ACC_LNAME']);
+                else
+                    return new Instructor($id, $res['ACC_FNAME'], $res['ACC_LNAME']);
+>>>>>>> origin/master
             }
         }
     }else {             // Query Failed - Error Messages Not shown !!!!
