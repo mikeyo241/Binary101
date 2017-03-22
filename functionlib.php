@@ -154,15 +154,9 @@ function getUser($id , $pass){
             $res = mysqli_fetch_assoc($result);             // Put the result into an array
             if($pass == $res['ACC_PASS'] && $id == $res['ACC_EMAIL']) {
                 if ($res['ACC_TYPE'] == "STUDENT")
-<<<<<<< HEAD
                     return new Student($id);
                 else
                     return new Instructor($id);
-=======
-                    return new Student($id, $res['ACC_FNAME'], $res['ACC_LNAME']);
-                else
-                    return new Instructor($id, $res['ACC_FNAME'], $res['ACC_LNAME']);
->>>>>>> origin/master
             }
         }
     }else {             // Query Failed - Error Messages Not shown !!!!
@@ -363,9 +357,9 @@ function getStudentEnrollment($classID) {
 
     if($result = mysqli_query($link,$qry)) {       // Implement query
         $studentsEnrolled = mysqli_num_rows($result);
-            $link->close();
-            return $studentsEnrolled;
-        }
+        $link->close();
+        return $studentsEnrolled;
+    }
     else {     // Query Failed - Error Messages Not shown !!!!
         echo "Error: " . $qry . "<br>" . mysqli_error($link);
         $link->close();
@@ -456,7 +450,7 @@ function getStudentGradeByClass($studentEmail, $classID) {
     $link = dbConnect();
     $gradeSum = 0.0;
 
-    // Database Query 
+    // Database Query
     $qry = "SELECT COM_SCORE FROM VIEW_GRADEBOOK WHERE CLS_ID = '$classID' AND STUD_EMAIL='$studentEmail'";
 
     if($result = mysqli_query($link,$qry)) {       // Implement query
@@ -490,7 +484,7 @@ function getClassByID($classID) {
     // Establish a connection to the database
     $link = dbConnect();
 
-    // Database Query 
+    // Database Query
     $qry = "SELECT CLS_ID, CLS_NAME, CLS_MAXENROLLMENT, INSTRUCT_FNAME, INSTRUCT_LNAME FROM VIEW_CLASSES WHERE CLS_ID LIKE '$classID'";
 
     if($result = mysqli_query($link,$qry)) {       // Implement query
@@ -517,11 +511,11 @@ function enrollStudent($studentEmail, $classID) {
     // Establish a connection to the database
     $link = dbConnect();
 
-    // Database Query 
+    // Database Query
     $qry = "SELECT * FROM ENROLLMENT WHERE ACC_EMAIL='$studentEmail' AND CLS_ID='$classID'";
 
     if($result = mysqli_query($link,$qry)) {       // Implement query
-        if (mysqli_num_rows($result) >= 1) {       // If student is enrolled, don't re-enroll 
+        if (mysqli_num_rows($result) >= 1) {       // If student is enrolled, don't re-enroll
             $link->close();
             return false;
         }
@@ -537,7 +531,7 @@ function enrollStudent($studentEmail, $classID) {
                 return false;
             }
         }
-    } 
+    }
     else {     // Query Failed - Error Messages Not shown !!!!
         echo "Error: " . $qry . "<br>" . mysqli_error($link);
         $link->close();
@@ -551,15 +545,15 @@ function enrollStudent($studentEmail, $classID) {
  * @return          Array of classes the student is enrolled in, OR false if no enrollments.
  * Description:     This function returns all the enrollments pertaining to a student.
  */
- function getStudentEnrollments($studentEmail) {
+function getStudentEnrollments($studentEmail) {
     // Establish a connection to the database
     $link = dbConnect();
 
-    // Database Query 
+    // Database Query
     $qry = "SELECT * FROM VIEW_STUDENT_CLASSES WHERE STUD_EMAIL='$studentEmail'";
 
     if($result = mysqli_query($link,$qry)) {       // Implement query
-        if (mysqli_num_rows($result) >= 1) {       // If there is 1 or more classes  return all 
+        if (mysqli_num_rows($result) >= 1) {       // If there is 1 or more classes  return all
             $classes = array();
             $i = 0;
             while ($row = $result->fetch_assoc()) { // Create array of class arrays
@@ -576,7 +570,7 @@ function enrollStudent($studentEmail, $classID) {
             $link->close();
             return false;
         }
-    } 
+    }
     else {     // Query Failed - Error Messages Not shown !!!!
         echo "Error: " . $qry . "<br>" . mysqli_error($link);
         $link->close();
