@@ -3,14 +3,14 @@
  ***              Function Library                  ***
  ***                                                ***
  ***    Created by:         Group 6                 ***
- ***    Updated:            2 March 2017            ***
+ ***    Updated:            21 March 2017            ***
  ***    Class:              CPT - 264-002           ***
  ***    Document:           functionlib.php         ***
  ***    CSS:                none                    ***
  ***    jQuery:             none                    ***
  ***                                                ***
  ******************************************************/
-
+require_once('Account.php');
 
 /** Function:       dbConnect
  * Last Modified:   23 February 2017
@@ -119,6 +119,36 @@ function checkLogin($id , $pass){
     }
     return false;
 }
+
+function getUser($id , $pass){
+//      ** Check input for database exploits **
+    $id = fixSql($id);
+    $pass = md5(fixSql($pass));
+//      *** Establish a connection to the database  ***
+    $link = dbConnect();
+
+//      *** Database Query's    ***
+    $qry = "SELECT * FROM ACCOUNT WHERE ACC_EMAIL = '$id'";
+
+    if($result = mysqli_query($link,$qry)) {                // Implement the query
+        if (mysqli_num_rows($result) == 1) {                // There can only be 1 entry for email no duplicates.
+            $res = mysqli_fetch_assoc($result);             // Put the result into an array
+            if($pass == $res['ACC_PASS'] && $id == $res['ACC_EMAIL']) {
+                if ($res['ACC_TYPE'] == "STUDENT")
+                    return new Student($id, $pass, $res['ACC_FNAME'], $res['ACC_LNAME']);
+                else
+                    return new Instructor($id, $pass, $res['ACC_FNAME'], $res['ACC_LNAME']);
+            }
+        }
+    }else {             // Query Failed - Error Messages Not shown !!!!
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return null;
+    }
+    return null;
+}
+
+
 /*function addAccount($){
 
 
@@ -129,7 +159,7 @@ function reDir($location) {
 }
 
 function checkClass($email, $className) {
-
+    $className = fixSql($className);
 //      *** Establish a connection to the database  ***
     $link = dbConnect();
 
@@ -171,7 +201,6 @@ function checkCourse($classID) {
 }
 
 function checkStudentsEnrolled($classID) {
-
 //      ** Check input for database exploits **
     $classID = fixSql($classID);
 
@@ -257,211 +286,6 @@ function createAccount ($fName, $lName,  $email, $pass, $accType) {
     }else return false;
 }
 
-function getFirstName($eMail){
-    //      ** Check input for database exploits **
-    fixSql($eMail);
-//      *** Establish a connection to the database  ***
-    $link = dbConnect();
-
-//      *** Database Query's    ***
-    $qry = "SELECT * FROM ACCOUNT WHERE ACC_EMAIL = '$eMail'";
-
-    if($result = mysqli_query($link,$qry)) {
-        if (mysqli_num_rows($result) == 1) {
-            $res = mysqli_fetch_assoc($result);
-            $fName = $res['ACC_FNAME'];
-            $link->close();
-            return $fName;
-        }
-    }else {             // Query Failed - Error Messages Not shown !!!!
-        echo "Error: " . $qry . "<br>" . mysqli_error($link);
-        $link->close();
-        return false;
-    }
-    return false;
-}
-
-function setFirstName($email, $fName){
-    $fName = fixSql($fName);
-//      *** Establish a connection to the database  ***
-    $link = dbConnect();
-
-//      *** Database Query's  ***
-    $qry = "UPDATE ACCOUNT SET ACC_FNAME = '$fName' WHERE ACC_EMAIL = '$email'";
-
-//      *** Implement Query's   ***
-    mysqli_query($link, $qry);
-
-//      ***     Close Connection    ***
-    $link->close();
-    return true;
-}
-
-
-function getLastName($eMail){
-    //      ** Check input for database exploits **
-    fixSql($eMail);
-//      *** Establish a connection to the database  ***
-    $link = dbConnect();
-
-//      *** Database Query's    ***
-    $qry = "SELECT * FROM ACCOUNT WHERE ACC_EMAIL = '$eMail'";
-
-    if($result = mysqli_query($link,$qry)) {
-        if (mysqli_num_rows($result) == 1) {
-            $res = mysqli_fetch_assoc($result);
-            $lName = $res['ACC_LNAME'];
-            $link->close();
-            return $lName;
-        }
-    }else {             // Query Failed - Error Messages Not shown !!!!
-        echo "Error: " . $qry . "<br>" . mysqli_error($link);
-        $link->close();
-        return false;
-    }
-    return false;
-}
-
-function setLastName($lastName, $userID){
-    $lastName = fixSql($lastName);
-//      *** Establish a connection to the database  ***
-    $link = dbConnect();
-
-//      *** Database Query's  ***
-    $qry = "UPDATE ACCOUNT SET ACC_LNAME = '$lastName' WHERE ACC_USERNAME = '$userID'";
-
-//      *** Implement Query's   ***
-    mysqli_query($link, $qry);
-
-//      ***     Close Connection    ***
-    $link->close();
-    return true;
-}
-
-
-function getPassword($userID){
-    // connect to db
-    $link = dbConnect();
-
-    // db query
-    $qry = "SELECT ACC_PASS FROM ACCOUNT WHERE ACC_USERNAME = '$userID' ";
-
-    // query that code
-    $result = mysqli_query($link, $qry);
-
-    // close connection
-    $link->close();
-
-    // return result
-    return $result;
-}
-
-function setPassword($pass, $userID){
-    $pass = fixSql($pass);
-    if (checkPass($pass)){
-        $pass = md5($pass);
-        //      *** Establish a connection to the database  ***
-        $link = dbConnect();
-
-//      *** Database Query's  ***
-        $qry = "UPDATE ACCOUNT SET ACC_PASS = '$pass' WHERE ACC_USERNAME = '$userID'";
-
-//      *** Implement Query's   ***
-        mysqli_query($link, $qry);
-
-//      ***     Close Connection    ***
-        $link->close();
-        return true;
-
-    }else return false;
-}
-function getAccountType($eMail){
-    //      ** Check input for database exploits **
-    fixSql($eMail);
-
-
-
-//      *** Establish a connection to the database  ***
-    $link = dbConnect();
-
-//      *** Database Query's    ***
-    $qry = "SELECT * FROM ACCOUNT WHERE ACC_EMAIL = '$eMail'";
-
-    if($result = mysqli_query($link,$qry)) {
-        if (mysqli_num_rows($result) == 1) {
-            $res = mysqli_fetch_assoc($result);
-            $accType = $res['ACC_TYPE'];
-            $link->close();
-            return $accType;
-        }
-    }else {             // Query Failed - Error Messages Not shown !!!!
-        echo "Error: " . $qry . "<br>" . mysqli_error($link);
-        $link->close();
-        return false;
-    }
-    return false;
-}
-
-function setAccountType($accountType, $userID){
-    $accountType = fixSql($accountType);
-//      *** Establish a connection to the database  ***
-    $link = dbConnect();
-
-//      *** Database Query's  ***
-    $qry = "UPDATE ACCOUNT SET ACC_TYPE = '$accountType' WHERE ACC_USERNAME = '$userID'";
-
-//      *** Implement Query's   ***
-    mysqli_query($link, $qry);
-
-//      ***     Close Connection    ***
-    $link->close();
-    return true;
-}
-
-function checkClassID($classID){
-    $link = dbConnect();
-
-    $qry = "SELECT * FROM CLASS WHERE CLS_ID = '$classID' ";
-
-    // query that code
-    if($result = mysqli_query($link,$qry)) {
-        if(mysqli_num_rows($result) >= 1) {
-            $link->close();
-            return false;
-
-        }else return true;
-    } else {
-        echo "Error: " . $qry . "<br>" . mysqli_error($link);
-        $link->close();
-        return false;
-    }
-}
-
-function createClass($className, $instructorEmail, $startDate, $endDate, $maxEnrollment ) {
-    $className = fixSql($className);    $instructorEmail = fixSql($instructorEmail);    $startDate = fixSql($startDate);
-    $endDate = fixSql($endDate);    $maxEnrollment = fixSql($maxEnrollment);
-
-//      *** Establish a connection to the database  ***
-        $link = dbConnect();
-        do{
-        $classID = rand(1111111111, 9999999999);
-        }while(!checkClassID($classID));
-//      *** Database Query's  ***
-        $qry = "INSERT INTO CLASS VALUES ('$classID','$className','$instructorEmail','$startDate','$endDate','$maxEnrollment')";
-
-//      *** Implement Query   ***
-        if(mysqli_query($link,$qry)) {
-//      ***     Close Connection    ***
-            $link->close();
-            return true;
-        } else {
- //      ***     Close Connection    ***
-            echo "Error: " . $qry . "<br>" . mysqli_error($link);
-            $link->close();
-            return false;
-        }
-}
-
 function getClassNum($instructorEmail) {
     if ($instructorEmail == 'test@testing.com') return 1;
     $link = dbConnect();
@@ -529,8 +353,52 @@ function getClassAverage($classID) {
     $link = dbConnect();
     $gradeSum = 0.0;
 
+<<<<<<< HEAD
+//      *** Database Query's  ***
+    $qry = "UPDATE ACCOUNT SET ACC_TYPE = '$accountType' WHERE ACC_USERNAME = '$userID'";
+
+//      *** Implement Query's   ***
+    mysqli_query($link, $qry);
+
+//      ***     Close Connection    ***
+    $link->close();
+    return true;
+}
+
+function checkClassID($classID){
+    $link = dbConnect();
+
+    $qry = "SELECT * FROM CLASS WHERE CLS_ID = '$classID' ";
+
+    // query that code
+    if($result = mysqli_query($link,$qry)) {
+        if(mysqli_num_rows($result) >= 1) {
+            $link->close();
+            return false;
+
+        }else return true;
+    } else {
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
+}
+
+function createClass($className, $instructorEmail, $startDate, $endDate, $maxEnrollment ) {
+    $className = fixSql($className);    $instructorEmail = fixSql($instructorEmail);    $startDate = fixSql($startDate);
+    $endDate = fixSql($endDate);    $maxEnrollment = fixSql($maxEnrollment);
+
+//      *** Establish a connection to the database  ***
+        $link = dbConnect();
+        do{
+        $classID = rand(1111111111, 9999999999);
+        }while(!checkClassID($classID));
+//      *** Database Query's  ***
+        $qry = "INSERT INTO CLASS VALUES ('$classID','$className','$instructorEmail','$startDate','$endDate','$maxEnrollment')";
+=======
 //      *** Database Query **
     $qry = "SELECT COM_SCORE FROM VIEW_CLASS_GRADES WHERE CLS_ID = '$classID'";
+>>>>>>> origin/master
 
     if($result = mysqli_query($link,$qry)) {       // Implement query
         $classTotal = mysqli_num_rows($result);
@@ -544,6 +412,146 @@ function getClassAverage($classID) {
         $link->close();
         return ( $gradeSum / $classTotal );
     }
+    else {     // Query Failed - Error Messages Not shown !!!!
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
+}
+
+/** Function:       getStudentGradeByClass
+ * Last Modified:   21 March 2017
+ * @param           $studentEmail - Email address of student
+ * @param           $classID - ID of class
+ * @return          Numeric class average of student
+ * Description:     This function returns the grade average given a student and class.
+ */
+function getStudentGradeByClass($studentEmail, $classID) {
+    // Establish a connection to the database
+    $link = dbConnect();
+    $gradeSum = 0.0;
+
+    // Database Query 
+    $qry = "SELECT COM_SCORE FROM VIEW_GRADEBOOK WHERE CLS_ID = '$classID' AND STUD_EMAIL='$studentEmail'";
+
+    if($result = mysqli_query($link,$qry)) {       // Implement query
+        $classTotal = mysqli_num_rows($result);
+        if(mysqli_num_rows($result) == 0) {
+            return -1;
+        }else {
+            while ($row = $result->fetch_assoc()) {
+                $gradeSum = $gradeSum + $row['COM_SCORE'];
+            }
+        }
+        $link->close();
+        if ($gradeSum == 0)
+            return "-";
+        return number_format(( $gradeSum / $classTotal ), 1);
+    }
+    else {     // Query Failed - Error Messages Not shown !!!!
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
+}
+
+/** Function:       getClassByID
+ * Last Modified:   21 March 2017
+ * @param           $classID - ID of class
+ * @return          Array containing class details
+ * Description:     This function returns information pertaining to a class.
+ */
+function getClassByID($classID) {
+    // Establish a connection to the database
+    $link = dbConnect();
+
+    // Database Query 
+    $qry = "SELECT CLS_ID, CLS_NAME, CLS_MAXENROLLMENT, INSTRUCT_FNAME, INSTRUCT_LNAME FROM VIEW_CLASSES WHERE CLS_ID LIKE '$classID'";
+
+    if($result = mysqli_query($link,$qry)) {       // Implement query
+        if (mysqli_num_rows($result) >= 1) {       // If there is 1 or more classes  return all the class data;
+            $link->close();
+            return $result;
+        }
+    }else {     // Query Failed - Error Messages Not shown !!!!
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
+
+}
+
+/** Function:       enrollStudent
+ * Last Modified:   21 March 2017
+ * @param           $studentEmai - Student's email address
+ * @param           $classID - ID of class to enroll in
+ * @return          True if student is enrolled, false if else (already enrolled, etc.)
+ * Description:     This function enrolls a student in a class.
+ */
+function enrollStudent($studentEmail, $classID) {
+    // Establish a connection to the database
+    $link = dbConnect();
+
+    // Database Query 
+    $qry = "SELECT * FROM ENROLLMENT WHERE ACC_EMAIL='$studentEmail' AND CLS_ID='$classID'";
+
+    if($result = mysqli_query($link,$qry)) {       // Implement query
+        if (mysqli_num_rows($result) >= 1) {       // If student is enrolled, don't re-enroll 
+            $link->close();
+            return false;
+        }
+        else {  // Student is not enrolled; enroll him/her
+            $qry = "INSERT INTO ENROLLMENT (ACC_EMAIL, CLS_ID) VALUES ('$studentEmail', '$classID')";
+            if ($result = mysqli_query($link,$qry)) {
+                $link->close();
+                return true;
+            }
+            else {     // Query Failed - Error Messages Not shown !!!!
+                echo "Error: " . $qry . "<br>" . mysqli_error($link);
+                $link->close();
+                return false;
+            }
+        }
+    } 
+    else {     // Query Failed - Error Messages Not shown !!!!
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
+}
+
+/** Function:       getStudentEnrollments
+ * Last Modified:   21 March 2017
+ * @param           $studentEmai - Student's email address
+ * @return          Array of classes the student is enrolled in, OR false if no enrollments.
+ * Description:     This function returns all the enrollments pertaining to a student.
+ */
+ function getStudentEnrollments($studentEmail) {
+    // Establish a connection to the database
+    $link = dbConnect();
+
+    // Database Query 
+    $qry = "SELECT * FROM VIEW_STUDENT_CLASSES WHERE STUD_EMAIL='$studentEmail'";
+
+    if($result = mysqli_query($link,$qry)) {       // Implement query
+        if (mysqli_num_rows($result) >= 1) {       // If there is 1 or more classes  return all 
+            $classes = array();
+            $i = 0;
+            while ($row = $result->fetch_assoc()) { // Create array of class arrays
+                $classes[$i]["CLS_ID"] = $row["CLS_ID"];
+                $classes[$i]["CLS_NAME"] = $row["CLS_NAME"];
+                $classes[$i]["INSTRUCT_NAME"] = "" . $row["INSTRUCT_FNAME"] . $row["INSTRUCT_LNAME"];
+                $classes[$i]["GRADE"] = getStudentGradeByClass($_SESSION['email'], $row["CLS_ID"]);
+                $i++;
+            }
+            $link->close();
+            return $classes;
+        }
+        else {
+            $link->close();
+            return false;
+        }
+    } 
     else {     // Query Failed - Error Messages Not shown !!!!
         echo "Error: " . $qry . "<br>" . mysqli_error($link);
         $link->close();
@@ -662,3 +670,4 @@ This part should be 5 questions like What is 0010 in Decimal, 1111 in Decimal, 1
 HTML;
 
 }
+?>

@@ -17,10 +17,9 @@
  */
 
 /* Michael A Gardner    -   login System    -   2 March 2017        */
-session_start();                    // Start a session with the server.
 require('functionlib.php');         //  The entire function library for the project.
+session_start();                    // Start a session with the server.
 $displayAlert = '';                 //  Variable used to tell the user what is going on if a account creation fails.
-
 
 /* This will check if the user is already logged in and redirect them back to their profiles from the home page  */
 if(isset($_SESSION['isLogged']) && isset($_SESSION['LOGCHECK']) && isset($_SESSION['email']) && isset($_SESSION['fName']) ){
@@ -51,10 +50,17 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             $_SESSION['isLogged'] = 'TuIlI';        // TuIlI = "The user Is logged In"
             $_SESSION['LOGCHECK'] = true;           // This must be true for the user to be logged in.
             $_SESSION['email'] = $email;            // Email Variable
-            $_SESSION['fName'] = $fName;            // The users first name
-            $_SESSION['accType'] = $accType;        // The users account type MUST BE 'INSTRUCTOR' OR 'STUDENT'
-            if($accType == 'INSTRUCTOR')reDir("instruct/instructorProfile.php");
-            if($accType == 'STUDENT') reDir("student/studentProfile.php");
+            $_SESSION['fName'] = $fName;            // The user's first name
+            $_SESSION['lName'] = $lName;            // The user's last name
+            $_SESSION['accType'] = $accType;        // The user's account type MUST BE 'INSTRUCTOR' OR 'STUDENT'
+            if($accType == 'INSTRUCTOR') {
+                $_SESSION['user'] = new Instructor($email, $pass, $fName, $lName);
+                reDir("instruct/instructorProfile.php");
+            }
+            else if($accType == 'STUDENT') {
+                $_SESSION['user'] = new Student($email, $pass, $fName, $lName);
+                reDir("student/studentProfile.php");
+            }
 
         } else {
             // Create account returned false!  The account most likely exists already however, due to exploit
@@ -70,12 +76,18 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             $displayAlert = "Login Success";
             $_SESSION['isLogged'] = 'TuIlI';     // TuIlI = "The user Is logged In"
             $_SESSION['LOGCHECK'] = true;       // extra login check this must be set to true for the user to be logged in.
+            $user = getUser($loginEmail, $lPass);
+            $_SESSION['user'] = $user;
             $_SESSION['email'] = $loginEmail;
-            $_SESSION['fName'] = getFirstName($loginEmail);
-            $accountType = getAccountType($loginEmail);
+            $_SESSION['fName'] = $user->getFirstName();
+            $_SESSION['lName'] = $user->getLastName();
+            $accountType = $user->getAccountType();
             $_SESSION['accType'] = $accountType;
-            if($accountType == 'INSTRUCTOR')reDir("instruct/instructorProfile.php");
-            if($accountType == 'STUDENT') reDir("student/studentProfile.php");
+            
+            if($accountType == 'INSTRUCTOR')
+                reDir("instruct/instructorProfile.php");
+            if($accountType == 'STUDENT')
+                reDir("student/studentProfile.php");
         }else {
             // If the login fails then make sure the user can't go to secured pages
             $_SESSION['isLogged'] = false;
