@@ -3,7 +3,7 @@
  ***              Function Library                  ***
  ***                                                ***
  ***    Created by:         Group 6                 ***
- ***    Updated:            21 March 2017            ***
+ ***    Updated:            21 March 2017           ***
  ***    Class:              CPT - 264-002           ***
  ***    Document:           functionlib.php         ***
  ***    CSS:                none                    ***
@@ -13,8 +13,11 @@
 require_once('account.php');
 require_once('student.php');
 require_once('instructor.php');
+require_once('random_compat-2.0.10/psalm-autoload.php');
 session_start();
 
+//  **  Variables  **
+$PHP_SELF = htmlspecialchars($_SERVER['PHP_SELF']);
 
 if(isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
@@ -46,7 +49,6 @@ function dbConnect($hostname = 'localhost',$db_user='CIT',$db_pword='CPT283',$db
     return $link;
 }
 
-$PHP_SELF = htmlspecialchars($_SERVER['PHP_SELF']);
 /**  Function:      cleanIT
  * Last Modified:   2 November 2016
  * @param     Binarydata - Will be trim(),stripslashes(), and htmlspacialchar() so that nothing bad remains in the variable.
@@ -168,11 +170,6 @@ function getUser($id , $pass){
 }
 
 
-/*function addAccount($){
-
-
-    }
-*/
 function reDir($location) {
     header("Location: $location");
 }
@@ -393,6 +390,27 @@ function getClassAverage($classID) {
         return false;
     }
 }
+/**
+ * Generate a random string, using a cryptographically secure
+ * pseudorandom number generator (random_int)
+ *
+ * For PHP 7, random_int is a PHP core function
+ * For PHP 5.x, depends on https://github.com/paragonie/random_compat
+ *
+ * @param int $length      How many characters do we want?
+ * @param string $keyspace A string of all possible characters
+ *                         to select from
+ * @return string
+ */
+function random_str($length, $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+{
+    $str = '';
+    $max = mb_strlen($keyspace, '8bit') - 1;
+    for ($i = 0; $i < $length; ++$i) {
+        $str .= $keyspace[random_int(0, $max)];
+    }
+    return $str;
+}
 
 function checkClassID($classID){
     $link = dbConnect();
@@ -413,30 +431,7 @@ function checkClassID($classID){
     }
 }
 
-function createClass($className, $instructorEmail, $startDate, $endDate, $maxEnrollment ) {
-    $className = fixSql($className);    $instructorEmail = fixSql($instructorEmail);    $startDate = fixSql($startDate);
-    $endDate = fixSql($endDate);    $maxEnrollment = fixSql($maxEnrollment);
 
-//      *** Establish a connection to the database  ***
-    $link = dbConnect();
-    do{
-        $classID = rand(1111111111, 9999999999);
-    }while(!checkClassID($classID));
-//      *** Database Query's  ***
-    $qry = "INSERT INTO CLASS VALUES ('$classID','$className','$instructorEmail','$startDate','$endDate','$maxEnrollment')";
-
-//      *** Implement Query   ***
-    if(mysqli_query($link,$qry)) {
-//      ***     Close Connection    ***
-        $link->close();
-        return true;
-    } else {
-        //      ***     Close Connection    ***
-        echo "Error: " . $qry . "<br>" . mysqli_error($link);
-        $link->close();
-        return false;
-    }
-}
 
 /** Function:       getStudentGradeByClass
  * Last Modified:   21 March 2017

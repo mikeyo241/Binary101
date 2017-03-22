@@ -1,0 +1,14 @@
+#resetPassword {
+
+    width: 500px;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+}
+#resetPasswordForm {
+    width: 60%;
+    margin: auto;
+}
+#resetPasswordForm table {
+    width: 100%;
+}

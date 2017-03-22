@@ -125,7 +125,7 @@ echo <<< HTML
               <td><span>Password:</span></td><td> <input type="password" name="loginPass" id="loginPass" required> </td>
           </tr>
           <tr>
-              <td><input type="submit" value="Log In" id="loginSubmit" name="loginSubmit" > </td>
+              <td><input type="submit" value="Log In" id="loginSubmit" name="loginSubmit" > </td> <td><a href="forgotPassword/forgotPassword.php">Forgot Password</a></td>
           </tr>
         </table>
       </form>

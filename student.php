@@ -1,11 +1,16 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: mikey
- * Date: 3/22/2017
- * Time: 1:00 AM
- */
+/******************************************************
+ ***              Student Class                     ***
+ ***                                                ***
+ ***    Created by:         Group6 - Cory Wilson    ***
+ ***    Updated:            22 March 2017           ***
+ ***    Class:              CPT - 264-002           ***
+ ***    Document:           student.php             ***
+ ***    CSS:                none                    ***
+ ***    jQuery:             none                    ***
+ ***                                                ***
+ ******************************************************/
 class Student extends Account
 {
 
