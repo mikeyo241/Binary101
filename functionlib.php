@@ -117,8 +117,22 @@ function checkUser()  {
  * Description:     This function is used to determine if the Email and password entered on the
  *                  login page match the username and password in the database.
  */
+function deleteExpiredTempPassword() {
+    $link = dbConnect();
 
+    $qry = "UPDATE ACCOUNT SET ACC_TEMP_PASS = NULL , ACC_TEMP_PASS_EXPIRES= NULL WHERE ACC_TEMP_PASS_EXPIRES < NOW()";
+
+    if(mysqli_query($link,$qry)){
+        $link->close();
+        return true;
+    }else {
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return false;
+    }
+}
 function checkLogin($id , $pass){
+    deleteExpiredTempPassword();
 //      ** Check input for database exploits **
     $id = fixSql($id);
     $pass = md5(fixSql($pass));
@@ -128,10 +142,13 @@ function checkLogin($id , $pass){
 //      *** Database Query's    ***
     $qry = "SELECT * FROM ACCOUNT WHERE ACC_EMAIL = '$id'";
 
+
     if($result = mysqli_query($link,$qry)) {                // Implement the query
         if (mysqli_num_rows($result) == 1) {                // There can only be 1 entry for email no duplicates.
             $res = mysqli_fetch_assoc($result);             // Put the result into an array
-            if($pass == $res['ACC_PASS'] && $id == $res['ACC_EMAIL']) return true;
+            if($pass == $res['ACC_PASS'] && $id == $res['ACC_EMAIL']) return 'normalLogin';
+            else if ($pass ==$res['ACC_TEMP_PASS'] && $id == $res['ACC_EMAIL'] && $res['ACC_TEMP_PASS_EXPIRES'] != NULL) return "tempPassUsed";
+            else return "Wrong Email or Password";
         }
     }else {             // Query Failed - Error Messages Not shown !!!!
         echo "Error: " . $qry . "<br>" . mysqli_error($link);

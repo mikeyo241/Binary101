@@ -19,7 +19,9 @@
 /* Michael A Gardner    -   login System    -   2 March 2017        */
 require('functionlib.php');         //  The entire function library for the project.
 //session_start();                    // Start a session with the server.
-$displayAlert = '';                 //  Variable used to tell the user what is going on if a account creation fails.
+
+if(isset($_SESSION['displayAlert']))  $displayAlert = $_SESSION['displayAlert']; //  Variable used to tell the user what is going on if a account creation fails.
+else $displayAlert = '';
 
 /* This will check if the user is already logged in and redirect them back to their profiles from the home page  */
 if(isset($_SESSION['isLogged']) && isset($_SESSION['LOGCHECK']) && isset($_SESSION['email']) && isset($_SESSION['fName']) ){
@@ -72,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         $loginEmail = cleanIt($_POST['loginEmail']);        // remove exploits from Login Email address
         $lPass = cleanIt($_POST['loginPass']);              // remove exploits from Login password
 
-        if(checkLogin($loginEmail, $lPass)) {
+        if(checkLogin($loginEmail, $lPass) == 'normalLogin') {
             $displayAlert = "Login Success";
             $_SESSION['isLogged'] = 'TuIlI';     // TuIlI = "The user Is logged In"
             $_SESSION['LOGCHECK'] = true;       // extra login check this must be set to true for the user to be logged in.
@@ -85,7 +87,14 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                 $_SESSION['user'] = new Student($loginEmail);
                 reDir("student/studentProfile.php");
             }
-        }else {
+        }else if(checkLogin($loginEmail, $lPass) == 'tempPassUsed'){
+            $_SESSION['isLogged'] = 'TuIlI';     // TuIlI = "The user Is logged In"
+            $_SESSION['LOGCHECK'] = true;       // extra login check this must be set to true for the user to be logged in.
+            $account = new Account($loginEmail);
+            $_SESSION['account'] = $account;
+            reDir("forgotPassword/CNP56r.php");
+
+        } else {
             // If the login fails then make sure the user can't go to secured pages
             $_SESSION['isLogged'] = false;
             $_SESSION['LOGCHECK'] = false;

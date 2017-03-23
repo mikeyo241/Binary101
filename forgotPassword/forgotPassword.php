@@ -8,7 +8,7 @@
  ***                                                ***
  ******************************************************/
 require_once('../functionlib.php');
-require_once ('../PHPMailer/PHPMailer-master/PHPMailerAutoload.php');
+require '../vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
 $userNotify = 'Enter the email address associated with the account';
 // Google USER
 
@@ -16,32 +16,40 @@ $userNotify = 'Enter the email address associated with the account';
 if ($_SERVER['REQUEST_METHOD']=='POST') {
     if (isset($_POST['resetSubmit'])) {
         if (!checkEMail($_POST['emailForReset'])) {
-            $user = new account($_POST['emailForReset']);
+
+            // **  Variables  **
+            $email = $_POST['emailForReset'];
+            $user = new account($email);
+            $resetLink = $user->createTemporaryPassword();
             $fName = $user->getFirstName();
             $lName = $user->getLastName();
-            $email = $_POST['emailForReset'];
-            $mail = new PHPMailer;
-            $mail->SMTPDebug = 3;
-            $mail->isSMTP();
+
+            // **  Send Email  **
+            $mail = new PHPMailer(); // create a new object
+            $mail->IsSMTP(); // enable SMTP
+            $mail->SMTPDebug = 2; // debugging: 1 = errors and messages, 2 = messages only
+            $mail->SMTPAuth = true; // authentication enabled
+            $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
             $mail->Host = "smtp.gmail.com";
-            $mail->SMTPAuth = true;
+            $mail->Port = 465; // or 587
+            $mail->IsHTML(true);
             $mail->Username = "binary101resetpass@gmail.com";
             $mail->Password = "l9wdMxj25oextTM";
-            $mail->SMTPSecure = "tls";
-            $mail->Port = 587;
-            $mail->From = "binary101resetpass@gmail.com";
-            $mail->FromName = "Binary 101";
-            $mail->addAddress("$email", "$fName $lName");
-            $mail->isHTML(true);
-            $resetLink = $user->createResetLink();
-            $mail->Subject = "Password Reset Link";
-            $mail->Body = "<a href='$resetLink'>Reset Your Password!!</a>'";
+            $mail->SetFrom("binary101resetpass@gmail.com", "Binary 101");
+            $mail->Subject = "Binary 101 Reset Info";
+            $mail->Body = "Hello ". $fName . " " . $lName . " Here is your temporary password: " . $resetLink ;
 
-            if (!$mail->send()) {
+            $mail->AddAddress("$email", $fName);
+
+
+            if(!$mail->Send()) {
                 echo "Mailer Error: " . $mail->ErrorInfo;
-            } else {   //   Message has been sent successfully
-                $userNotify = "Check your Email for a link: $email";
+            } else {
+                echo "Message has been sent";
+                $_SESSION['displayAlert'] = "Check Your Email for your Temporary Password.";
+                reDir('../main.php');
             }
+
         }
 
     }
