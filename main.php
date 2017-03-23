@@ -123,12 +123,12 @@ echo <<< HTML
 
 <body>
    <header>           
-      <img id="logo" src="img/logo.PNG" alt="Website Logo" align="top-left">
+      <a href="main.php"><img id="logo" src="img/logo.PNG" alt="Website Logo" align="top-left"></a>
             
       <form id="loginForm" action="$PHP_SELF" method="post">
         <table>
           <tr>
-              <td><span>E-Mail:</span> </td><td><input type="text" name="loginEmail" id="loginEmail" required>  </td>
+              <td><span>E-Mail:</span> </td><td><input type="email" name="loginEmail" id="loginEmail" required>  </td>
           </tr>
           <tr>
               <td><span>Password:</span></td><td> <input type="password" name="loginPass" id="loginPass" required> </td>

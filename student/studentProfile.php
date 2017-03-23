@@ -34,10 +34,11 @@
          reDir('../main.php');
       }
       // If ClassID search returns a result
-      if (!empty($_POST['classIDInput']) && getClassByID($_POST['classIDInput']) != false) {
+      if (!empty($_POST['classIDInput']) && searchClasses($_POST['classIDInput']) != null) {
          $classID = $_POST['classIDInput'];
-         $searchResult = getClassByID($classID);
-         $searchResult = $searchResult->fetch_assoc();
+         $searchResult = searchClasses($classID);
+         var_dump($searchResult);
+         //$searchResult = $searchResult->fetch_assoc();
          $classID = $searchResult['CLS_ID'];
          $className = $searchResult['CLS_NAME'];
          $instructFName = $searchResult['INSTRUCT_FNAME'];
@@ -51,7 +52,7 @@
          $isEmpty = "block";
       }
       if (isset($_POST['enrollSubmit'])) {
-         enrollStudent($email, $_SESSION['classID']);
+         enrollStudent($user->getEmail(), $_SESSION['classID']);
          $_POST['enrollSubmit'] = null;
       }
    }
@@ -90,12 +91,14 @@
          <td>Class ID</td><td>Class Name</td><td>Instructor Name</td><td>Grade</td>
       </thead>
 HTML;
-      if ($user->getEnrollments() != false) {
+      if ($user->getEnrollments() != null) {
          $classes = $user->getEnrollments();
          for ($i = 0; $i < count($classes); $i++) {
             echo "<tr>";
             foreach ($classes[$i] as $key => $keyValue) {
-               echo "<td>$keyValue</td>";
+                if ($keyValue == -1)    // If no grade, insert hyphen character
+                    $keyValue = " - ";
+                echo "<td>$keyValue</td>";
             }
             echo "</tr>";
          }

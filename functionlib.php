@@ -50,6 +50,37 @@ function dbConnect($hostname = 'localhost',$db_user='CIT',$db_pword='CPT283',$db
 }
 
 /**  Function:      cleanIT
+ * Last Modified:   23 March 2017
+ * @param           string $qry - Query to send to mySQL
+ * @return          bool/array - True if command was successful, array of results or null if command returns data
+ * Description:		This function simplifies queries to the database.
+ */
+function sqlQuery($qry) {
+    $link = dbConnect();
+    $result = mysqli_query($link,$qry);
+    if($result || mysqli_num_rows($result) >= 1) {       // Implement query
+        if (gettype($result) == "boolean") {        // Query returns true/false; not values
+            $link->close();
+            return true;
+        }
+        else if ( mysqli_num_rows($result) >= 1) {  // Query returns data
+            $result = $result->fetch_assoc();
+            $link->close();
+            return $result;
+        }
+        else {
+            $link->close();
+            return null;
+        }
+    } else {     // Query Failed - Error Messages Not shown !!!!
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return null;
+    }
+}
+
+
+/**  Function:      cleanIT
  * Last Modified:   2 November 2016
  * @param     Binarydata - Will be trim(),stripslashes(), and htmlspacialchar() so that nothing bad remains in the variable.
  * @return          string - That has been cleaned as described.
@@ -454,7 +485,7 @@ function checkClassID($classID){
  * Last Modified:   21 March 2017
  * @param           $studentEmail - Email address of student
  * @param           $classID - ID of class
- * @return          Numeric class average of student
+ * @return          int class average of student
  * Description:     This function returns the grade average given a student and class.
  */
 function getStudentGradeByClass($studentEmail, $classID) {
@@ -468,7 +499,7 @@ function getStudentGradeByClass($studentEmail, $classID) {
     if($result = mysqli_query($link,$qry)) {       // Implement query
         $classTotal = mysqli_num_rows($result);
         if(mysqli_num_rows($result) == 0) {
-            return "-";
+            return -1;
         }else {
             while ($row = $result->fetch_assoc()) {
                 $gradeSum = $gradeSum + $row['COM_SCORE'];
@@ -476,13 +507,13 @@ function getStudentGradeByClass($studentEmail, $classID) {
         }
         $link->close();
         if ($gradeSum == 0)
-            return "-";
+            return -1;
         return number_format(( $gradeSum / $classTotal ), 1);
     }
     else {     // Query Failed - Error Messages Not shown !!!!
         echo "Error: " . $qry . "<br>" . mysqli_error($link);
         $link->close();
-        return false;
+        return null;
     }
 }
 
@@ -507,9 +538,28 @@ function getClassByID($classID) {
     }else {     // Query Failed - Error Messages Not shown !!!!
         echo "Error: " . $qry . "<br>" . mysqli_error($link);
         $link->close();
-        return false;
+        return null;
     }
+}
 
+/** Function:       searchClasses
+ * Last Modified:   21 March 2017
+ * @param           $classID - ID of class
+ * @return          array containing class details
+ * Description:     This function searches classes by ID and instructor name.
+ */
+function searchClasses($searchInput) {
+    // Database Queries to check
+    $queries = ["SELECT CLS_ID, CLS_NAME, CLS_MAXENROLLMENT, INSTRUCT_FNAME, INSTRUCT_LNAME FROM VIEW_CLASSES WHERE CLS_ID LIKE '$searchInput'",
+        "SELECT CLS_ID, CLS_NAME, CLS_MAXENROLLMENT, INSTRUCT_FNAME, INSTRUCT_LNAME FROM VIEW_CLASSES WHERE CONCAT_WS('', INSTRUCT_FNAME, ' ', INSTRUCT_LNAME) LIKE '$searchInput'",
+        "SELECT CLS_ID, CLS_NAME, CLS_MAXENROLLMENT, INSTRUCT_FNAME, INSTRUCT_LNAME FROM VIEW_CLASSES WHERE INSTRUCT_FNAME LIKE '$searchInput'",
+        "SELECT CLS_ID, CLS_NAME, CLS_MAXENROLLMENT, INSTRUCT_FNAME, INSTRUCT_LNAME FROM VIEW_CLASSES WHERE INSTRUCT_LNAME LIKE '$searchInput'"];
+
+    for ($i = 0; $i < sizeof($queries); $i++) {
+        $result = sqlQuery($queries[$i]);
+        if ($result != null)
+            return $result;
+    }
 }
 
 /** Function:       enrollStudent
@@ -525,30 +575,12 @@ function enrollStudent($studentEmail, $classID) {
 
     // Database Query
     $qry = "SELECT * FROM ENROLLMENT WHERE ACC_EMAIL='$studentEmail' AND CLS_ID='$classID'";
-
-    if($result = mysqli_query($link,$qry)) {       // Implement query
-        if (mysqli_num_rows($result) >= 1) {       // If student is enrolled, don't re-enroll
-            $link->close();
-            return false;
-        }
-        else {  // Student is not enrolled; enroll him/her
-            $qry = "INSERT INTO ENROLLMENT (ACC_EMAIL, CLS_ID) VALUES ('$studentEmail', '$classID')";
-            if ($result = mysqli_query($link,$qry)) {
-                $link->close();
-                return true;
-            }
-            else {     // Query Failed - Error Messages Not shown !!!!
-                echo "Error: " . $qry . "<br>" . mysqli_error($link);
-                $link->close();
-                return false;
-            }
-        }
-    }
-    else {     // Query Failed - Error Messages Not shown !!!!
-        echo "Error: " . $qry . "<br>" . mysqli_error($link);
-        $link->close();
+    $result = sqlQuery($qry);
+    if ($result != null)
         return false;
-    }
+    $qry = "INSERT INTO ENROLLMENT (ACC_EMAIL, CLS_ID) VALUES ('$studentEmail', '$classID')";
+    sqlQuery($qry);
+    return (true);
 }
 
 /** Function:       getStudentEnrollments

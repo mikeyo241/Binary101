@@ -20,7 +20,10 @@ lName.addEventListener('focus', hideTooltips());
 email.addEventListener('focus', hideTooltips);
 
 // Hide tooltips when typing email
-email.addEventListener('keyup', function() {
+email.addEventListener('keyup', function(event) {
+    if (event.key == "Enter")
+        validateCreateAcc();
+    console.log(event.key);
     hideTooltips();
     if (validateEmail(email))
         hideTooltips();
@@ -36,6 +39,8 @@ email.addEventListener('blur', function() {
 
 // Validate password while typing and after
 pass.addEventListener('keyup', function() {
+    if (event.key == "Enter")
+        validateCreateAcc();
     if (validatePassword(pass))
         hideTooltips();
 });
@@ -48,7 +53,9 @@ pass.addEventListener('blur', function() {
 
 // Validate confirmed password while typing and after
 cfPass.addEventListener('keyup', function() {
-    if (validatePassword(cfPass) && checkInputs(pass, cfPass))
+    if (event.key == "Enter")
+        validateCreateAcc();
+    if (checkInputs(pass, cfPass))
         hideTooltips();
 });
 cfPass.addEventListener('blur', function() {
@@ -141,7 +148,5 @@ function hideTooltips() {
     for (var i = 0; i < tooltips.length; i++)
         tooltips[i].style.visibility = "hidden";
 }
-
-
 
 
