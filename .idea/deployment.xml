@@ -5,7 +5,7 @@
       <paths name="CIT">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/public_html/Binary101" local="$PROJECT_DIR$" web="/~rwilso16/Binary101" />
           </mappings>
         </serverdata>
       </paths>

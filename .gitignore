@@ -83,3 +83,5 @@ $RECYCLE.BIN/
 .idea/Bin101.iml
 /.gitignore
 !/.gitignore
+*.iml
+.idea/Bin101.iml
