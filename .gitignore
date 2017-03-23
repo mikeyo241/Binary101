@@ -19,8 +19,9 @@
 .idea/**/dataSources.local.xml
 .idea/**/sqlDataSources.xml
 .idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
+.idea/**/uiDesigner.xmls
 .idea/Bin101.iml
+.idea/*
 
 # Gradle:
 .idea/**/gradle.xml
@@ -80,3 +81,5 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/windows,phpstorm,notepadpp
 .idea/Bin101.iml
+/.gitignore
+!/.gitignore
