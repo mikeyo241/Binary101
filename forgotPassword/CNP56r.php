@@ -21,15 +21,15 @@ $email = $account->getEmail();
 
 if ($_SERVER['REQUEST_METHOD']=='POST') {
     if (isset($_POST['resetSubmit'])) {
-        if ($_POST['loginPass'] == $_POST['cFPass']) {
-            if ($account->changePassword($_POST['loginPass'])) {
+        if ($_POST['pass'] == $_POST['cFPass']) {
+            if ($account->changePassword($_POST['pass'])) {
 
-                if ($user->getAccountType() == 'INSTRUCTOR') {
+                if ($account->getAccountType() == 'INSTRUCTOR') {
                     $_SESSION['user'] = new Instructor($email);
-                    reDir("instruct/instructorProfile.php");
-                } else if ($user->getAccountType() == 'STUDENT') {
+                    reDir("../instruct/instructorProfile.php");
+                } else if ($account->getAccountType() == 'STUDENT') {
                     $_SESSION['user'] = new Student($email);
-                    reDir("student/studentProfile.php");
+                    reDir("../student/studentProfile.php");
                 } else echo "Wrong Account TYPE!!! ERROR!!!";
             }
         } $userNotify = "Passwords must match!";
