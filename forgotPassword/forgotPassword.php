@@ -8,6 +8,7 @@
  ***                                                ***
  ******************************************************/
 require '../vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
+require('../vendor/paragonie/random_compat/psalm-autoload.php');
 require_once('../lib/functionlib.php');
 $userNotify = 'Enter the email address associated with the account';
 // Google USER
