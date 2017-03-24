@@ -17,7 +17,7 @@ require('chapterQuestions.php');
         <script src="scripts/course.js" type="text/javascript"></script>
 
         <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="../assets/css/style.css"/>
         <link rel="stylesheet" type="text/css" href="css/course.css"/>
     </head>
 
@@ -33,7 +33,7 @@ require('chapterQuestions.php');
                 <br> 0000 = 0 <br> 0001 = 1 <br> 0010 = 2 <br> 0011 = 3 <br> 0100 = 4 <br> 0101 = 5 <br> 0110 = 6 <br>
             </p>
             <h2>How is this accomplished?</h2>
-            <img src="../img/binToDecimalConversion.PNG">
+            <img src="../assets/img/binToDecimalConversion.PNG">
             <p>The binary number 0111 is converted to decimal or base 10 by taking the values of each bit and adding
                 them together to get the decimal number the nibble represents. <br> This can be explained further by the video below
                 from techquickie.

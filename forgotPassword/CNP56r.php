@@ -7,8 +7,8 @@
  ***    Class:              CPT - 264-002           ***
  ***                                                ***
 ******************************************************/
-
-require('../functionlib.php');         //  The entire function library for the project.
+require('../vendor/paragonie/random_compat/psalm-autoload.php');
+require('../lib/functionlib.php');         //  The entire function library for the project.
 checkIfLoggedIn();
 
 $userNotify = 'Create a new password for your account';
@@ -46,8 +46,8 @@ echo <<< HTML
     <meta name="owner" content="Michael Gardner, Nathaniel Merck, Christian Cook, Cory Wilson" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="forgot.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="forgotPassAssets/styles/forgot.css"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css"/>
     <style>
         
    
@@ -59,7 +59,7 @@ echo <<< HTML
 
 <body>
    <header>           
-      <img id="logo" src="../img/logo.PNG" alt="Website Logo" align="top-left">
+      <img id="logo" src="../assets/img/logo.PNG" alt="Website Logo" align="top-left">
    </header>
    
    

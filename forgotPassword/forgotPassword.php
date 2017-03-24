@@ -7,8 +7,8 @@
  ***    Class:              CPT - 264-002           ***
  ***                                                ***
  ******************************************************/
-require_once('../functionlib.php');
 require '../vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
+require_once('../lib/functionlib.php');
 $userNotify = 'Enter the email address associated with the account';
 // Google USER
 
@@ -63,8 +63,8 @@ echo <<< HTML
     <meta name="owner" content="Michael Gardner, Nathaniel Merck, Christian Cook, Cory Wilson" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="forgot.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="forgotPassAssets/styles/forgot.css"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css"/>
     <style>
         
    
@@ -74,7 +74,7 @@ echo <<< HTML
 
 <body>
    <header>           
-      <img id="logo" src="../img/logo.PNG" alt="Website Logo" align="top-left">
+      <img id="logo" src="../assets/img/logo.PNG" alt="Website Logo" align="top-left">
    </header>
    
    <div id="line">

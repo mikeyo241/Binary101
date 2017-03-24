@@ -17,7 +17,8 @@
  */
 
 /* Michael A Gardner    -   login System    -   2 March 2017        */
-require('functionlib.php');         //  The entire function library for the project.
+require('vendor/paragonie/random_compat/psalm-autoload.php');
+require('lib/functionlib.php');         //  The entire function library for the project.
 //session_start();                    // Start a session with the server.
 
 if(isset($_SESSION['displayAlert']))  $displayAlert = $_SESSION['displayAlert']; //  Variable used to tell the user what is going on if a account creation fails.
@@ -115,7 +116,7 @@ echo <<< HTML
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <!-- All Links, Meta data, scripts, and css goes inside the <head> tags.  -->
 <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
         
 
 
@@ -123,7 +124,7 @@ echo <<< HTML
 
 <body>
    <header>           
-      <a href="main.php"><img id="logo" src="img/logo.PNG" alt="Website Logo" align="top-left"></a>
+      <a href="main.php"><img id="logo" src="assets/img/logo.PNG" alt="Website Logo" align="top-left"></a>
             
       <form id="loginForm" action="$PHP_SELF" method="post">
         <table>
@@ -216,7 +217,7 @@ echo <<< HTML
 </body>
 
 <!-- JavaScript -->
-    <script src="script/main.js" type="text/javascript"></script>
+    <script src="assets/script/main.js" type="text/javascript"></script>
 </html>
 
 HTML;

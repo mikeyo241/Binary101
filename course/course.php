@@ -1,5 +1,5 @@
 <?php
-require('../functionLib.php');
+require('../functionlib.php');
 
 /******************************************************
  ***               Private Profile                  ***

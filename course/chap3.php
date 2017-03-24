@@ -17,7 +17,7 @@
         <script src="scripts/course.js" type="text/javascript"></script>
 
         <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="../assets/css/style.css"/>
         <link rel="stylesheet" type="text/css" href="css/course.css"/>
     </head>
 
@@ -32,7 +32,7 @@
                 easiest ways of conversion is to using the powers of 2 discussed in the previous chapter.
                 First we are going to convert 9<sub>10</sub> to binary.
             </p>
-            <img src="../img/decimalToBinary1.PNG" >
+            <img src="../assets/img/decimalToBinary1.PNG" >
             <h2>Check out this video from Khan Academy on how to convert Decimal numbers to Binary</h2>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/H4BstqvgBow?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
             <h2>Input any number here to see the binary number it produces</h2>
@@ -50,7 +50,7 @@
 
 
             <p>Little number conversion game here!</p><br>
-            <img src="../img/decimalToBinary2.PNG">
+            <img src="../assets/img/decimalToBinary2.PNG">
             <h2>Check out Khan Academy's explanation on how to convert bigger numbers to Binary</h2>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/bvcXEJbEzSs?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
             <h2>Think you understand? Try it yourself!!!</h2>

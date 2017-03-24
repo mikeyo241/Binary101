@@ -1,5 +1,6 @@
 <?php
- require ('../functionlib.php');
+require '../vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
+ require('../lib/functionlib.php');
 
 /******************************************************
  ***               Instructor Gradebook                  ***

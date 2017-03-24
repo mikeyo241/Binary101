@@ -1,0 +1,395 @@
+
+/*
+ * Programmer:       Nathaniel Merck
+ * Title:            style sheet page for Group Website Project
+ * Date:             3/4/2017
+ */
+
+/*	for the head	*/
+
+header {
+    background: rgb(0, 0, 0);
+    height: 139px;
+    width: 100%;
+    position: relative;
+    left: 0px;
+    top: 0px;
+}
+
+body {
+    margin: auto;
+}
+
+section {
+    position: relative;
+    /* height: 520px; */
+}
+
+h1 {
+    color: black;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 50px;
+    padding: 30px;
+}
+
+h2 {
+    font-size: 30px;
+    color: black;
+}
+
+h3 {
+    color: black;
+    font-family: Andale Mono, monospace;
+}
+
+h4 {
+    color: black;
+    font-family: Andale Mono, monospace;
+}
+/* nav bar */
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+input {
+    height: 25px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+nav ul li a:hover {
+    box-shadow: -5px 5px 5px rgb(237, 28, 36);
+    background: rgb(23, 23, 23);
+    font-size: 30px;
+}
+
+nav ul li {
+    height: 50px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+#userNameL, #passWordL {
+    width: 170px;
+}
+
+#password {
+    position: absolute;
+    top: 22px;
+    left: 1110px;
+}
+
+#loginSubmit {
+    border-radius: 10%;
+    background-color: rgb(237, 28, 36);
+    color: white;
+    border: rgb(237, 28, 36);
+    width: 100px;
+    height: 30px;
+    position: relative;
+    left: 65px;
+    top: 95px;
+}
+
+#create {
+    border-radius: 10%;
+    background-color: rgb(237, 28, 36);
+    color: white;
+    border: rgb(237, 28, 36);
+    height: 30px;
+    margin: auto;
+    width: 150px;
+    position: relative;
+    left: 24%;
+    top: 30px;
+}
+
+#createacc {
+    color: black;
+    font-family: Andale Mono, monospace;
+    display: inherit;
+    margin: auto;
+    width: 400px;
+}
+
+#footnote {
+    top: 980px;
+    left: 300px;
+    position: absolute;
+    display: inline;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+ul {
+    font-family: monospace;
+    list-style-type: none;
+}
+
+ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+#icon {
+    width: 35px;
+    position: absolute;
+    top: 45px;
+    right: 65px;
+}
+
+#logo {
+    width: 250px;
+    height: 100px;
+    position: absolute;
+    left: 12px;
+    top: 18px;
+}
+
+#wel {
+    font-size: 20px;
+    font-style: italic;
+    position: absolute;
+    top: 30px;
+    right: 226px;
+}
+
+#titlediv {
+    color: black;
+    /* border-bottom: 3px solid rgb(237, 28, 36);
+    border-top: 3px solid rgb(237, 28, 36);  */
+    position: relative;
+    top: 15px;
+    margin: auto;
+    width: 95%;
+    height: 44px;
+   /*  border: 3px solid rgb(227, 0, 237); */
+}
+
+#title {
+    margin: auto;
+    position: relative;
+    width: 95%;
+    height: 50px;
+    top: 5px;
+    text-align: center;
+    line-height: 2;
+    color: black;
+    font-size: 22px;
+    font-family: sans-serif;
+    border-bottom: 2px solid rgb(237, 28, 36);
+    border-top: 2px solid rgb(237, 28, 36);
+}
+
+#contentSection {
+    position: relative;
+    top: 131px;
+    left: 240px;
+    width: 75%;
+    height: 100%;
+    /* border: 3px solid rgb(227, 0, 237); */
+}
+
+#content {
+    width: 95%;
+    height: 86%;
+    position: relative;
+    margin: auto;
+    top: 10px;
+    color: black;
+}
+
+/*	for the body	*/
+
+body {
+    /* color: rgb(237, 28, 36); */
+    color: white;
+    background: white;
+    height: 100%; /* height: 1000px; */
+    /* border: solid;   */
+    /* border-color: red;  */
+    width: 100%; /* width: 1340px; */
+
+    /* hides bottom scroll bar */
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+footer, head, body {
+    width: 100%;
+}
+
+
+#createAccForm {
+    width: 100%;
+    top: 170px;
+    /* margin: auto; */
+    position: absolute;
+}
+/*  Login Table Styles */
+form table tr td {
+    color: white;
+    font-size: 25px;
+}
+#loginForm {
+    right: 4%;
+    font-family: monospace;
+    position: fixed;
+    width: 290px;
+}
+#loginForm table tr td {
+    color: white;
+    font-size: 20px;
+}
+
+#emailInput {
+    position: relative;
+    left: 33px;
+}
+
+#selectItBABY {
+    color: rgb(237, 28, 36);
+    width: 355px;
+    font-weight: bold;
+    font-size: 20px;
+    background: white;
+    border: 2px solid;
+}
+
+#linkBar {
+    position: relative;
+    width: 20%;
+    height: 100%;
+    float: left;
+    background: black;
+    /* border: 3px solid rgb(227, 0, 237); */
+}
+
+#rightSideDiv {
+    position: relative;
+    width: 79%;
+    float: right;
+    height: 100%;
+}
+
+#currentPage {
+    color: rgb(237, 28, 36);
+}
+
+#wel {
+    color: white;
+}
+
+/** Select required fields **/
+input:required {
+    font-weight: bold;
+}
+
+
+/* temporary for fixing */ /*
+body, header, nav, section, footer, p, div {
+     border: 1px solid rgb(227, 0, 237);
+}
+*/
+
+.inputValid {
+    background-color: LightGreen;
+}
+
+.inputInvalid {
+    background-color: LightCoral;
+}
+
+.inputEmpty {
+    background-color: white;
+}
+
+
+
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    font-size: .5em;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+#loginEmail, #loginPass {
+    width: 200px;
+    position: relative;
+}
+
+#forgotPass {
+    text-decoration: none;
+    color: rgb(237, 36, 20);
+    position: relative;
+    top: 95px;
+    right: -3px;
+    font-size: 17px;
+}
+
+#line {
+    width: 100%;
+    height: 2px;
+    background: rgb(237, 36, 20);
+    position: relative;
+}
+
+#resetSubmit {
+    border-radius: 10%;
+    background-color: rgb(237, 28, 36);
+    color: white;
+    border: rgb(237, 28, 36);
+    width: 100px;
+    height: 30px;
+    position: relative;
+    margin: auto;
+    left: 90px;
+}
+
+#footer {
+    color: black;
+    position: relative;
+}

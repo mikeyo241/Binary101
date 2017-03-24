@@ -17,7 +17,7 @@ require('chapterQuestions.php');
         <script src="scripts/course.js" type="text/javascript"></script>
 
         <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="../assets/css/style.css"/>
         <link rel="stylesheet" type="text/css" href="css/course.css"/>
     </head>
 
@@ -31,7 +31,7 @@ require('chapterQuestions.php');
             <p>Before we get into powers of 2 (or the base 2 number system)
                 we must first understand the number system we use: base 10. Take the number 125 for example:
             </p>
-            <img src="../img/powersOf2.PNG">
+            <img src="../assets/img/powersOf2.PNG">
             <p>As you can see, the numbers we use in our day-to-day lives are constructed using powers of 10.
                 Numbers in the 1's column are multiplied by 100 (1). Numbers in the 10's column are multiplied by 101 (10).
                 Numbers in the 100's column are multiplied by 102 (100). This process is repeated to create larger numbers,
@@ -40,14 +40,14 @@ require('chapterQuestions.php');
                 Binary (a base 2 number system) works in a similar fashion, but rather than multiply each number by powers of 10,
                 you multiply by powers of two. Let's look at the number 13 represented in binary:
             </p>
-            <img src="../img/powersOf2_2.PNG">
+            <img src="../assets/img/powersOf2_2.PNG">
             <p>Since we're only working with powers of 2, we only need two numbers to represent each column:
                 a 0 or a 1. This on-off relationship (a binary relationship if you will) is the fundamental principle
                 of computer technology. Columns are multiplied by 20, 21, 22, 23, and so on. These "powers of 2" values
                 show up everywhere in computer technology, which is why it's paramount to understand them. Here's a graphical
                 representation of each column's possible value in a full byte (8 bits, or 8 columns):
             </p>
-            <img src="../img/powersOf2_3.PNG">
+            <img src="../assets/img/powersOf2_3.PNG">
             <h2>GAME - Quiz HERE!!! </h2>
 
         </div>

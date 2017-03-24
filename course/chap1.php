@@ -17,7 +17,7 @@ require('chapterQuestions.php');
         <script src="scripts/course.js" type="text/javascript"></script>
 
         <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="../assets/css/style.css"/>
         <link rel="stylesheet" type="text/css" href="css/course.css"/>
     </head>
 
@@ -38,7 +38,7 @@ require('chapterQuestions.php');
             </p>
             <p><b>Moore's Law</b> -  is the observation that the number of transistors in a dense integrated circuit doubles approximately every two years.</p>
             <p><b>Binary</b> -  a system of numerical notation to the base 2, in which each place of a number, expressed as 0 or 1, corresponds to a power of 2.</p>
-            <img src="../img/mooresLaw.png" >
+            <img src="../assets/img/mooresLaw.png" >
             <p>In 1679 a German polymath and philosopher  named Gottfried Wilhelm Leibniz documented the binary system.
                 Binary is used in computers because it is the most practical way for a computer to process data.</p>
 

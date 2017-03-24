@@ -13,7 +13,7 @@
 require_once('account.php');
 require_once('student.php');
 require_once('instructor.php');
-require_once('random_compat-2.0.10/psalm-autoload.php');
+
 session_start();
 
 //  **  Variables  **
@@ -401,7 +401,6 @@ function getClassData($instructorEmail){
 function getStudentEnrollment($classID) {
     //      *** Establish a connection to the database  ***
     $link = dbConnect();
-
 //      *** Database Query **
     $qry = "SELECT * FROM ENROLLMENT WHERE CLS_ID = '$classID'";
 
@@ -607,7 +606,7 @@ function chap1() {
 </p>
 <p><b>Moore's Law</b> -  is the observation that the number of transistors in a dense integrated circuit doubles approximately every two years.</p>
 <p><b>Binary</b> -  a system of numerical notation to the base 2, in which each place of a number, expressed as 0 or 1, corresponds to a power of 2.</p>
-<img src="../img/mooresLaw.png" >
+<img src="../assets/img/mooresLaw.png" >
 <p>In 1679 a German polymath and philosopher  named Gottfried Wilhelm Leibniz documented the binary system.
   Binary is used in computers because it is the most practical way for a computer to process data.</p>
 
@@ -635,7 +634,7 @@ function chap4(){
      <br> 0000 = 0 <br> 0001 = 1 <br> 0010 = 2 <br> 0011 = 3 <br> 0100 = 4 <br> 0101 = 5 <br> 0110 = 6 <br>
     </p>
     <h2>How is this accomplished?</h2>
-    <img src="../img/binToDecimalConversion.PNG">
+    <img src="../assets/img/binToDecimalConversion.PNG">
     <p>The binary number 0111 is converted to decimal or base 10 by taking the values of each bit and adding
      them together to get the decimal number the nibble represents. <br> This can be explained further by the video below
      from techquickie. 

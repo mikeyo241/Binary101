@@ -1,5 +1,6 @@
 <?php
-   require ('../functionlib.php');
+    require('../vendor/paragonie/random_compat/psalm-autoload.php');
+   require('../lib/functionlib.php');
    /******************************************************
    ***               Private Profile                  ***
    ***                                                ***
