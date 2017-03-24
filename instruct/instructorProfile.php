@@ -36,8 +36,17 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
     }
     if(isset($_POST['createAClassSubmit'])){
         if(checkClass($email, $_POST['className'])){
-            if($user->createClass($_POST['className'], $_POST['sDate'], $_POST['eDate'], $_POST['maxEnrollment'])){
+            $classCreation = $user->createClass($_POST['className'], $email, $_POST['sDate'], $_POST['eDate'], $_POST['maxEnrollment']);
+            if($classCreation != false){
                 $classCreated = 'Class Created Successfully';
+                $courses = getCourses();
+                while ($row = $courses->fetch_assoc()) {
+                    $CRS_ID = $row["CRS_ID"];
+                    $checkbox = "check_" . $CRS_ID;
+                    if (isset($_POST["$checkbox"])) {
+                        $result = $user->addCourseToClass($classCreation, $CRS_ID);
+                    }
+                }
             }else $classCreated = 'Class was not created successfully';
         }else $classCreated = 'Duplicate Class Name';
 
@@ -47,6 +56,12 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             $_SESSION['classID'] = $_POST['class'];
             reDir('gradeBook.php');
         }
+    }
+    if (isset($_POST['courseSubmit'])) {
+        $courses = getCourses();
+
+
+
     }
 }
 
@@ -127,17 +142,41 @@ echo <<< HTML
                 <td><input type="date" name="eDate" id="eDate" required</td>
                 <td><input type="number" name="maxEnrollment" id="maxEnrollment" required </td>
                 <td><input type="submit" name="createAClassSubmit" id="createAClassSubmit" value="Create Class"</td>
-            </form></tr>
+           </tr>
             <tr><td colspan="5" style="color: red">$classCreated</td></tr>
+        </table>
+        <h3>Select Required Chapters</h3>
+        <table border="5">
+            <thead>
+                <td>Course Name</td><td>Action</td>
+            </thead>
+HTML;
+            $courses = getCourses();
+            while ($row = $courses->fetch_assoc()) {
+                echo "<tr>";
+                $CRS_NAME = $row["CRS_NAME"];
+                $CRS_ID = $row["CRS_ID"];
+                echo "<td>$CRS_NAME</td>";
+                echo <<< HTML
+                <td>
+                <input type="checkbox" name="check_$CRS_ID" />
+                <input type="hidden" name="CRS_ID" value="$CRS_ID"  />
+                </td></tr>
+HTML;
+            }
+echo <<< HTML
+
+</form>
         </table>
     </div>
     <form id="signOutForm" action="$PHP_SELF" method="post">
-  <input type="submit" value="Log Out" id="logOutSubmit" name="logOutSubmit">
-</form>
+        <input type="submit" value="Log Out" id="logOutSubmit" name="logOutSubmit">
+    </form>
+
 </body>
 <!-- JavaScript -->
     <script src="script/instruct.js" type="text/javascript"></script>
 </html>
 
-
 HTML;
+?>

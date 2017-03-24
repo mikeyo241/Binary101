@@ -34,13 +34,19 @@ class Instructor extends Account
         if(mysqli_query($link,$qry)) {
 //      ***     Close Connection    ***
             $link->close();
-            return true;
+            return $classID;
         } else {
             //      ***     Close Connection    ***
             echo "Error: " . $qry . "<br>" . mysqli_error($link);
             $link->close();
             return false;
         }
+    }
+
+    public function addCourseToClass($CLS_ID, $CRS_ID) {
+        $qry = "INSERT INTO REQUIREMENT (CLS_ID, CRS_ID, REQ_REQUIRED) VALUES ('$CLS_ID', '$CRS_ID', 1)";
+        $result = sqlQuery($qry);
+        return $result;
     }
 
 }

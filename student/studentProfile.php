@@ -65,8 +65,8 @@
      </form>
      <h2>Enroll in a Class</h2>
      <form id="classID" action="$PHP_SELF" method="post">
-       <input type="text" placeholder="Class ID" id="classIDInput" name="classIDInput"></input>
-       <input type="submit" id="classIDSubmit" name="classIDSubmit"></input>
+       <input type="text" placeholder="Class ID or Instructor" id="classIDInput" name="classIDInput" />
+       <input type="submit" id="classIDSubmit" name="classIDSubmit" />
      </form>
      <p style="display: $isEmpty">No results.</p>
      <table border="4" style="display: $notEmpty">

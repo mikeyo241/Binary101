@@ -586,12 +586,11 @@ function enrollStudent($studentEmail, $classID) {
     return (true);
 }
 
-/** Function:
- * Last Modified:
- * @param       $ -
- * @return
- * Description:
- */
+function getCourses() {
+    $qry = "SELECT * FROM COURSE";
+    $result = sqlQuery($qry);
+    return $result;
+}
 
 function chap1() {
     echo <<< HTML
