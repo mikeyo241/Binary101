@@ -1,6 +1,5 @@
 <?php
-session_start();
-require ('../functionlib.php');
+ require ('../functionlib.php');
 
 /******************************************************
  ***               Instructor Gradebook                  ***
@@ -19,13 +18,14 @@ if ($_SESSION['isLogged'] != 'TuIlI' || !$_SESSION['LOGCHECK']) {  // Make sure 
 }
 /*  Variables  */
 $user = $_SESSION['user'];
-$fName = $_SESSION['fName'];
-$lName = $_SESSION['lName'];
-$email = $_SESSION['email'];
+$fName = $user->getFirstName();
+$lName = $user->getLastName();
+$email = $user->getEmail();
 $classCreated = '';
 $classesStyle = 'display: block;';
 $classID = $_SESSION['classID'];
-$classData = getClassDataById($classID) -> fetch_assoc();
+$classData = searchClasses($classID);
+$classData = $classData->fetch_assoc();
 $className = $classData['CLS_NAME'];
 
 

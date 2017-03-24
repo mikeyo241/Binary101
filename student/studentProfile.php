@@ -36,13 +36,7 @@
       // If ClassID search returns a result
       if (!empty($_POST['classIDInput']) && searchClasses($_POST['classIDInput']) != null) {
          $classID = $_POST['classIDInput'];
-         $searchResult = searchClasses($classID);
-         var_dump($searchResult);
-         //$searchResult = $searchResult->fetch_assoc();
-         $classID = $searchResult['CLS_ID'];
-         $className = $searchResult['CLS_NAME'];
-         $instructFName = $searchResult['INSTRUCT_FNAME'];
-         $instructLName = $searchResult['INSTRUCT_LNAME'];
+         $searchResults = searchClasses($classID);
          $notEmpty = "inline-block";
          $isEmpty = "none";
          $_SESSION['classID'] = $classID;
@@ -51,8 +45,8 @@
          $notEmpty = "none";
          $isEmpty = "block";
       }
-      if (isset($_POST['enrollSubmit'])) {
-         enrollStudent($user->getEmail(), $_SESSION['classID']);
+      if (isset($_POST['enrollSubmit']) && isset($_POST['classID'])) {
+          enrollStudent($user->getEmail(), $_POST['classID']);
          $_POST['enrollSubmit'] = null;
       }
    }
@@ -73,17 +67,31 @@
        <input type="text" placeholder="Class ID" id="classIDInput" name="classIDInput"></input>
        <input type="submit" id="classIDSubmit" name="classIDSubmit"></input>
      </form>
-     <p style="display: $isEmpty">
-         No results
-      </p>
+     <p style="display: $isEmpty">No results.</p>
      <table border="4" style="display: $notEmpty">
       <thead>
-         <td>Class ID</td><td>Class Name</td><td>Instructor Name</td><td>Enrollment</td>
+         <td>Class ID</td><td>Class Name</td><td>Instructor Name</td><td>Action</td>
       </thead>
-      <tr>
-      <td>$classID</td> <td>$className</td> <td>$instructFName $instructLName</td>
-      <form action="$PHP_SELF" method="post"><td><input type="submit" id="enrollSubmit" name="enrollSubmit" value="Enroll" ></input></td></form>
-      </tr>
+HTML;
+        $searchResults = searchClasses($classID);
+        if ($searchResults != null) {
+            while ($row = $searchResults->fetch_assoc()) {
+                $CLS_ID = $row['CLS_ID'];
+                echo '<tr id=' . $CLS_ID . '>';
+                echo "<td>" . $row['CLS_ID'] . "</td>";
+                echo "<td>" . $row['CLS_NAME'] . "</td>";
+                echo "<td>" . $row['INSTRUCT_FNAME'] . " " . $row['INSTRUCT_LNAME'] . "</td>";
+                echo <<< HTML
+                <td><form action="$PHP_SELF" method="post" name="enrollSubmit">
+                <input type="submit" name="enrollSubmit" value="Enroll"></input>
+                <input type="hidden" name="classID" value="$CLS_ID"/>
+                </form></td>
+HTML;
+                echo "</tr>";
+            }
+        }
+
+echo <<< HTML
      </table>
      <h2>Your Enrollments</h2>
    <table border="4">
@@ -93,13 +101,15 @@
 HTML;
       if ($user->getEnrollments() != null) {
          $classes = $user->getEnrollments();
-         for ($i = 0; $i < count($classes); $i++) {
+         while ($row = $classes->fetch_assoc()) {
             echo "<tr>";
-            foreach ($classes[$i] as $key => $keyValue) {
-                if ($keyValue == -1)    // If no grade, insert hyphen character
-                    $keyValue = " - ";
+            foreach ($row as $key => $keyValue) {
                 echo "<td>$keyValue</td>";
             }
+            $grade = $user->getGradeByClass($row['CLS_ID']);
+            if ($grade <= 0)
+                $grade = "-";
+            echo "<td>" . $grade . "</td>";
             echo "</tr>";
          }
       }

@@ -58,22 +58,27 @@ function dbConnect($hostname = 'localhost',$db_user='CIT',$db_pword='CPT283',$db
 function sqlQuery($qry) {
     $link = dbConnect();
     $result = mysqli_query($link,$qry);
-    if($result || mysqli_num_rows($result) >= 1) {       // Implement query
-        if (gettype($result) == "boolean") {        // Query returns true/false; not values
-            $link->close();
-            return true;
+    if (gettype($result) == "boolean") { // Query returns true/false; not values
+        $link->close();
+        return $result;
+    }
+    else if ( mysqli_num_rows($result) == 1) {  // Query returns data
+        // $result = $result->fetch_assoc();
+        $link->close();
+        return $result;
+    }
+    else if ( mysqli_num_rows($result) > 1) {   // Query returns multiple results
+        /*$i = 0;
+        while ($row = $result->fetch_assoc()) { //
+            $results[$i] = $row;
+            $i++;
         }
-        else if ( mysqli_num_rows($result) >= 1) {  // Query returns data
-            $result = $result->fetch_assoc();
-            $link->close();
-            return $result;
-        }
-        else {
-            $link->close();
-            return null;
-        }
-    } else {     // Query Failed - Error Messages Not shown !!!!
-        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();*/
+        $link->close();
+        return $result;
+    }
+    else {
+        // echo "Error: " . $qry . "<br>" . mysqli_error($link);
         $link->close();
         return null;
     }
@@ -550,17 +555,16 @@ function getClassByID($classID) {
  */
 function searchClasses($searchInput) {
     // Database Queries to check
-    $queries = ["SELECT CLS_ID, CLS_NAME, CLS_MAXENROLLMENT, INSTRUCT_FNAME, INSTRUCT_LNAME FROM VIEW_CLASSES WHERE CLS_ID LIKE '$searchInput'",
-        "SELECT CLS_ID, CLS_NAME, CLS_MAXENROLLMENT, INSTRUCT_FNAME, INSTRUCT_LNAME FROM VIEW_CLASSES WHERE CONCAT_WS('', INSTRUCT_FNAME, ' ', INSTRUCT_LNAME) LIKE '$searchInput'",
-        "SELECT CLS_ID, CLS_NAME, CLS_MAXENROLLMENT, INSTRUCT_FNAME, INSTRUCT_LNAME FROM VIEW_CLASSES WHERE INSTRUCT_FNAME LIKE '$searchInput'",
-        "SELECT CLS_ID, CLS_NAME, CLS_MAXENROLLMENT, INSTRUCT_FNAME, INSTRUCT_LNAME FROM VIEW_CLASSES WHERE INSTRUCT_LNAME LIKE '$searchInput'"];
-
-    for ($i = 0; $i < sizeof($queries); $i++) {
-        $result = sqlQuery($queries[$i]);
-        if ($result != null)
-            return $result;
-    }
+    $qry = "SELECT CLS_ID, CLS_NAME, INSTRUCT_FNAME, INSTRUCT_LNAME FROM VIEW_CLASS 
+            WHERE CLS_ID LIKE '$searchInput' OR INSTRUCT_FNAME LIKE '$searchInput' 
+            OR INSTRUCT_LNAME LIKE '$searchInput' OR CONCAT_WS(INSTRUCT_FNAME, ' ', INSTRUCT_LNAME) LIKE '$searchInput'";
+    $result = sqlQuery($qry);
+    return $result;
 }
+
+
+
+
 
 /** Function:       enrollStudent
  * Last Modified:   21 March 2017
@@ -582,66 +586,6 @@ function enrollStudent($studentEmail, $classID) {
     sqlQuery($qry);
     return (true);
 }
-
-/** Function:       getStudentEnrollments
- * Last Modified:   21 March 2017
- * @param           $studentEmai - Student's email address
- * @return          Array of classes the student is enrolled in, OR false if no enrollments.
- * Description:     This function returns all the enrollments pertaining to a student.
- */
-function getStudentEnrollments($studentEmail) {
-    // Establish a connection to the database
-    $link = dbConnect();
-
-    // Database Query
-    $qry = "SELECT * FROM VIEW_STUDENT_CLASSES WHERE STUD_EMAIL='$studentEmail'";
-
-    if($result = mysqli_query($link,$qry)) {       // Implement query
-        if (mysqli_num_rows($result) >= 1) {       // If there is 1 or more classes  return all
-            $classes = array();
-            $i = 0;
-            while ($row = $result->fetch_assoc()) { // Create array of class arrays
-                $classes[$i]["CLS_ID"] = $row["CLS_ID"];
-                $classes[$i]["CLS_NAME"] = $row["CLS_NAME"];
-                $classes[$i]["INSTRUCT_NAME"] = "" . $row["INSTRUCT_FNAME"] . $row["INSTRUCT_LNAME"];
-                $classes[$i]["GRADE"] = getStudentGradeByClass($_SESSION['email'], $row["CLS_ID"]);
-                $i++;
-            }
-            $link->close();
-            return $classes;
-        }
-        else {
-            $link->close();
-            return false;
-        }
-    }
-    else {     // Query Failed - Error Messages Not shown !!!!
-        echo "Error: " . $qry . "<br>" . mysqli_error($link);
-        $link->close();
-        return false;
-    }
-}
-
-
-function getClassDataById($classId){
-    //      *** Establish a connection to the database  ***
-    $link = dbConnect();
-
-//      *** Database Query **
-    $qry = "SELECT * FROM CLASS WHERE CLS_ID = '$classId'";
-
-    if($result = mysqli_query($link,$qry)) {       // Implement query
-        if (mysqli_num_rows($result) == 1) {       // If there is 1 or more classes  return all the class data;
-            $link->close();
-            return $result;
-        }
-    }else {     // Query Failed - Error Messages Not shown !!!!
-        echo "Error: " . $qry . "<br>" . mysqli_error($link);
-        $link->close();
-        return false;
-    }
-}
-
 
 /** Function:
  * Last Modified:
