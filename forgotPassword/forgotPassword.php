@@ -96,6 +96,15 @@ echo <<< HTML
       </form>
    </div>
    
+   <div id="bottomLine">
+        <!--   simply for aesthetics   -->
+    </div>
+   
+   <footer>         
+        <a style="color: rgb(237, 36, 20);"> About Us </a> 
+        | <a style="color: rgb(237, 36, 20);"> Privacy Policy </a>
+    </footer>
+   
    
 </body>
 </html>
