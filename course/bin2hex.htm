@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!--
+	Binary to Hexadecimal Conversions
+	File:	bin2hex.htm
+			chap6.htm
+	Author: Christian Cook
+	Date: 3/30/2017
+	--->
+
+	<meta charset="UTF-8" />
+	<title>Binary to Hexadecimal Conversions</title>
+	<script src="modernizr-1.5.js"></script>
+<!--	<link href="indexstyles.css" rel="stylesheet" />  --->
+	
+</head>
+
+<body>
+
+	<h1>Binary to Hexadecimal Conversion</h1>
+
+	<h2>About Hexadecimal</h2>
+	
+	<p>Hexadecimal – also known as hex or base 16 – is a system we can use to 
+		write and share numerical values.<br><br>
+		Hex, like decimal, combines a set of digits to create large numbers. 
+		It just so happens that hex uses a set of 16 unique digits. Hex uses the 
+		standard 0-9, but it also incorporates six digits you wouldn’t usually 
+		expect to see creating numbers: A, B, C, D, E, and F. <br><br>
+
+		There are many (infinite!) other numeral systems out there. 
+		Binary (base 2) is also popular in the engineering world, because 
+		it’s the language of computers. The base 2, binary, system uses just 
+		two digit values (0 and 1) to represent numbers.<br><br>
+
+		Hex, along with decimal and binary, is one of the most commonly encountered 
+		numeral systems in the world of electronics and programming. It’s important 
+		to understand how hex works, because, in many cases, it makes more sense to 
+		represent a number in base 16 than with binary or decimal.
+	</p>
+	
+	<h2>Conversion</h2>
+	
+	<img src="bin2hex.png" alt="Bin2Hex" style ="width: 600px; height: 50px;">
+	
+	<h2>Subscripts</h2>
+	<p>Decimal and hexadecimal have 10 digits in common, so they can create a lot of 
+		similar-looking numbers. But 10 in hex is a wholly different number from that in 
+		decimal. In fact hex 10 is equivalent to decimal 16. We need a way to explicitly 
+		state whether a number we’re talking about is base 10 or base 16 (or base 8, or 
+		base 2). Enter base subscripts:<br>
+	</p>
+	
+	<img src="hexbase.png" alt="HexBase">
+	
+	<h2>Converting To/From Decimal</h2>
+	<p>Converting from decimal to hex involves a lot of division and remainders.<br><br>
+		The steps to convert a number, let’s call it N, from decimal to hex look something like this:<br></p>
+		
+	<ol>
+		<li>Divide N by 16. The remainder of that division is the first (least-significant/right-most)
+			digit of your hex number. Take the quotient (the result of the division) to the next step.<br>
+			Note: if the remainder is 10, 11, 12, 13, 14, or 15, then that becomes the hex digit 
+			A, B, C, D, E, or F.
+		</li>
+		<li>Divide the quotient from the last step by 16 again. The remainder of this division is 
+			the second digit of your hex value (second-from-the-right). Take the quotient from this 
+			division to the next step.
+		</li>
+		<li>Divide the quotient from step 2 by 16 again. The remainder of this division is the third 
+			digit of your hex conversion. Noticing a pattern?
+		</li>
+		<li>Keep dividing your quotient from the last step by 16, and storing the remainder until the 
+			result of a division is 0. The remainder of that division is your hex value’s left-most, 
+			most-significant digit.
+		</li>
+
+</body>
+</html>
