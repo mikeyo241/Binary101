@@ -151,9 +151,9 @@ echo <<< HTML
         <div id="createAccForm">
         <form action="$PHP_SELF" name="createAcc" id="createAcc" method="post">
         
-          <h2> Create a New Account </h2>
+          <h2 id="createAccTitle"> Create a New Account </h2>
                   
-            <table>
+            <table id="table">
             <tr>
                 <td>
                     <div class="tooltip" id="fNameTooltip">

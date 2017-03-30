@@ -18,12 +18,14 @@ header {
 
 body {
     margin: auto;
+    background: rgb(18, 18, 18);
 }
 
 section {
     position: relative;
     min-height: 428px;
     object-fit: fill;
+    background: rgb(18, 18, 18);
     /* height: 520px; */
 }
 
@@ -113,7 +115,6 @@ nav ul {
     margin: auto;
     width: 150px;
     position: relative;
-    left: 24%;
     top: 30px;
     font-size: 14px;
     font-family: monospace;
@@ -239,6 +240,17 @@ footer, head, body {
     width: 100%;
     /* margin: auto; */
     position: relative;
+    text-align: center;
+}
+
+#createAccTitle {
+    color: white;
+    font-size: 44px;
+    font-family: Andale Mono, monospace;
+}
+
+#table {
+    margin: auto;
 }
 /*  Login Table Styles */
 form table tr td {
