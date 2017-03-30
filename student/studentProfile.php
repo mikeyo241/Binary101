@@ -78,7 +78,7 @@ HTML;
         if ($searchResults != null) {
             while ($row = $searchResults->fetch_assoc()) {
                 $CLS_ID = $row['CLS_ID'];
-                $link = $_SERVER['HTTP_HOST']."course/course.php?CLS_ID=".$row['CLS_ID'];
+                $link = "../course/course.php?CLS_ID=".$row['CLS_ID'];
                 echo '<tr id=' . $CLS_ID . '>';
                 echo "<td>" . $row['CLS_ID'] . "</td>";
                 echo "<td><a href='".$link."'>" . $row['CLS_NAME'] . "</a></td>";

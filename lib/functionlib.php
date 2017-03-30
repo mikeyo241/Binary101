@@ -384,7 +384,7 @@ function getClassData($instructorEmail){
     $link = dbConnect();
 
 //      *** Database Query **
-    $qry = "SELECT CLS_ID, CLS_NAME, CLS_MAXENROLLMENT FROM CLASS WHERE ACC_EMAIL = '$instructorEmail'";
+    $qry = "SELECT CLS_ID, CLS_NAME, CLS_MAXENROLLMENT FROM CLASS WHERE ACC_EMAIL = '$instructorEmail' ORDER BY CLS_NAME";
 
     if($result = mysqli_query($link,$qry)) {       // Implement query
         if (mysqli_num_rows($result) >= 1) {       // If there is 1 or more classes  return all the class data;

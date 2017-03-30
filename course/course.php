@@ -1,5 +1,5 @@
 <?php
-require('../functionlib.php');
+require('../lib/functionlib.php');
 
 /******************************************************
  ***               Private Profile                  ***
@@ -15,7 +15,9 @@ require('../functionlib.php');
 
 $chapter = 'chap2';
 //checkUser();
-
+echo $_GET['CLS_ID'];
+$_SESSION['CLS_ID'] = $_GET['CLS_ID'];
+$CLS_ID = $_SESSION['CLS_ID'];
 
 echo <<< HTML
 
