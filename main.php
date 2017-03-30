@@ -13,7 +13,7 @@
 /*
  * Programmer:       Nathaniel Merck
  * Title:            login/sign-up page for Group Website Project
- * Date:             3/4/2017
+ * Date:             3/30/2017
  */
 
 /* Michael A Gardner    -   login System    -   2 March 2017        */
@@ -218,10 +218,10 @@ echo <<< HTML
     <div id="bottomLine">
         <!--   simply for aesthetics   -->
     </div>
-       
-    <footer>         
-        <a style="color: rgb(237, 36, 20);"> About Us </a> 
-        | <a style="color: rgb(237, 36, 20);"> Privacy Policy </a>
+
+    <footer>
+        <a href="about.html" style="color: white"> About Us </a>
+        | <a href="privacy.html" style="color: white;"> Privacy Policy </a>
     </footer>
 
 
