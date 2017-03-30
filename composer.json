@@ -1,6 +1,7 @@
 {
   "require": {
     "phpmailer/phpmailer": "~5.2",
-    "paragonie/random_compat":">=2.0"
+    "paragonie/random_compat":">=2.0",
+    "twbs/bootstrap": "4.0.0-alpha.6"
   }
 }
