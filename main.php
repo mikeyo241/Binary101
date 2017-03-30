@@ -116,6 +116,7 @@ echo <<< HTML
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <!-- All Links, Meta data, scripts, and css goes inside the <head> tags.  -->
 <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="vendor/twbs/bootstrap/dist/css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
         
 
