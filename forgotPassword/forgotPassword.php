@@ -82,19 +82,25 @@ echo <<< HTML
         <!-- simply for aesthetics  -->
    </div>
    
-   <div id="resetPassword" ">
-     
-        <h3>$userNotify</h3>
-   <form id="resetPasswordForm" action="$PHP_SELF" method="post">
-        <table>    
-          <tr>
-              <td><input placeholder="Email Address" type="email" name="emailForReset" id="emailForReset" required> </td>
-          </tr>          
-              <td><input type="submit" value="Send Email" id="resetSubmit" name="resetSubmit" > </td>
-          </tr>
-        </table>
-      </form>
-   </div>
+   <section>
+   
+       <div id="resetPassword">
+         
+          <h3 id="forgotPassH3">$userNotify</h3>
+          <form id="resetPasswordForm" action="$PHP_SELF" method="post">
+                <table>    
+                  <tr>
+                      <td><input placeholder="Email Address" type="email" name="emailForReset" id="emailForReset" required> </td>
+                  </tr>          
+                      <td><input type="submit" value="Send Email" id="resetSubmit" name="resetSubmit" > </td>
+                  </tr>
+                </table>
+          </form>
+       </div>
+       
+       
+   </section>
+   
    
    <div id="bottomLine">
         <!--   simply for aesthetics   -->

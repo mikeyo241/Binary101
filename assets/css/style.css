@@ -43,7 +43,6 @@ h2 {
 }
 
 h3 {
-    color: black;
     font-family: Andale Mono, monospace;
 }
 
@@ -417,6 +416,7 @@ body, header, nav, section, footer, p, div {
     position: relative;
     margin: auto;
     left: 90px;
+    top: 30px;
 }
 
 footer {
@@ -472,5 +472,14 @@ footer {
 #developer1, #developer2,
 #developer3, #developer4 {
     color: rgb(237, 36, 20);
+    font-family: monospace;
+}
+
+#forgotPassH3 {
+    color: white;
+    font-size: 28px;
+}
+
+#resetPasswordForm {
     font-family: monospace;
 }
