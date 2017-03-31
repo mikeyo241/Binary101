@@ -56,6 +56,9 @@
 	<img src="hexbase.png" alt="HexBase">
 	
 	<h2>Converting To/From Decimal</h2>
+	
+	<h3>Converting from Decimal to Hex</h3>
+	
 	<p>Converting from decimal to hex involves a lot of division and remainders.<br><br>
 		The steps to convert a number, let’s call it N, from decimal to hex look something like this:<br></p>
 		
@@ -76,6 +79,47 @@
 			result of a division is 0. The remainder of that division is your hex value’s left-most, 
 			most-significant digit.
 		</li>
+		
+	</ol>
+	
+	<h3>Converting from Hex to Decimal</h3>
+	
+	<p>There’s an ugly equation that rules over hex-to-decimal conversion:<br></p>
+	
+	<img src="hex2bin.png" alt="Hex2Bin">
+	
+	<p>There are a few important elements to this equation. Each of the h factors (hn, hn-1) is a 
+	single digit of the hex value. If our hex value is F00D, for example, h0 is D, h1 and h2 are 
+	0, and h3 is F.<br>
+
+	Powers of 16 are a critical part of hexadecimal. More-signficant digits (those towards the 
+	left side of the number) are multiplied by larger powers of 16. The least-significant digit, 
+	h0, is multiplied by 160 (1). If a hex value is four digits long, the most-significant digit is 
+	multiplied by 163, or 4096.<br>
+
+	To convert a hexadecimal number to decimal, you need to plug in values for each of the h factors 
+	in the equation above. Then multiply each digit by its respective power of 16, and add each product 
+	up. Our step-by-step approach is:<br><br>
+	</p>
+	
+	<ol>
+		<li>Start with the right-most digit of your hex value. Multiply it by 160, that is: 
+		multiply by 1. In other words, leave it be, but keep that value off to the side.<br>
+		Remember to convert alphabetic hex values (A, B, C, D, E, and F) to their decimal 
+		equivalent (10, 11, 12, 13, 14, and 15).
+		</li>
+		<li>Move one digit to the left. Multiply that digit by 161 (i.e. multipy by 16). 
+		Remember that product, and keep it to the side.
+		</li>
+		<li>Move another digit left. Multiply that digit by 162 (256) and store that product.
+		</li>
+		<li>Continue multiplying each incremental digit of the hex value by increasing powers 
+		of 16 (4096, 65536, 1048576, …), and remember each product.
+		</li>
+		<li>Once you’ve multiplied each digit of the hex value by the proper power of 16, add 
+		them all up. That sum is the decimal equivalent of your hex value.
+		</li>
+	</ol>
 
 </body>
 </html>
