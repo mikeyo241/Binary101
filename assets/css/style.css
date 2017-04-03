@@ -424,16 +424,21 @@ footer {
     height: 40px;
     text-align: center;
     font-family: monospace;
-    position: relative;
     color: rgb(237, 36, 20);
     font-size: 15px;
+
+    position: absolute;
+    bottom: 0;
+
 }
 
 #bottomLine {
-    position: relative;
     width: 100%;
     height: 4px;
     background: rgb(237, 36, 20);
+
+    position: absolute;
+    bottom:40px;
 }
 
 #resetPassword {

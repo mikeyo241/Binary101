@@ -158,39 +158,37 @@ echo <<< HTML
             <tr>
                 <td>
                     <div class="tooltip" id="fNameTooltip">
-                        <span class="tooltiptext" id="fNameError">Please enter your first name.</span> 
+                        <span class="tooltiptext" id="fNameError">Please enter your first name.</span> </div>
                         <input type="text" name="fName" placeholder="First name" > 
-                    </div>
+                    
                 </td>
                     
                 <td>
                     <div class="tooltip" id="lNameTooltip">
-                        <span class="tooltiptext" id="lNameError">Please enter your last name.</span>
+                        <span class="tooltiptext" id="lNameError">Please enter your last name.</span></div>
                         <input type="text" name="lName" placeholder="Last name" >  
-                    </div>
+                  
                 </td>
             </tr>       
             <tr>
                 <td colspan="2">
-                    <div class="tooltip" id="emailTooltip">
-                        <span class="tooltiptext" id="emailError">Please enter a valid .edu email address.</span>
-                        <input type="email" name="email" placeholder="Email">
-                    </div>
+                    <div class="tooltip" id="emailTooltip"><span class="tooltiptext" id="emailError">Please enter a valid .edu email address.</span></div>
+                    <input type="email" name="email" placeholder="Email">
                 </td> 
             </tr>
             <tr> 
                 <td>
                     <div class="tooltip" id="passwordTooltip">
-                        <span class="tooltiptext" id="passwordError">Password must be 8 characters long and contain at least 1 uppercase character.</span>
+                        <span class="tooltiptext" id="passwordError">Password must be 8 characters long and contain at least 1 uppercase character.</span></div>
                         <input type="password" id="pass" name="pass" placeholder="Password" > 
-                    </div>
+                  
                 </td> 
                  
                 <td>
                     <div class="tooltip" id="cfPasswordTooltip">
-                        <span class="tooltiptext" id="cfPasswordError">Passwords don't match.</span>
+                        <span class="tooltiptext" id="cfPasswordError">Passwords don't match.</span></div>
                         <input type="password" ="cfPass" name="cfPass" placeholder="Confirm Password" >                    
-                    </div> 
+                
                 </td>
             </tr>
             <tr>
