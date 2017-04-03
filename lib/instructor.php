@@ -48,5 +48,16 @@ class Instructor extends Account
         $result = sqlQuery($qry);
         return $result;
     }
-
+    public function makeInstructor() {
+        $email = $this->getEmail();
+        $link = dbConnect();
+        $qry = "INSERT INTO INSTRUCTOR VALUES ('$email')";
+        if (mysqli_query($link,$qry));
+        else {
+            //      ***     Close Connection    ***
+            echo "Error: " . $qry . "<br>" . mysqli_error($link);
+            $link->close();
+            return false;
+        }
+    }
 }

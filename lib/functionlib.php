@@ -57,28 +57,26 @@ function dbConnect($hostname = 'localhost',$db_user='CIT',$db_pword='CPT283',$db
  */
 function sqlQuery($qry) {
     $link = dbConnect();
-    $result = mysqli_query($link,$qry);
-    if (gettype($result) == "boolean") { // Query returns true/false; not values
-        $link->close();
-        return $result;
-    }
-    else if ( mysqli_num_rows($result) == 1) {  // Query returns data
-        // $result = $result->fetch_assoc();
-        $link->close();
-        return $result;
-    }
-    else if ( mysqli_num_rows($result) > 1) {   // Query returns multiple results
-        /*$i = 0;
-        while ($row = $result->fetch_assoc()) { //
-            $results[$i] = $row;
-            $i++;
+    if($result = mysqli_query($link,$qry)) {
+        if (gettype($result) == "boolean") { // Query returns true/false; not values
+            $link->close();
+            return $result;
+        } else if (mysqli_num_rows($result) == 1) {  // Query returns data
+            // $result = $result->fetch_assoc();
+            $link->close();
+            return $result;
+        } else if (mysqli_num_rows($result) > 1) {   // Query returns multiple results
+            /*$i = 0;
+            while ($row = $result->fetch_assoc()) { //
+                $results[$i] = $row;
+                $i++;
+            }
+            $link->close();*/
+            $link->close();
+            return $result;
         }
-        $link->close();*/
-        $link->close();
-        return $result;
-    }
-    else {
-        // echo "Error: " . $qry . "<br>" . mysqli_error($link);
+    } else {
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
         $link->close();
         return null;
     }
@@ -342,11 +340,15 @@ function createAccount ($fName, $lName,  $email, $pass, $accType) {
         $link = dbConnect();
 
 //      *** Database Query's  ***
-        $qry = "INSERT INTO ACCOUNT VALUES ('$email','$pass','$fName','$lName','$accType')";
+        $qry = "INSERT INTO ACCOUNT(ACC_EMAIL, ACC_PASS, ACC_FNAME, ACC_LNAME, ACC_TYPE) VALUES ('$email','$pass','$fName','$lName','$accType')";
         $qry2 = "INSERT INTO $accType VALUES ('$email')";
 
 //      *** Implement Query's   ***
-        mysqli_query($link,$qry);
+        if (mysqli_query($link,$qry)){}else {
+            echo "Error: " . $qry . "<br>" . mysqli_error($link);
+            $link->close();
+            return false;
+        }
         mysqli_query($link,$qry2);
 
 //      ***     Close Connection    ***
@@ -567,7 +569,7 @@ function searchClasses($searchInput) {
 
 /** Function:       enrollStudent
  * Last Modified:   21 March 2017
- * @param           $studentEmai - Student's email address
+ * @param           $studentEmail - Student's email address
  * @param           $classID - ID of class to enroll in
  * @return          True if student is enrolled, false if else (already enrolled, etc.)
  * Description:     This function enrolls a student in a class.
@@ -583,7 +585,7 @@ function enrollStudent($studentEmail, $classID) {
         return false;
     $qry = "INSERT INTO ENROLLMENT (ACC_EMAIL, CLS_ID) VALUES ('$studentEmail', '$classID')";
     sqlQuery($qry);
-    return (true);
+    return true;
 }
 
 function getCourses() {

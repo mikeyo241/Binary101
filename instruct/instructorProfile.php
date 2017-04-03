@@ -159,7 +159,7 @@ HTML;
                 echo "<td>$CRS_NAME</td>";
                 echo <<< HTML
                 <td>
-                <input type="checkbox" name="check_$CRS_ID" />
+                <input type="checkbox" name="check_$CRS_ID" checked />
                 <input type="hidden" name="CRS_ID" value="$CRS_ID"  />
                 </td></tr>
 HTML;

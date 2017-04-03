@@ -31,7 +31,7 @@ class Student extends Account
     $email = $this->getEmail();
     // Database Query
     $qry = "SELECT CLS_ID, CLS_NAME, CONCAT(INSTRUCT_FNAME, ' ', INSTRUCT_LNAME) AS INSTRUCT_NAME
-            FROM VIEW_STUDENT_CLASSES WHERE STUD_EMAIL='@email' ORDER BY CLS_NAME";
+            FROM VIEW_STUDENT_CLASSES WHERE STUD_EMAIL='$email' ORDER BY CLS_NAME";
     $result = sqlQuery($qry);
     return $result;
     }
@@ -71,7 +71,18 @@ class Student extends Account
             return null;
         }
 }
-
+    public function makeStudent() {
+        $email = $this->getEmail();
+        $link = dbConnect();
+        $qry = "INSERT INTO STUDENT VALUES ('$email')";
+        if (mysqli_query($link,$qry));
+        else {
+            //      ***     Close Connection    ***
+            echo "Error: " . $qry . "<br>" . mysqli_error($link);
+            $link->close();
+            return false;
+        }
+    }
 
 
 }
