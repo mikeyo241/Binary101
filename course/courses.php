@@ -14,7 +14,7 @@ function chap1() {
 </p>
 <p><b>Moore's Law</b> -  is the observation that the number of transistors in a dense integrated circuit doubles approximately every two years.</p>
 <p><b>Binary</b> -  a system of numerical notation to the base 2, in which each place of a number, expressed as 0 or 1, corresponds to a power of 2.</p>
-<img src="../assets/img/mooresLaw.png" >
+<img src="assets/img/mooresLaw.png" >
 <p>In 1679 a German polymath and philosopher  named Gottfried Wilhelm Leibniz documented the binary system.
   Binary is used in computers because it is the most practical way for a computer to process data.</p>
 
@@ -42,7 +42,7 @@ function chap2() {
             <p>Before we get into powers of 2 (or the base 2 number system)
                 we must first understand the number system we use: base 10. Take the number 125 for example:
         </p>
-            <img src="../assets/img/powersOf2.PNG">
+            <img src="assets/img/powersOf2.PNG">
             <p>As you can see, the numbers we use in our day-to-day lives are constructed using powers of 10.
                 Numbers in the 1's column are multiplied by 100 (1). Numbers in the 10's column are multiplied by 101 (10).
     Numbers in the 100's column are multiplied by 102 (100). This process is repeated to create larger numbers,
@@ -51,14 +51,14 @@ function chap2() {
                 Binary (a base 2 number system) works in a similar fashion, but rather than multiply each number by powers of 10,
                 you multiply by powers of two. Let's look at the number 13 represented in binary:
             </p>
-            <img src="../assets/img/powersOf2_2.PNG">
+            <img src="assets/img/powersOf2_2.PNG">
             <p>Since we're only working with powers of 2, we only need two numbers to represent each column:
                 a 0 or a 1. This on-off relationship (a binary relationship if you will) is the fundamental principle
                 of computer technology. Columns are multiplied by 20, 21, 22, 23, and so on. These "powers of 2" values
                 show up everywhere in computer technology, which is why it's paramount to understand them. Here's a graphical
                 representation of each column's possible value in a full byte (8 bits, or 8 columns):
             </p>
-            <img src="../assets/img/powersOf2_3.PNG">
+            <img src="assets/img/powersOf2_3.PNG">
             <h2>GAME - Quiz HERE!!! </h2>
 
         </div>
@@ -82,7 +82,7 @@ function chap4(){
      <br> 0000 = 0 <br> 0001 = 1 <br> 0010 = 2 <br> 0011 = 3 <br> 0100 = 4 <br> 0101 = 5 <br> 0110 = 6 <br>
     </p>
     <h2>How is this accomplished?</h2>
-    <img src="../assets/img/binToDecimalConversion.PNG">
+    <img src="assets/img/binToDecimalConversion.PNG">
     <p>The binary number 0111 is converted to decimal or base 10 by taking the values of each bit and adding
      them together to get the decimal number the nibble represents. <br> This can be explained further by the video below
      from techquickie. 
@@ -138,7 +138,7 @@ function chap5(){
 		In Binary there are Ones, Twos, Fours, etc, like this:
 	</p>
 	
-	<img src="binary-number.png" alt="binary-number">
+	<img src="assets/img/binary-number.png" alt="binary-number">
 	
 	<h2>Binary Addition</h2>
 	
@@ -208,7 +208,7 @@ function chap5(){
 	the multiplicand when the current digit of the multiplier is 1.<br><br>
 	</p>
 	
-	<img src="binary-multiplication.png" alt="binary multiplication">
+	<img src="assets/img/binary-multiplication.png" alt="binary multiplication">
 	
 	<p>Each step is the placement of an entire partial product, unlike in decimal, 
 	where each step is a single-digit multiplication (and possible addition of a carry).<br><br>
@@ -245,7 +245,7 @@ function chap5(){
 		</tr>
 	</table>
 	
-	<img src="binary-division.png" alt="binary division">
+	<img src="assets/img/binary-division.png" alt="binary division">
 
 
 </div>	
@@ -284,7 +284,7 @@ function chap6() {
 	
 	<h2>Conversion</h2>
 	
-	<img src="bin2hex.png" alt="Bin2Hex" style ="width: 600px; height: 50px;">
+	<img src="assets/img/bin2hex.png" alt="Bin2Hex" style ="width: 600px; height: 50px;">
 	
 	<h2>Subscripts</h2>
 	<p>Decimal and hexadecimal have 10 digits in common, so they can create a lot of 
@@ -294,7 +294,7 @@ function chap6() {
 		base 2). Enter base subscripts:<br>
 	</p>
 	
-	<img src="hexbase.png" alt="HexBase">
+	<img src="assets/img/hexbase.png" alt="HexBase">
 	
 	<h2>Converting To/From Decimal</h2>
 	
@@ -327,7 +327,7 @@ function chap6() {
 	
 	<p>There’s an ugly equation that rules over hex-to-decimal conversion:<br></p>
 	
-	<img src="hex2bin.png" alt="Hex2Bin">
+	<img src="assets/img/hex2bin.png" alt="Hex2Bin">
 	
 	<p>There are a few important elements to this equation. Each of the h factors (hn, hn-1) is a 
 	single digit of the hex value. If our hex value is F00D, for example, h0 is D, h1 and h2 are 
@@ -485,7 +485,7 @@ function chap8() {
 	
 	<h3>Intersection of two sets: A &cap; B</h3>
 	
-	<img src="intersection.png" alt="intersection">
+	<img src="assets/img/intersection.png" alt="intersection">
 	
 	<p>The intersection of a venn diagram only contains the data that is shared between
 	both of the sets.
@@ -493,21 +493,21 @@ function chap8() {
 	
 	<h3>Union of two sets: A &cup; B</h3>
 	
-	<img src="union.png" alt="union">
+	<img src="assets/img/union.png" alt="union">
 	
 	<p>The union of a venn diagram contains all of the data in either and both sets.
 	</p>
 	
 	<h3>Symmetric Difference of two sets: A &#x25B3; B</h3>
 	
-	<img src="symmetric-difference.png" alt="symmetric-difference">
+	<img src="assets/img/symmetric-difference.png" alt="symmetric-difference">
 	
 	<p>The symmetric difference of a venn diagram contains only the data that one or
 	the other set has but does not contain the data shared by the sets.
 	
 	<h3>Relative Complement of A(left) in B(right): A<sup>C</sup> &cup; B = B \ A</h3>
 	
-	<img src="relative-complement.png" alt="relative-complement">
+	<img src="assets/img/relative-complement.png" alt="relative-complement">
 	
 	<p>The relative complement of a venn diagram contain only the data of one set that is 
 	unique to only that set.
@@ -515,7 +515,7 @@ function chap8() {
 	
 	<h3>Absolute Complement of A in U: A<sup>C</sup> = U \ A</h3>
 	
-	<img src="absolute-complement.png" alt="absolute-complement">
+	<img src="assets/img/absolute-complement.png" alt="absolute-complement">
 	
 	<p>The absolute complement of a venn diagram contains the data of one set that is unique to 
 	only that set and all of the data that is not contained in any of the sets of data.
