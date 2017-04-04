@@ -2,7 +2,7 @@
 /*
  * Programmer:       Nathaniel Merck
  * Title:            style sheet page for Group Website Project
- * Date:             3/4/2017
+ * Date:             4/4/2017
  */
 
 /*	for the head	*/
@@ -18,15 +18,14 @@ header {
 
 body {
     margin: auto;
-    background: rgb(18, 18, 18);
+    background: rgb(23, 23, 23);
 }
 
 section {
     position: relative;
     min-height: 565px;
     object-fit: fill;
-    background: rgb(18, 18, 18);
-    /* height: 520px; */
+    background: rgb(23, 23, 23);
 }
 
 h1 {

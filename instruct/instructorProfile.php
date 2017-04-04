@@ -96,25 +96,52 @@ if (getClassData($email) != false) {
 }
 echo <<< HTML
 <html>
+
 <head>
     <title>$fName $lName</title>
+    <meta name="author" content="Group 6" />
+    <meta name="owner" content="Michael Gardner, Nathaniel Merck, Christian Cook, Cory Wilson" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- All Links, Meta data, scripts, and css goes inside the <head> tags.  -->
+<!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="../vendor/twbs/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="instructAssets/styles/instruct.css"/>
+        
+
 
 </head>
 <body>
-<h1>Welcome $fName !!!</h1>
-    <div id="classes" name="classes" style="$classesStyle">
-    <h2>Current Classes</h2>
-        <table border="5" style="text-align: center; padding: 5px;">  <!-- Remove the Styling for the table and make your own! -->
-            <thead>
-                <td> </td>
-                <td>Course</td>               
-                <td>Students Enrolled</td>
-                <td>Available Seats</td>
-                <td>Class Grade Average</td>
-                <td>Class Link</td>
-            </thead>
-                <form id="gradeBook" name="gradeBook" action="$PHP_SELF" method="post">
-                   
+    <header>           
+      <a href="/main.php"><img id="logo" src="../assets/img/logo.PNG" alt="Website Logo" align="top-left"></a>
+            
+      <h1 id="welcome">Welcome $fName !!!  </h1>
+      <img id="icon" src="../assets/img/icon.png" align="top-left">
+    </header>
+    
+    <div id="line">
+          <!-- simply for aesthetics  -->
+    </div>
+    
+   
+   <section>
+   
+       <div id="space">
+            <!--   for separating other divs    -->
+        </div>
+
+        <div id="classes" name="classes" style="$classesStyle">
+        <h2 id="classesTitle">Current Classes</h2>
+            <table border="5" style="text-align: center; padding: 5px;">  <!-- Remove the Styling for the table and make your own! -->
+                <thead>
+                    <td> </td>
+                    <td>Course</td>               
+                    <td>Students Enrolled</td>
+                    <td>Available Seats</td>
+                    <td>Class Grade Average</td>
+                    <td>Class Link</td>
+                </thead>
+                    <form id="gradeBook" name="gradeBook" action="$PHP_SELF" method="post">
+                       
 HTML;
     if(isset($classInfo)) {
     foreach ($classInfo as $value) {
@@ -122,34 +149,40 @@ HTML;
     }
 }
 echo <<< HTML
-                <tr><td colspan="5"><input value="View Grade Book" type="submit" id="submitGradeBook" name="submitGradeBook"></td></tr>
-            </form>
-        </table>
-    </div>
-    <div id="createAClass">
-        <table>
-        <h2>Create a new Class</h2>
-            <thead>
-            <td>Class Name</td>
-            <td>Start Date</td>
-            <td>End Date</td>
-            <td>Maximum Enrollment</td>
-            <td>  </td>
-            </thead>
-            <tr><form action="$PHP_SELF" method="post" id="createAClass" name="createAClass">
-                <td><input type="text" name="className" id="className" required></td>
-                <td><input type="date" name="sDate" id="sDate" required</td>
-                <td><input type="date" name="eDate" id="eDate" required</td>
-                <td><input type="number" name="maxEnrollment" id="maxEnrollment" required </td>
-                <td><input type="submit" name="createAClassSubmit" id="createAClassSubmit" value="Create Class"</td>
-           </tr>
-            <tr><td colspan="5" style="color: red">$classCreated</td></tr>
-        </table>
-        <h3>Select Required Chapters</h3>
-        <table border="5">
-            <thead>
-                <td>Course Name</td><td>Action</td>
-            </thead>
+            
+                    <tr><td colspan="5"><input value="View Grade Book" type="submit" id="submitGradeBook" name="submitGradeBook"></td></tr>
+                </form>
+            </table>
+        </div>
+        
+        <div id="space">
+            <!--   for separating other divs    -->
+        </div>
+    
+        <div id="createAClass">
+            <table>
+            <h2 id="createClassTitle">Create a new Class</h2>
+                <thead>
+                <td>Class Name</td>
+                <td>Start Date</td>
+                <td>End Date</td>
+                <td>Maximum Enrollment</td>
+                <td>  </td>
+                </thead>
+                <tr><form action="$PHP_SELF" method="post" id="createAClass" name="createAClass">
+                    <td><input type="text" name="className" id="className" required></td>
+                    <td><input type="date" name="sDate" id="sDate" required</td>
+                    <td><input type="date" name="eDate" id="eDate" required</td>
+                    <td><input type="number" name="maxEnrollment" id="maxEnrollment" required </td>
+                    <td><input type="submit" name="createAClassSubmit" id="createAClassSubmit" value="Create Class"</td>
+               </tr>
+                <tr><td colspan="5" style="color: red">$classCreated</td></tr>
+            </table>
+            <h3>Select Required Chapters</h3>
+            <table border="5">
+                <thead>
+                    <td>Course Name</td><td>Action</td>
+                </thead>
 HTML;
             $courses = getCourses();
             while ($row = $courses->fetch_assoc()) {
@@ -166,12 +199,35 @@ HTML;
             }
 echo <<< HTML
 
-</form>
-        </table>
-    </div>
-    <form id="signOutForm" action="$PHP_SELF" method="post">
-        <input type="submit" value="Log Out" id="logOutSubmit" name="logOutSubmit">
     </form>
+            </table>
+        </div>
+        
+        <div id="space">
+            <!--   for separating other divs    -->
+        </div>
+    
+    
+        <form id="signOutForm" action="$PHP_SELF" method="post">
+            <input type="submit" value="Log Out" id="logOutSubmit" name="logOutSubmit">
+        </form>
+        
+        <div id="space">
+            <!--   for separating other divs    -->
+        </div>
+    
+    
+    </section>
+    
+    
+    <div id="bottomLineRelative">
+        <!--   simply for aesthetics   -->
+    </div>
+
+    <footer id="posRelative">
+        <a href="/about.html" style="color: white"> About Us </a>
+        | <a href="/privacy.html" style="color: white;"> Privacy Policy </a>
+    </footer>
 
 </body>
 <!-- JavaScript -->
@@ -179,4 +235,4 @@ echo <<< HTML
 </html>
 
 HTML;
-?>
+
