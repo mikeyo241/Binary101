@@ -106,9 +106,6 @@ echo <<< HTML
 <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="../vendor/twbs/bootstrap/dist/css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="instructAssets/styles/instruct.css"/>
-        
-
-
 </head>
 <body>
     <header>           

@@ -53,76 +53,116 @@
    }
    $user = $_SESSION['user'];
    echo <<< HTML
-   <html>
-   <head>
-       <title>$fName $lName</title>
+<html>
 
+   <head>
+        <title>$fName $lName</title>
+        <meta name="author" content="Group 6" />
+        <meta name="owner" content="Michael Gardner, Nathaniel Merck, Christian Cook, Cory Wilson" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- All Links, Meta data, scripts, and css goes inside the <head> tags.  -->
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="../vendor/twbs/bootstrap/dist/css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="studentAssets/styles/student.css"/>
+        
    </head>
+   
    <body>
-   <h1>Welcome $fName !!!</h1>
-     <form id="signOutForm" action="$PHP_SELF" method="post" >
-      <input type="submit" value="Log Out" id="logOutSubmit" name="logOutSubmit">
-     </form>
-     <h2>Enroll in a Class</h2>
-     <form id="classID" action="$PHP_SELF" method="post">
-       <input type="text" placeholder="Class ID or Instructor" id="classIDInput" name="classIDInput" />
-       <input type="submit" id="classIDSubmit" name="classIDSubmit" />
-     </form>
-     <p style="display: $isEmpty">No results.</p>
-     <table border="4" style="display: $notEmpty">
-      <thead>
-         <td>Class ID</td><td>Class Name</td><td>Instructor Name</td><td>Action</td>
-      </thead>
+       <header>           
+          <a href="/main.php"><img id="logo" src="../assets/img/logo.PNG" alt="Website Logo" align="top-left"></a>
+                
+          <h1 id="welcome">Welcome $fName !!!  </h1>
+          <img id="icon" src="../assets/img/icon.png" align="top-left">
+        </header>
+        
+        <div id="line">
+              <!-- simply for aesthetics  -->
+        </div>
+        
+        
+        <section>
+            <form id="signOutForm" action="$PHP_SELF" method="post" >
+                <input type="submit" value="Log Out" id="logOutSubmit" name="logOutSubmit">
+            </form>
+            
+         <h2>Enroll in a Class</h2>
+         
+         <form id="classID" action="$PHP_SELF" method="post">
+               <input type="text" placeholder="Class ID or Instructor" id="classIDInput" name="classIDInput" />
+               <input type="submit" id="classIDSubmit" name="classIDSubmit" />
+         </form>
+         
+         <p style="display: $isEmpty">No results.</p>
+         
+         <table border="4" style="display: $notEmpty">
+              <thead>
+                 <td>Class ID</td><td>Class Name</td><td>Instructor Name</td><td>Action</td>
+              </thead>
 HTML;
-        $searchResults = searchClasses($classID);
-        if ($searchResults != null) {
-            while ($row = $searchResults->fetch_assoc()) {
-                $CLS_ID = $row['CLS_ID'];
-                echo '<tr id=' . $CLS_ID . '>';
-                echo "<td>" . $row['CLS_ID'] . "</td>";
-                echo "<td>" . $row['CLS_NAME'] . "</td>";
-                echo "<td>" . $row['INSTRUCT_FNAME'] . " " . $row['INSTRUCT_LNAME'] . "</td>";
-                echo <<< HTML
+$searchResults = searchClasses($classID);
+if ($searchResults != null) {
+    while ($row = $searchResults->fetch_assoc()) {
+        $CLS_ID = $row['CLS_ID'];
+        echo '<tr id=' . $CLS_ID . '>';
+        echo "<td>" . $row['CLS_ID'] . "</td>";
+        echo "<td>" . $row['CLS_NAME'] . "</td>";
+        echo "<td>" . $row['INSTRUCT_FNAME'] . " " . $row['INSTRUCT_LNAME'] . "</td>";
+        echo <<< HTML
                 <td><form action="$PHP_SELF" method="post" name="enrollSubmit">
-                <input type="submit" name="enrollSubmit" value="Enroll"></input>
+                <input type="submit" name="enrollSubmit" value="Enroll">Enroll</input>
                 <input type="hidden" name="classID" value="$CLS_ID"/>
                 </form></td>
 HTML;
-                echo "</tr>";
-            }
-        }
+        echo "</tr>";
+    }
+}
 
 echo <<< HTML
-     </table>
-     <h2>Your Enrollments</h2>
-   <table border="4">
-      <thead>
-         <td>Class Name</td><td>Instructor Name</td><td>Grade</td>
-      </thead>
+         </table>
+         <h2>Your Enrollments</h2>
+         
+       <table border="4">
+              <thead>
+                 <td>Class Name</td><td>Instructor Name</td><td>Grade</td>
+              </thead>
 HTML;
-      if ($user->getEnrollments() != null) {
-         $classes = $user->getEnrollments();
-         while ($row = $classes->fetch_assoc()) {
-            echo "<tr>";
-             $CLS_ID = $row['CLS_ID'];
-             $link = "../course/course.php?CLS_ID=".$row['CLS_ID'];
-             echo '<tr id=' . $CLS_ID . '>';
-             echo "<td><a href='".$link."'>" . $row['CLS_NAME'] . "</a></td>";
-             echo "<td>" . $row['INSTRUCT_NAME'] . "</td>";
-            $grade = $user->getGradeByClass($row['CLS_ID']);
-            if ($grade <= 0)
-                $grade = "-";
-            echo "<td>" . $grade . "</td>";
-            echo "</tr>";
-         }
-      }
-      else
-         echo "No enrollments.";
+if ($user->getEnrollments() != null) {
+    $classes = $user->getEnrollments();
+    while ($row = $classes->fetch_assoc()) {
+        echo "<tr>";
+        $CLS_ID = $row['CLS_ID'];
+        $link = "../course/course.php?CLS_ID=".$row['CLS_ID'];
+        echo '<tr id=' . $CLS_ID . '>';
+        echo "<td><a href='".$link."'>" . $row['CLS_NAME'] . "</a></td>";
+        echo "<td>" . $row['INSTRUCT_NAME'] . "</td>";
+        $grade = $user->getGradeByClass($row['CLS_ID']);
+        if ($grade <= 0)
+            $grade = "-";
+        echo "<td>" . $grade . "</td>";
+        echo "</tr>";
+    }
+}
+else
+    echo "No enrollments.";
 
-   echo <<< HTML
-      </table>
-   </body>
-   </html>
+echo <<< HTML
+        </table>
+        
+        
+    </section>
+    
+    <div id="bottomLineRelative">
+        <!--   simply for aesthetics   -->
+    </div>
+
+    <footer id="posRelative">
+        <a href="/about.html" style="color: white"> About Us </a>
+        | <a href="/privacy.html" style="color: white;"> Privacy Policy </a>
+    </footer>
+         
+</body>
+
+</html>
 
 HTML;
 
