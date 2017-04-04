@@ -8,10 +8,10 @@ in creating a great project!!!**
 
 Author & Contributor List
 -----
-Cory Wilson  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      coryw &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **Core JavaScript, PHP, HTML, CSS**  
-Nathaniel Merck  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      nmerck1 &nbsp;&nbsp;&nbsp;&nbsp; - **Design PHP, Javascript, HTML, CSS**  
+Cory Wilson  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      coryw &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **Core JavaScript, PHP, HTML, CSS**  
+Nathaniel Merck  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      nmerck1 &nbsp;&nbsp;&nbsp;&nbsp; - **Design PHP, Javascript, HTML, CSS**  
 Christian R. Cook   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      crcook &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - **Learning Content, HTML, DB Management**      
-Michael A Gardner &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      mikeyo241  &nbsp;- **Core PHP, JavaScript, HTML, CSS**  
+Michael A Gardner &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      mikeyo241  &nbsp;- **Core PHP, JavaScript, HTML, CSS**  
 ## Testing Logins and Sign up features
 
 If you want to test the login part of the site you must view it from the CIT server at:  

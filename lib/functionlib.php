@@ -596,6 +596,8 @@ function getCourses() {
 
 function chap1() {
     echo <<< HTML
+    
+<div id="learningContent" >
 <h1>The History of Binary</h1>
 <p>We all have seen binary before whether it be in movies, TV shows, or on the internet we all have an understanding
  that binary is the 1's and 0's that computers use to operate.
@@ -622,7 +624,7 @@ and chips, It is used to stored data onto the hard drive.
 Every letter you type is ASCii which is a standard that computers used to encode 
 letters into binary you will learn more about ASCii in later Chapters.
 </p>
-
+</div>
 HTML;
 
 }

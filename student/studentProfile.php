@@ -78,10 +78,9 @@ HTML;
         if ($searchResults != null) {
             while ($row = $searchResults->fetch_assoc()) {
                 $CLS_ID = $row['CLS_ID'];
-                $link = "../course/course.php?CLS_ID=".$row['CLS_ID'];
                 echo '<tr id=' . $CLS_ID . '>';
                 echo "<td>" . $row['CLS_ID'] . "</td>";
-                echo "<td><a href='".$link."'>" . $row['CLS_NAME'] . "</a></td>";
+                echo "<td>" . $row['CLS_NAME'] . "</td>";
                 echo "<td>" . $row['INSTRUCT_FNAME'] . " " . $row['INSTRUCT_LNAME'] . "</td>";
                 echo <<< HTML
                 <td><form action="$PHP_SELF" method="post" name="enrollSubmit">
@@ -98,16 +97,18 @@ echo <<< HTML
      <h2>Your Enrollments</h2>
    <table border="4">
       <thead>
-         <td>Class ID</td><td>Class Name</td><td>Instructor Name</td><td>Grade</td>
+         <td>Class Name</td><td>Instructor Name</td><td>Grade</td>
       </thead>
 HTML;
       if ($user->getEnrollments() != null) {
          $classes = $user->getEnrollments();
          while ($row = $classes->fetch_assoc()) {
             echo "<tr>";
-            foreach ($row as $key => $keyValue) {
-                echo "<td>$keyValue</td>";
-            }
+             $CLS_ID = $row['CLS_ID'];
+             $link = "../course/course.php?CLS_ID=".$row['CLS_ID'];
+             echo '<tr id=' . $CLS_ID . '>';
+             echo "<td><a href='".$link."'>" . $row['CLS_NAME'] . "</a></td>";
+             echo "<td>" . $row['INSTRUCT_NAME'] . "</td>";
             $grade = $user->getGradeByClass($row['CLS_ID']);
             if ($grade <= 0)
                 $grade = "-";
