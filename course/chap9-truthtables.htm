@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!--
+	Truth Tables
+	File:	chap9-truthtables.htm
+			chap9.htm
+	Author: Christian Cook
+	Date: 4/4/2017
+	--->
+
+	<meta charset="UTF-8" />
+	<title>Truth Tables</title>
+	<script src="modernizr-1.5.js"></script>
+	<link href="chap.css" rel="stylesheet" />  
+	
+</head>
+
+<body>
+
+	<h1>Truth Tables</h1>
+	
+	<h2>Definition</h2>
+	
+	<p>A truth table is a mathematical table used in logic which sets out the functional 
+	values of logical expressions on each of their functional arguments.In particular, truth 
+	tables can be used to show whether a propositional expression is true for all legitimate 
+	input values, that is, logically valid.<br>
+	
+	A truth table has one column for each input variable (for example, A and B), and one final column 
+	showing all of the possible results of the logical operation that the table represents (for example, 
+	A XOR B). Each row of the truth table contains one possible configuration of the input variables (for 
+	instance, A=true B=false), and the result of the operation for those values.<br>
+	</p>
+	
+	<h2>Unary Operation</h2>
+	
+	<p>There are 4 unary operations:</p>
+	
+	<ul>
+		<li>Always true</li>
+		<li>Never true, unary falsum</li>
+		<li>Unary Identity</li>
+		<li>Unary negation</li>
+	</ul>
+	
+	<h3>Logical True</h3>
+	
+	<p>The output value is always true, regardless of the input value of p.</p>
+	
+	<table style="width:25%">
+
+		<tr>
+			<th>p</th>
+			<th>T</th>
+		</tr>
+		<tr>
+			<td>T</td>
+			<td>T</td>
+		</tr>
+		<tr>
+			<td>F</td>
+			<td>T</td>
+		</tr>
+	</table>
+	
+	<h3>Logical False</h3>
+	
+	<p>The output value is never true: that is, always false, regardless of the input value of p.</p>
+	
+	<table style="width:25%">
+
+		<tr>
+			<th>p</th>
+			<th>F</th>
+		</tr>
+		<tr>
+			<td>T</td>
+			<td>F</td>
+		</tr>
+		<tr>
+			<td>F</td>
+			<td>F</td>
+		</tr>
+	</table>
+	
+	<h3>Logical Identity</h3>
+	
+	<p>Logical identity is an operation on one logical value p, for which the output value remains p.<br>
+	The truth table for the logical identity operator is as follows:</p>
+	
+	<table style="width:25%">
+
+		<tr>
+			<th>p</th>
+			<th>p</th>
+		</tr>
+		<tr>
+			<td>T</td>
+			<td>T</td>
+		</tr>
+		<tr>
+			<td>F</td>
+			<td>F</td>
+		</tr>
+	</table>
+	
+	<h3>Logical Negation</h3>
+	
+	<p>Logical negation is an operation on one logical value, typically the value of a 
+	proposition, that produces a value of true if its operand is false and a value of false 
+	if its operand is true.<br>
+	The truth table for NOT p (also written as ¬p, Np, Fpq, or ~p) is as follows:</p>
+	
+	<table style="width:25%">
+
+		<tr>
+			<th>p</th>
+			<th>-p</th>
+		</tr>
+		<tr>
+			<td>T</td>
+			<td>F</td>
+		</tr>
+		<tr>
+			<td>F</td>
+			<td>T</td>
+		</tr>
+	</table>
+	
+	<h2>Binary Operations</h2>
+	
+	<p>There are 16 possible truth functions of two binary variables.<br>
+	
+	<img src="assets/img/truthtable.png" alt="truthtable">
+	
+	<p>The above table is the extended truth table giving definitions of all 16 of the possible
+	truth functions of two binary variables (P and Q are thus boolean variables) where T = true 
+	and F = false. The Com row indicates whether an operator, op, is commutative - P op Q = Q 
+	op P. The L id row shows the operator's left identities if it has any - values I such that 
+	I op Q = Q. The R id row shows the operator's right identities if it has any - values I such 
+	that P op I = P.<br>
+	The four combinations of input values for p, q, are read by row from the table above. 
+	The output function for each p, q combination, can be read, by row, from the table.
+	</p>
+	
+	<img src="assets/img/truthtablecol.png" alt="truthtable">
+	
+	<p>The above table is oriented by column, rather than by row. There are four columns rather 
+	than four rows, to display the four combinations of p, q, as input.<br>
+	p: T T F F<br>
+	q: T F T F<br>
+	There are 16 rows in this key, one row for each binary function of the two binary variables, p, q. 
+	</p>
+	
+</body>
+</html>

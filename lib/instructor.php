@@ -60,4 +60,9 @@ class Instructor extends Account
             return false;
         }
     }
+    public function getGradesByClass($CLS_ID) {
+        $qry = "SELECT * FROM VIEW_GRADEBOOK WHERE CLS_ID='$CLS_ID'";
+        $result = sqlSelect($qry);
+        return $result;
+    }
 }
