@@ -1,4 +1,63 @@
 <?php
+
+
+function chooseChapter($chapterNumber){
+    switch ($chapterNumber){
+        case 1: {
+            chap1();
+            break;
+        }
+        case 2: {
+            chap2();
+            break;
+        }
+        case 3: {
+            chap3();
+            break;
+        }
+        case 4: {
+            chap4();
+            break;
+        }
+        case 5: {
+            chap5();
+            break;
+        }
+        case 6: {
+            chap6();
+            break;
+        }
+        case 7: {
+            chap7();
+            break;
+        }
+        case 8: {
+            chap8();
+            break;
+        }
+        case 9: {
+            chap9();
+            break;
+        }
+        case 10: {
+            chap10();
+            break;
+        }
+        case 11: {
+            chap11();
+            break;
+        }
+        case 12: {
+            chap12();
+            break;
+        }
+        default: {
+            underConstruction();
+            break;
+        }
+    }
+
+}
 function chap1() {
     echo <<< HTML
     
@@ -36,7 +95,7 @@ HTML;
 function chap2() {
     echo <<< HTML
     
-    <div id="content">
+    <div id="learningContent" >
 
             <h1>Powers of 2</h1>
             <p>Before we get into powers of 2 (or the base 2 number system)
@@ -68,7 +127,45 @@ HTML;
 
 function chap3() {
     echo <<< HTML
-    
+    <div id="learningContent" >
+            <h1>Decimal to Binary Conversion</h1>
+
+            <p> Converting Decimal or base 10 to Binary could be a very hard task especially using the wrong method.  One of the
+                easiest ways of conversion is to using the powers of 2 discussed in the previous chapter.
+                First we are going to convert 9<sub>10</sub> to binary.
+            </p>
+            <img src="assets/img/decimalToBinary1.PNG" >
+            <h2>Check out this video from Khan Academy on how to convert Decimal numbers to Binary</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/H4BstqvgBow?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+            <h2>Input any number here to see the binary number it produces</h2>
+
+            <!-- Game Created by Cory Wilson!!! -->
+            <form>
+                Enter an integer:<br>
+                <input type="number" step="1" min="0" value="12" id="decimalInput" />
+                <input type="button" id="convert" value="Convert" /><br>
+                Binary Output:<br>
+                <input type="text" id="binaryOutput" value="1100" readonly="true">
+
+            </form>
+            <!--  End of Game Created by Cory Wilson  -->
+
+
+            <p>Little number conversion game here!</p><br>
+            <img src="assets/img/decimalToBinary2.PNG">
+            <h2>Check out Khan Academy's explanation on how to convert bigger numbers to Binary</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/bvcXEJbEzSs?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+            <h2>Think you understand? Try it yourself!!!</h2>
+
+
+            <form>
+                <p id="questionNumber">Question 1</p>
+                <label for="question"><?php echo $questionNumbers[0]; ?></label><br>
+                <input type="text" id="question" class="quizInput" /><br>
+                <p id="success" hidden>You did it!</p>
+            </form>
+
+        </div>
 HTML;
 
 }
@@ -76,6 +173,7 @@ HTML;
 
 function chap4(){
     echo <<< HTML
+<div id="learningContent" >
     <h1>Understanding Binary</h1>
     <p>Binary or base 2 is like our regular base 10 numbering system but instead using 1-10 it uses 0-1.
      As an example, counting in binary looks like this:
@@ -119,7 +217,7 @@ function chap4(){
 <p style="color: red">
 This part should be 5 questions like What is 0010 in Decimal, 1111 in Decimal, 1001 in Decimal, 1100 in Decimal, 0011 in Decimal.
 </p>
-
+</div>
     
 HTML;
 
@@ -260,6 +358,7 @@ HTML;
 
 function chap6() {
     echo <<< HTML
+<div id="learningContent" >
     <h1>Binary to Hexadecimal Conversion</h1>
 
 	<h2>About Hexadecimal</h2>
@@ -361,6 +460,7 @@ function chap6() {
 		them all up. That sum is the decimal equivalent of your hex value.
 		</li>
 	</ol>
+</div>
 HTML;
 
 }
@@ -368,6 +468,7 @@ HTML;
 
 function chap7() {
     echo <<< HTML
+<div id="learningContent" >
     <h1>2's Complement</h1>
 	
 	<h2>2's Complement Notation</h2>
@@ -465,6 +566,7 @@ function chap7() {
 			<td>-1</td>
 		</tr>
 	</table>
+</div>
 HTML;
 
 }
@@ -472,6 +574,7 @@ HTML;
 
 function chap8() {
     echo <<< HTML
+<div id="learningContent" >
     <h1>Venn Diagrams</h1>
 	
 	<h2>Definition</h2>
@@ -520,6 +623,7 @@ function chap8() {
 	<p>The absolute complement of a venn diagram contains the data of one set that is unique to 
 	only that set and all of the data that is not contained in any of the sets of data.
 	</p>
+</div>
 HTML;
 
 }
@@ -527,7 +631,142 @@ HTML;
 
 function chap9() {
     echo <<< HTML
-    <h1> Under Construction</h1>
+    <div id="learningContent" >
+    <h1>Truth Tables</h1>
+	
+	<h2>Definition</h2>
+	
+	<p>A truth table is a mathematical table used in logic which sets out the functional 
+	values of logical expressions on each of their functional arguments.In particular, truth 
+	tables can be used to show whether a propositional expression is true for all legitimate 
+	input values, that is, logically valid.<br>
+	
+	A truth table has one column for each input variable (for example, A and B), and one final column 
+	showing all of the possible results of the logical operation that the table represents (for example, 
+	A XOR B). Each row of the truth table contains one possible configuration of the input variables (for 
+	instance, A=true B=false), and the result of the operation for those values.<br>
+	</p>
+	
+	<h2>Unary Operation</h2>
+	
+	<p>There are 4 unary operations:</p>
+	
+	<ul>
+		<li>Always true</li>
+		<li>Never true, unary falsum</li>
+		<li>Unary Identity</li>
+		<li>Unary negation</li>
+	</ul>
+	
+	<h3>Logical True</h3>
+	
+	<p>The output value is always true, regardless of the input value of p.</p>
+	
+	<table style="width:25%">
+
+		<tr>
+			<th>p</th>
+			<th>T</th>
+		</tr>
+		<tr>
+			<td>T</td>
+			<td>T</td>
+		</tr>
+		<tr>
+			<td>F</td>
+			<td>T</td>
+		</tr>
+	</table>
+	
+	<h3>Logical False</h3>
+	
+	<p>The output value is never true: that is, always false, regardless of the input value of p.</p>
+	
+	<table style="width:25%">
+
+		<tr>
+			<th>p</th>
+			<th>F</th>
+		</tr>
+		<tr>
+			<td>T</td>
+			<td>F</td>
+		</tr>
+		<tr>
+			<td>F</td>
+			<td>F</td>
+		</tr>
+	</table>
+	
+	<h3>Logical Identity</h3>
+	
+	<p>Logical identity is an operation on one logical value p, for which the output value remains p.<br>
+	The truth table for the logical identity operator is as follows:</p>
+	
+	<table style="width:25%">
+
+		<tr>
+			<th>p</th>
+			<th>p</th>
+		</tr>
+		<tr>
+			<td>T</td>
+			<td>T</td>
+		</tr>
+		<tr>
+			<td>F</td>
+			<td>F</td>
+		</tr>
+	</table>
+	
+	<h3>Logical Negation</h3>
+	
+	<p>Logical negation is an operation on one logical value, typically the value of a 
+	proposition, that produces a value of true if its operand is false and a value of false 
+	if its operand is true.<br>
+	The truth table for NOT p (also written as ¬p, Np, Fpq, or ~p) is as follows:</p>
+	
+	<table style="width:25%">
+
+		<tr>
+			<th>p</th>
+			<th>-p</th>
+		</tr>
+		<tr>
+			<td>T</td>
+			<td>F</td>
+		</tr>
+		<tr>
+			<td>F</td>
+			<td>T</td>
+		</tr>
+	</table>
+	
+	<h2>Binary Operations</h2>
+	
+	<p>There are 16 possible truth functions of two binary variables.<br>
+	
+	<img src="assets/img/truthtable.png" alt="truthtable">
+	
+	<p>The above table is the extended truth table giving definitions of all 16 of the possible
+	truth functions of two binary variables (P and Q are thus boolean variables) where T = true 
+	and F = false. The Com row indicates whether an operator, op, is commutative - P op Q = Q 
+	op P. The L id row shows the operator's left identities if it has any - values I such that 
+	I op Q = Q. The R id row shows the operator's right identities if it has any - values I such 
+	that P op I = P.<br>
+	The four combinations of input values for p, q, are read by row from the table above. 
+	The output function for each p, q combination, can be read, by row, from the table.
+	</p>
+	
+	<img src="assets/img/truthtablecol.png" alt="truthtable">
+	
+	<p>The above table is oriented by column, rather than by row. There are four columns rather 
+	than four rows, to display the four combinations of p, q, as input.<br>
+	p: T T F F<br>
+	q: T F T F<br>
+	There are 16 rows in this key, one row for each binary function of the two binary variables, p, q. 
+	</p>
+    </div>
 HTML;
 
 }
@@ -536,7 +775,134 @@ HTML;
 
 function chap10() {
     echo <<< HTML
-    <h1> Under Construction</h1>
+    <div id="learningContent" >
+        <h1>Pseudocode</h1>
+	
+	<h2>Definition</h2>
+	
+	<p>Pseudocode: a program code unrelated to the hardware of a particular computer and 
+	requiring conversion to the code used by the computer before the program can be used. 
+	</p>
+
+	<h2>Application</h2>
+	
+	<p>Pseudocode is used by many programmers to detail the requirements of a program. 
+	When someone is writing pseudocode, it is written in a way that structures the design 
+	and requirements of code that is going to be written. This is done with detailed statement 
+	about what a program is going to do or what is to be done in a function call.<br>
+	Pseudocode is first written in plain English to form the basics of what the program is going to do. <br><br>
+	A programmer who needs to implement a specific algorithm, especially an unfamiliar one, 
+	will often start with a pseudocode description, and then "translate" that description into the 
+	target programming language and modify it to interact correctly with the rest of the program. 
+	Programmers may also start a project by sketching out the code in pseudocode on paper before 
+	writing it in its actual language, as a top-down structuring approach, with a process of steps 
+	to be followed as a refinement.
+	</p>
+ 
+	<h2>Syntax</h2>
+	
+	<p>As the name suggests, pseudocode generally does not actually obey the syntax rules of any 
+	particular language; there is no systematic standard form, although any particular writer will 
+	generally borrow style and syntax; for example, control structures from some conventional 
+	programming language. Popular syntax sources include Fortran, Pascal, BASIC, C, C++, Java, Lisp, 
+	and ALGOL. Variable declarations are typically omitted. Function calls and blocks of code, such 
+	as code contained within a loop, are often replaced by a one-line natural language sentence.<br><br>
+	Depending on the writer, pseudocode may therefore vary widely in style, from a near-exact 
+	imitation of a real programming language at one extreme, to a description approaching formatted 
+	prose at the other.
+	</p>
+ 
+	<h2>Examples</h2>
+	
+	<h3>Fortran style pseudocode</h3>
+	
+	<p><tab1>program fizzbuzz<br>
+	<tab2>Do i = 1 to 100<br>
+	<tab3>set print_number to true<br>
+	<tab3>If i is divisible by 3<br>
+	<tab4>print "Fizz"<br>
+	<tab4>set print_number to false<br>
+	<tab3>If i is divisible by 5<br>
+	<tab4>print "Buzz"<br>
+	<tab4>set print_number to false<br>
+	<tab3>If print_number, print i<br>
+	<tab3>print a newline<br>
+	<tab2>end do<br>
+	</p>
+	
+	<h3>Pascal style pseudocode</h3>
+	
+	<p><tab1>procedure fizzbuzz<br>
+	<tab2>For i := 1 to 100 do<br>
+	<tab3>set print_number to true;<br>
+	<tab3>If i is divisible by 3 then<br>
+	<tab4>print "Fizz";<br>
+	<tab4>set print_number to false;<br>
+	<tab3>If i is divisible by 5 then<br>
+	<tab4>print "Buzz";<br>
+	<tab4>set print_number to false;<br>
+	<tab3>If print_number, print i;<br>
+	<tab3>print a newline;<br>
+	<tab2>end<br>
+	</p>
+	
+	<h3>C style pseudocode</h3>
+	
+	<p><tab1>void function fizzbuzz {<br>
+	<tab2>for (i = 1; i <= 100; i++) {<br>
+	<tab3>set print_number to true;<br>
+	<tab3>If i is divisible by 3<br>
+	<tab4>print "Fizz";<br>
+	<tab4>set print_number to false;<br>
+	<tab3>If i is divisible by 5<br>
+	<tab4>print "Buzz";<br>
+	<tab4>set print_number to false;<br>
+	<tab3>If print_number, print i;<br>
+	<tab3>print a newline;<br>
+	<tab2>}<br>
+	<tab1>}<br>
+	</p>
+	
+	<h3>Basic style pseudocode</h3>
+	
+	<p><tab1>Sub fizzbuzz()<br>
+	<tab2>For i = 1 to 100<br>
+	<tab3>print_number = True<br>
+	<tab3>If i is divisible by 3 Then<br>
+	<tab4>Print "Fizz"<br>
+	<tab4>print_number = False<br>
+	<tab3>End If<br>
+	<tab3>If i is divisible by 5 Then<br>
+	<tab4>Print "Buzz"<br>
+	<tab4>print_number = False<br>
+	<tab3>End If<br>
+	<tab3>If print_number = True, Then print i<br>
+	<tab3>Print a newline<br>
+	<tab2>Next i<br>
+	<tab1>End Sub<br>
+	</p>
+ 
+	<h3>Plain English pseudocode</h3>
+	
+	<p><tab1>Program<br>
+	<tab2>Loop from 1 to 100<br>
+	<tab3>set print_number = True<br>
+	<tab3>If i is divisible by 3 then<br>
+	<tab4>Print "Fizz"<br>
+	<tab4>set print_number = False<br>
+	<tab3>End If<br>
+	<tab3>If i is divisible by 5 then<br>
+	<tab4>Print "Buzz"<br>
+	<tab4>set print_number = False<br>
+	<tab3>End If<br>
+	<tab3>If print_number = True then<br>
+	<tab4>Print i<br>
+	<tab3>End If<br>
+	<tab3>Print a newline<br>
+	<tab2>Next value in Loop<br>
+	<tab1>End Program<br>
+	</p>
+    </div>
 HTML;
 
 }
@@ -544,7 +910,9 @@ HTML;
 
 function chap11() {
     echo <<< HTML
+    <div id="learningContent" >
     <h1> Under Construction</h1>
+    </div>
 HTML;
 
 }
@@ -553,14 +921,18 @@ HTML;
 
 function chap12() {
     echo <<< HTML
+    <div id="learningContent" >
     <h1> Under Construction</h1>
+    </div>
 HTML;
 
 }
 
 function chap13() {
     echo <<< HTML
+    <div id="learningContent" >
     <h1> Under Construction</h1>
+    </div>
 HTML;
 
 }
@@ -568,15 +940,19 @@ HTML;
 
 function chap14() {
     echo <<< HTML
+    <div id="learningContent" >
     <h1> Under Construction</h1>
+    </div>
 HTML;
 
 }
 
 
-function chap15() {
+function underConstruction() {
     echo <<< HTML
+    <div id="learningContent" >
     <h1> Under Construction</h1>
+    </div>
 HTML;
 
 }

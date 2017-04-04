@@ -1,5 +1,6 @@
 <?php
 require('../lib/functionlib.php');
+require_once ('coursesLib.php');
 
 /******************************************************
  ***               Private Profile                  ***
@@ -13,11 +14,21 @@ require('../lib/functionlib.php');
  ***                                                ***
  ******************************************************/
 
-$chapter = 'chap2';
-//checkUser();
 
-$_SESSION['CLS_ID'] = $_GET['CLS_ID'];
-$CLS_ID = $_SESSION['CLS_ID'];
+//checkUser();
+if (! isset($_GET['xchwe']) && ! isset($_GET['CLS_ID'])){
+    reDir('../main.php');
+}
+if(isset($_GET['CLS_ID'])){
+    $_SESSION['CLS_ID'] = $_GET['CLS_ID'];
+    $CLS_ID = $_SESSION['CLS_ID'];
+}
+
+if (! isset($_GET['xchwe'])){
+    $chapter = 1;
+}else {
+    $chapter = $_GET['xchwe'];
+}
 
 echo <<< HTML
 
@@ -47,6 +58,11 @@ echo <<< HTML
     #accountMenu H2 {
         color: white;
     }
+    nav {
+        margin: 20px auto auto auto;
+        width: 90%;
+        font-size: 17px;
+    }
     
     #learningContent {
         background-color: white;
@@ -66,7 +82,7 @@ echo <<< HTML
 
     <!--  ** Java ** -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="scripts/course.js" type="text/javascript"></script>
+    <script src="assets/scripts/course.js" type="text/javascript"></script>
 
 </head>
 
@@ -84,12 +100,27 @@ echo <<< HTML
    </div>
    
    <nav id="chapterNav">
-    
+        <a href="course.php?xchwe=1" />Chapter 1</a> |
+        <a href="course.php?xchwe=2" />Chapter 2</a> |
+        <a href="course.php?xchwe=3" />Chapter 3</a> |
+        <a href="course.php?xchwe=4" />Chapter 4</a> |
+        <a href="course.php?xchwe=5" />Chapter 5</a> |
+        <a href="course.php?xchwe=6" />Chapter 6</a> |
+        <a href="course.php?xchwe=7" />Chapter 7</a> |
+        <a href="course.php?xchwe=8" />Chapter 8</a> |
+        <a href="course.php?xchwe=9" />Chapter 9</a> | 
+        <a href="course.php?xchwe=10" />Chapter 10</a> |
+        <a href="course.php?xchwe=11" />Chapter 11</a> |
+        <a href="course.php?xchwe=12" />Chapter 12</a> |
+        <a href="course.php?xchwe=13" />Chapter 13</a> |
+        <a href="course.php?xchwe=14" />Chapter 14</a> |
+        <a href="course.php?xchwe=15" />Chapter 15</a> |
+        <a href="course.php?xchwe=16" />Chapter 16</a>
    </nav>
    
 
 HTML;
-chap5();
+chooseChapter($chapter);
 echo <<< HTML
 
    
