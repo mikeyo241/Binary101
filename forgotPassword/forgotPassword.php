@@ -75,7 +75,7 @@ echo <<< HTML
 
 <body>
    <header>           
-      <img id="logo" src="../assets/img/logo.PNG" alt="Website Logo" align="top-left">
+      <a href="../main.php"><img id="logo" src="../assets/img/logo.PNG" alt="Website Logo" align="top-left"></a>
    </header>
    
    <div id="line">
@@ -102,13 +102,13 @@ echo <<< HTML
    </section>
    
    
-   <div id="bottomLine">
+   <div id="bottomLineFixed">
         <!--   simply for aesthetics   -->
     </div>
    
-   <footer>         
-        <a style="color: rgb(237, 36, 20);"> About Us </a> 
-        | <a style="color: rgb(237, 36, 20);"> Privacy Policy </a>
+   <footer id="posFixed">
+        <a href="../about.html" style="color: white"> About Us </a>
+        | <a href="../privacy.html" style="color: white;"> Privacy Policy </a>
     </footer>
    
    
