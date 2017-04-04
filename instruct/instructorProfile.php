@@ -131,9 +131,9 @@ echo <<< HTML
 
         <div id="classes" name="classes" style="$classesStyle">
         <h2 id="classesTitle">Current Classes</h2>
-            <table border="5" style="text-align: center; padding: 5px;">  <!-- Remove the Styling for the table and make your own! -->
+            <table id="classesTable" border="5">  <!-- Remove the Styling for the table and make your own! -->
                 <thead>
-                    <td> </td>
+                    <td>Select</td>
                     <td>Course</td>               
                     <td>Students Enrolled</td>
                     <td>Available Seats</td>
@@ -150,17 +150,17 @@ HTML;
 }
 echo <<< HTML
             
-                    <tr><td colspan="5"><input value="View Grade Book" type="submit" id="submitGradeBook" name="submitGradeBook"></td></tr>
+                <!-- where input submit was before i moved it  ~Nathaniel   -->
                 </form>
             </table>
         </div>
         
-        <div id="space">
-            <!--   for separating other divs    -->
+        <div id="space1">
+            <input value="View Grade Book" type="submit" id="submitGradeBook" name="submitGradeBook">
         </div>
     
         <div id="createAClass">
-            <table>
+            <table id="createTable">
             <h2 id="createClassTitle">Create a new Class</h2>
                 <thead>
                 <td>Class Name</td>
@@ -176,10 +176,10 @@ echo <<< HTML
                     <td><input type="number" name="maxEnrollment" id="maxEnrollment" required </td>
                     <td><input type="submit" name="createAClassSubmit" id="createAClassSubmit" value="Create Class"</td>
                </tr>
-                <tr><td colspan="5" style="color: red">$classCreated</td></tr>
+                <tr><td colspan="2" style="color: red">$classCreated</td></tr>
             </table>
-            <h3>Select Required Chapters</h3>
-            <table border="5">
+            <h3 id="selectTitleBABY">Select Required Chapters</h3>
+            <table id="chapterTable" border="5">
                 <thead>
                     <td>Course Name</td><td>Action</td>
                 </thead>

@@ -63,7 +63,7 @@ a {
 }
 
 input {
-    height: 25px;
+    height: 30px;
     border-radius: 5px;
     width: 100%;
     border: 1px solid black;
@@ -166,10 +166,10 @@ section {
 }
 
 #classes {
-    display: block;
-    width: 650px;
+    width: 85%;
     position: relative;
     margin: auto;
+    text-align: center;
 }
 
 #classesTitle {
@@ -178,15 +178,115 @@ section {
 }
 
 #createAClass {
-    width: 740px;
+    width: 85%;
     margin: auto;
     position: relative;
+}
+
+#createAClassSubmit {
+    border-radius: 10%;
+    background-color: rgb(237, 28, 36);
+    color: white;
+    border: rgb(237, 28, 36);
+    width: 170px;
+    height: 30px;
+    position: relative;
+    font-size: 16px;
+    font-family: monospace;
 }
 
 #createClassTitle {
     text-align: center;
 }
 
+#createTable {
+    text-align: center;
+    border: 1px solid rgb(23, 23, 23);
+    width: 100%;
+    font-size: 20px;
+}
+
 #space {
     height: 50px;
 }
+
+#space1 {
+    height: 140px;
+
+    width: 85%;
+    position: relative;
+    margin: auto;
+    text-align: center;
+}
+
+#logOutSubmit {
+    border-radius: 10%;
+    background-color: rgb(237, 28, 36);
+    color: white;
+    border: rgb(237, 28, 36);
+    width: 100px;
+    height: 30px;
+    position: relative;
+    font-size: 16px;
+    font-family: monospace;
+}
+
+#signOutForm {
+    text-align: center;
+}
+
+#submitGradeBook {
+    border-radius: 10%;
+    background-color: rgb(237, 28, 36);
+    color: white;
+    border: rgb(237, 28, 36);
+    width: 170px;
+    height: 30px;
+    position: relative;
+    font-size: 16px;
+    font-family: monospace;
+    top: 40px;
+}
+
+
+#classesTable {
+    text-align: center;
+    border: 1px solid rgb(23, 23, 23);
+    width: 100%;
+    font-size: 20px;
+}
+
+#chapterTable {
+    text-align: center;
+    border: 1px solid rgb(23, 23, 23);
+    width: 50%;
+    margin: auto;
+    font-size: 20px;
+}
+
+#selectTitleBABY {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+table {
+    text-align: center;
+    border: 1px solid rgb(23, 23, 23);
+
+}
+
+thead {
+    color: rgb(237, 28, 36);
+    /*font-family: monospace;*/
+}
+
+tbody {
+    color: white;
+}
+
+tr {
+    height: 40px;
+    letter-spacing: 1px;
+}
+
