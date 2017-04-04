@@ -213,11 +213,11 @@ echo <<< HTML
         
     </section>
     
-    <div id="bottomLine">
+    <div id="bottomLineFixed">
         <!--   simply for aesthetics   -->
     </div>
 
-    <footer>
+    <footer id="posFixed">
         <a href="about.html" style="color: white"> About Us </a>
         | <a href="privacy.html" style="color: white;"> Privacy Policy </a>
     </footer>
