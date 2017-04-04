@@ -32,14 +32,17 @@ $className = $classData['CLS_NAME'];
 
 if (getClassData($email) != false) {
 
-    $searchResult = getClassData($email);
+    $searchResult = $user->getGradesByClass($classID);
     if ($searchResult->num_rows > 0) {
         $i = 0;
         while ($row = $searchResult->fetch_assoc()) {
             $clsID = $row['CLS_ID'];
-            $className = $row['CLS_NAME'];
+            $studentLName = $row['STU_LNAME'];
+            $studentFName = $row['STU_FNAME'];
+            $score = $row['COM_SCORE'];
             $totalStudents = getStudentEnrollment($row['CLS_ID']);
-            $maxEnrollment = $row['CLS_MAXENROLLMENT'];
+            //$maxEnrollment = $row['CLS_MAXENROLLMENT'];
+            $maxEnrollment = 10;
             $seatsAvailable = $maxEnrollment - $totalStudents;
             if (getClassAverage($row['CLS_ID']) == -1) {  // getClassAverage returns -1 when the glass doesn't any grade data.
                 $classAverage = 'No Grades Yet';
@@ -47,7 +50,7 @@ if (getClassData($email) != false) {
             $classInfo[$i] = "
                 <tr>
                     <td><input type='radio' name='class' id='class' value='$clsID' </td>
-                    <td>$className</td>
+                    <td>$studentLName, $studentFName</td>
                     <td>$totalStudents</td>
                     <td>$seatsAvailable</td>
                     <td>$classAverage</td>
@@ -88,7 +91,7 @@ echo <<< HTML
             <thead>
                 <td> </td>
                 <td>Student</td>               
-                <td>Students Enrolled</td>
+                <td>Course</td>
                 <td>Available Seats</td>
                 <td>Class Grade Average</td>          
             </thead>

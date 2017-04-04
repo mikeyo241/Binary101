@@ -82,6 +82,48 @@ function sqlQuery($qry) {
     }
 }
 
+function sqlSelect($qry) {
+    $link = dbConnect();
+    if($result = mysqli_query($link,$qry)) {
+        if (gettype($result) == "boolean") { // Query returns true/false; unexpected functionality
+            $link->close();
+            echo "Wrong sql function used; query returned $result";
+            return null;
+        } else if (mysqli_num_rows($result) == 1) {  // Query returns data; expected
+            // $result = $result->fetch_assoc();
+            $link->close();
+            return $result;
+        } else if (mysqli_num_rows($result) > 1) {   // Query returns multiple results; expected
+            $link->close();
+            return $result;
+        }
+    } else {
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return null;
+    }
+}
+
+function sqlModify($qry) {
+    $link = dbConnect();
+    if($result = mysqli_query($link,$qry)) {
+        if (gettype($result) == "boolean") { // Query returns true/false; expected functionality
+            $link->close();
+            return $result;
+        } else  {  // Query returns data; unexpected functionality
+            $link->close();
+            echo "Wrong sql function used; query returned $result";
+            return null;
+        }
+    } else {
+        echo "Error: " . $qry . "<br>" . mysqli_error($link);
+        $link->close();
+        return null;
+    }
+}
+
+
+
 
 /**  Function:      cleanIT
  * Last Modified:   2 November 2016
