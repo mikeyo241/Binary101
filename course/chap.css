@@ -1,0 +1,16 @@
+/*
+   Chapter Style Sheet
+   Author: Christian Cook
+   Date:   4/4/2017
+
+   Filename:         chap.css
+
+*/
+
+th, td{
+	border: 1px solid black;
+	display: inline-block;
+	text-align: center;
+	width: 10%;
+	padding: 25px;
+}

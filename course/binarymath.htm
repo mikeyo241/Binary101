@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!--
+	Binary Math
+	File:	binarymath.htm
+			chap5.htm
+	Author: Christian Cook
+	Date: 3/31/2017
+	--->
+
+	<meta charset="UTF-8" />
+	<title>Binary Math</title>
+	<script src="modernizr-1.5.js"></script>
+	<link href="chap.css" rel="stylesheet" />  
+	
+</head>
+
+<body>
+
+	<h1>Binary Math</h1>
+	
+	<h2>Position</h2>
+	
+	<p>In the Decimal System there are Ones, Tens, Hundreds, etc<br><nr>
+		In Binary there are Ones, Twos, Fours, etc, like this:
+	</p>
+	
+	<img src="binary-number.png" alt="binary-number">
+	
+	<h2>Binary Addition</h2>
+	
+	<p>Now that we know binary numbers, we will learn how to add them. Binary addition 
+	is much like your normal everyday addition (decimal addition), except that it carries 
+	on a value of 2 instead of a value of 10.<br><br>
+	For example: in decimal addition, if you add 8 + 2 you get ten, which you write as 10; 
+	in the sum this gives a digit 0 and a carry of 1. Something similar happens in binary 
+	addition when you add 1 and 1; the result is two (as always), but since two is written as 
+	10 in binary, we get, after summing 1 + 1 in binary, a digit 0 and a carry of 1.<br><br>
+
+	Therefore in binary:<br>
+	0 + 0 = 0<br>
+	0 + 1 = 1<br>
+	1 + 0 = 1<br>
+	1 + 1 = 10 (which is 0 carry 1)<br>
+	</p>
+	
+	<p>Khan Academy Video(adding binary):  https://www.khanacademy.org/math/algebra-home/alg-intro-to-algebra/algebra-alternate-number-bases/v/binary-addition</p>
+	
+	<h2>Binary Subtraction</h2>
+	
+	<p>Binary subtraction is also similar to that of decimal subtraction with the difference 
+	that when 1 is subtracted from 0, it is necessary to borrow 1 from the next higher order bit 
+	and that bit is reduced by 1 (or 1 is added to the next bit of subtrahend) and the remainder is 1.<br><br>
+	Thus the rules of binary subtraction are as follows:<br>
+	</p>
+	
+	<table style="width:25%">
+		<tr>
+			<th>-</th>
+			<th>0</th>
+			<th>1</th>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>1</td>
+			<td>0</td>
+		</tr>
+	</table>
+	
+	<p>0 - 0 = 0<br>
+	1 - 0 = 1<br>
+	1 - 1 = 0<br>
+	0 - 1 = 1 (with a borrow of 1)<br><br>
+	For fractional numbers, the rules of subtraction are the same with the 
+	binary point properly placed.
+	</p>
+	
+	<h2>Binary Multiplication</h2>
+	
+	<p>Binary multiplication uses the same algorithm, but uses just three 
+	order-independent facts: 0 x 0 = 0, 1 x 0 = 0, and 1 x 1 = 1 (these work 
+	the same as in decimal). If you perform the multiplication phase with these 
+	facts, you’ll notice two things: there are never any carries, and the partial 
+	products will either be zeros or a shifted copy of the multiplicand.<br><br>
+
+	Observing this, you’ll realize there’s no need for digit-by-digit 
+	multiplication, which means there’s no need to consult a times table — 
+	which means there’s no multiplication, period! Instead, you just write 
+	down 0 when the current digit of the multiplier is 0, and you write down 
+	the multiplicand when the current digit of the multiplier is 1.<br><br>
+	</p>
+	
+	<img src="binary-multiplication.png" alt="binary multiplication">
+	
+	<p>Each step is the placement of an entire partial product, unlike in decimal, 
+	where each step is a single-digit multiplication (and possible addition of a carry).<br><br>
+
+	In the addition phase, the partial products are added using binary addition, 
+	and then the radix point is placed appropriately. This gives the answer 1001001.001.<br><br>
+	</p>
+	
+	<p>Khan Academy Video (Binary Multiplication): https://www.khanacademy.org/math/algebra-home/alg-intro-to-algebra/algebra-alternate-number-bases/v/binary-multiplication</p>
+	
+	<h2>Binary Division</h2>
+	
+	<p>The method followed in binary division is also similar to that adopted 
+	in decimal system. However, in the case of binary numbers, the operation is simpler 
+	because the quotient can have either 1 or 0 depending upon the divisor.<br><br>
+	The table for binary division is:
+	</p>
+	
+	<table style="width:25%">
+		<tr>
+			<th>-</th>
+			<th>1</th>
+			<th>0</th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>1</td>
+			<td>Meaning less</td>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>0</td>
+			<td>Meaning less</td>
+		</tr>
+	</table>
+	
+	<img src="binary-division.png" alt="binary division">
+
+
+	
+</body>
+</html>

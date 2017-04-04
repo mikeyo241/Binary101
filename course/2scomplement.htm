@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!--
+	Binary Math
+	File:	2scomplement.htm
+			chap7.htm
+	Author: Christian Cook
+	Date: 4/4/2017
+	--->
+
+	<meta charset="UTF-8" />
+	<title>2's Complement</title>
+	<script src="modernizr-1.5.js"></script>
+	<link href="chap.css" rel="stylesheet" />  
+	
+</head>
+
+<body>
+
+	<h1>2's Complement</h1>
+	
+	<h2>2's Complement Notation</h2>
+	
+	<p>Two's complement number representation is used for signed numbers on most 
+	modern computers. This notation allows a computer to add and subtract numbers using the 
+	same operations (thus we do not need to implement adders and subtractors). We can characterize 
+	two's complement notation as:<br>
+	</p>
+	
+	<ul>
+		<li>A fixed number of bits are used to represent numbers</li>
+		<li>The most significant bit is called the sign bit</li>
+		<li>This same notation is used to represent both positive and negative numbers</li>
+	</ul>
+	
+	<p>Positive numbers are represented normally.</p>
+	<p>Negative numbers are represented using a 2's complement form. To obtain the 2's 
+	complement of a number:<br>
+	</p>
+	<ol>
+		<li>Complement the bits</li>
+		<li>Add one to the result</li>
+	</ol>
+	
+	<h2>Four-Bit Two's Complement Values</h2>
+	
+	<table style="width:50%">
+		<tr>
+			<th>Two's Complement</th>
+			<th>Decimal Number</th>
+		</tr>
+		<tr>
+			<td>0000</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>0001</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>0010</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>0011</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>0100</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td>0101</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>0110</td>
+			<td>6</td>
+		</tr>
+		<tr>
+			<td>0111</td>
+			<td>7</td>
+		</tr>
+		<tr>
+			<td>1000</td>
+			<td>-8</td>
+		</tr>
+		<tr>
+			<td>1001</td>
+			<td>-7</td>
+		</tr>
+		<tr>
+			<td>1010</td>
+			<td>-6</td>
+		</tr>
+		<tr>
+			<td>1011</td>
+			<td>-5</td>
+		</tr>
+		<tr>
+			<td>1100</td>
+			<td>-4</td>
+		</tr>
+		<tr>
+			<td>1101</td>
+			<td>-3</td>
+		</tr>
+		<tr>
+			<td>1110</td>
+			<td>-2</td>
+		</tr>
+		<tr>
+			<td>1111</td>
+			<td>-1</td>
+		</tr>
+	</table>
+	
+</body>
+</html>
