@@ -1,15 +1,17 @@
 # Group 6  - Binary 101 Website
 
-**This is a private repository only contributors that I invite can see it.**
+**This is a private repository only contributors that I invite can see it for now  
+however, after this class is over I will publish this project and make it public  
+so we can show this to future employers.  Please keep this in mind as we go forward  
+in creating a great project!!!**
 
 
 Author & Contributor List
 -----
-Michael A Gardner &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      mikeyo241  &nbsp;- **Back End PHP**  
-Nathaniel Merck  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      nmerck1 &nbsp;&nbsp;&nbsp;&nbsp; - **Design HTML, CSS**  
-Christian R. Cook   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      crcook &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - **Database Management**  
-Cory Wilson  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      coryw &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **JavaScript**
-
+Cory Wilson  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      coryw &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **Core JavaScript, PHP, HTML, CSS**  
+Nathaniel Merck  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      nmerck1 &nbsp;&nbsp;&nbsp;&nbsp; - **Design PHP, Javascript, HTML, CSS**  
+Christian R. Cook   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      crcook &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - **Learning Content, HTML, DB Management**      
+Michael A Gardner &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      mikeyo241  &nbsp;- **Core PHP, JavaScript, HTML, CSS**  
 ## Testing Logins and Sign up features
 
 If you want to test the login part of the site you must view it from the CIT server at:  
