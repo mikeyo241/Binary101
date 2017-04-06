@@ -43,7 +43,6 @@ echo <<< HTML
     
     
     <!--  ** CSS  ** -->
-     <link type="text/css" href="../assets/css/style.css" rel="stylesheet" />
     <link type="text/css" href="assets/css/course.css" rel="stylesheet" />
     <!--  This is syles by Michael you can change this -->
     <style> 
@@ -87,13 +86,13 @@ echo <<< HTML
 </head>
 
 <body>
-   <header>           
-      <img id="logo" src="../assets/img/logo.PNG" alt="Website Logo" align="top-left">
+   <header>     
+      <a href="/main.php"><img id="logo" src="../assets/img/logo.PNG" alt="Website Logo" align="top-left"></a>   
+      <h1 id="welcome">Welcome $fName !!!  </h1>
+      <img id="icon" src="../assets/img/icon.png" align="top-left">
    </header>
-   
-   <div id="accountMenu">
-        <h2>$fName $lName</h2>
-    </div>
+  
+  
    
    <div id="line">
         <!-- simply for aesthetics  -->
@@ -123,10 +122,14 @@ HTML;
 chooseChapter($chapter);
 echo <<< HTML
 
+
+    <div id="bottomLineRelative">
+        <!--   simply for aesthetics   -->
+    </div>
    
     <footer>
-        <a href="about.html" style="color: white"> About Us </a>
-        | <a href="privacy.html" style="color: white;"> Privacy Policy </a>
+        <a href="/about.html" style="color: white"> About Us </a>
+        | <a href="/privacy.html" style="color: white;"> Privacy Policy </a>
     </footer>   
 </body>
 

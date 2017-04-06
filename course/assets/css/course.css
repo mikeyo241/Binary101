@@ -1,4 +1,120 @@
-html {
-    /* Add space to bottom of page */
-    margin-bottom: 200px;
+
+/*
+ * Programmer:       Nathaniel Merck
+ * Title:            style sheet page for Group Website Project
+ * Date:             4/6/2017
+ */
+
+/*	for the head	*/
+
+header {
+    background: rgb(0, 0, 0);
+    height: 139px;
+    width: 100%;
+    position: relative;
+    left: 0px;
+    top: 0px;
+}
+
+body {
+    margin: auto;
+    background: rgb(40, 40, 40);
+    /* background: rgb(23, 23, 23); */
+}
+
+/*
+h2 {
+    font-size: 30px;
+    color: white;
+}
+
+h3 {
+    font-family: Andale Mono, monospace;
+}
+
+h4 {
+    color: white;
+    font-family: Andale Mono, monospace;
+}
+*/
+
+/* nav bar */
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    height: 30px;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid black;
+    font-family: inherit;
+}
+
+nav ul li a:hover {
+    box-shadow: -5px 5px 5px rgb(237, 28, 36);
+    background: rgb(23, 23, 23);
+    font-size: 30px;
+}
+
+nav ul li {
+    height: 50px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+footer, head, body {
+    width: 100%;
+}
+
+#icon {
+    width: 35px;
+    position: absolute;
+    top: 45px;
+    right: 65px;
+}
+
+#logo {
+    width: 250px;
+    height: 100px;
+    position: absolute;
+    left: 12px;
+    top: 18px;
+}
+
+#line {
+    width: 100%;
+    height: 4px;
+    background: rgb(237, 36, 20);
+    position: relative;
+}
+
+#welcome {
+    font-size: 20px;
+    font-style: italic;
+    position: absolute;
+    right: 115px;
+    top: 57px;
+    padding: 0px;
+}
+
+footer {
+    background: black;
+    height: 40px;
+    text-align: center;
+    font-family: monospace;
+    color: rgb(237, 36, 20);
+    font-size: 15px;
+
+    bottom: 0;
 }

@@ -124,14 +124,6 @@ footer {
     bottom: 0px;
 }
 
-section {
-    position: relative;
-    min-height: 565px;
-    object-fit: fill;
-    background: rgb(23, 23, 23);
-}
-
-
 #posFixed {
     position: fixed;
 }
@@ -258,4 +250,8 @@ tr {
 
 a {
     color: white;
+}
+
+a:hover {
+    color: rgb(237, 28, 36);
 }
