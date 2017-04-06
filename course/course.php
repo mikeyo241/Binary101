@@ -43,6 +43,7 @@ echo <<< HTML
     
     
     <!--  ** CSS  ** -->
+    <!-- <link type="text/css" href="../assets/css/style.css" rel="stylesheet" />  -->
     <link type="text/css" href="assets/css/course.css" rel="stylesheet" />
     <!--  This is syles by Michael you can change this -->
     <style> 
