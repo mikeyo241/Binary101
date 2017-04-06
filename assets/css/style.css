@@ -25,7 +25,8 @@ section {
     position: relative;
     min-height: 565px;
     object-fit: fill;
-    background: rgb(23, 23, 23);
+    /* background: rgb(23, 23, 23); */
+    background: rgb(40, 40, 40);
 }
 
 h1 {
@@ -254,6 +255,7 @@ footer, head, body {
     color: white;
     font-size: 44px;
     font-family: Andale Mono, monospace;
+    margin-bottom: 35px;
 }
 
 #table {

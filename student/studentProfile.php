@@ -82,11 +82,15 @@
         
         <section>
           
+          <div id="space">
+                <!--   for separating other divs    -->
+            </div>
             
          <h2 id="enrollH2">Enroll in a Class</h2>
          
          <form id="classID" action="$PHP_SELF" method="post">
                <input type="text" placeholder="Class ID or Instructor" id="classIDInput" name="classIDInput" />
+                <br>
                <input type="submit" id="classIDSubmit" name="classIDSubmit" />
          </form>
          
@@ -117,9 +121,14 @@ HTML;
 
 echo <<< HTML
          </table>
+         
+         <div id="space">
+                <!--   for separating other divs    -->
+            </div>
+            
          <h2 id="yourEnrollment">Your Enrollments</h2>
          
-       <table border="4">
+       <table id="enrolledTable" border="4">
               <thead>
                  <td>Class Name</td><td>Instructor Name</td><td>Grade</td>
               </thead>
@@ -153,6 +162,10 @@ echo <<< HTML
         <form id="signOutForm" action="$PHP_SELF" method="post">
             <input type="submit" value="Log Out" id="logOutSubmit" name="logOutSubmit">
         </form>
+        
+        <div id="space1">
+                <!--   for separating other divs    -->
+            </div>
         
     </section>
     

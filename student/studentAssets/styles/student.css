@@ -25,7 +25,8 @@ section {
     position: relative;
     min-height: 565px;
     object-fit: fill;
-    background: rgb(23, 23, 23);
+    /* background: rgb(23, 23, 23); */
+    background: rgb(40, 40, 40);
 }
 
 h1 {
@@ -171,7 +172,7 @@ section {
 }
 
 #space1 {
-    height: 140px;
+    height: 200px;
 
     width: 85%;
     position: relative;
@@ -197,8 +198,63 @@ section {
 
 #enrollH2 {
     text-align: center;
+    margin-bottom: 20px;
 }
 
 #yourEnrollment {
     text-align: center;
+    margin-bottom: 20px;
+}
+
+#enrolledTable {
+    text-align: center;
+    border: 1px solid rgb(23, 23, 23);
+    width: 50%;
+    margin: auto;
+    font-size: 20px;
+}
+
+#classID {
+    text-align: center;
+}
+
+#classIDInput {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+#classIDSubmit {
+    border-radius: 10%;
+    background-color: rgb(237, 28, 36);
+    color: white;
+    border: rgb(237, 28, 36);
+    width: 100px;
+    height: 30px;
+    position: relative;
+    font-size: 16px;
+    font-family: monospace;
+}
+
+table {
+    text-align: center;
+    border: 1px solid rgb(23, 23, 23);
+
+}
+
+thead {
+    color: rgb(237, 28, 36);
+    /*font-family: monospace;*/
+}
+
+tbody {
+    color: white;
+}
+
+tr {
+    height: 40px;
+    letter-spacing: 1px;
+}
+
+a {
+    color: white;
 }
