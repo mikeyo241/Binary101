@@ -164,3 +164,41 @@ section {
     top: 57px;
     padding: 0px;
 }
+
+
+#space {
+    height: 50px;
+}
+
+#space1 {
+    height: 140px;
+
+    width: 85%;
+    position: relative;
+    margin: auto;
+    text-align: center;
+}
+
+#logOutSubmit {
+    border-radius: 10%;
+    background-color: rgb(237, 28, 36);
+    color: white;
+    border: rgb(237, 28, 36);
+    width: 100px;
+    height: 30px;
+    position: relative;
+    font-size: 16px;
+    font-family: monospace;
+}
+
+#signOutForm {
+    text-align: center;
+}
+
+#enrollH2 {
+    text-align: center;
+}
+
+#yourEnrollment {
+    text-align: center;
+}

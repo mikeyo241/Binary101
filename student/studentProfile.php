@@ -81,11 +81,9 @@
         
         
         <section>
-            <form id="signOutForm" action="$PHP_SELF" method="post" >
-                <input type="submit" value="Log Out" id="logOutSubmit" name="logOutSubmit">
-            </form>
+          
             
-         <h2>Enroll in a Class</h2>
+         <h2 id="enrollH2">Enroll in a Class</h2>
          
          <form id="classID" action="$PHP_SELF" method="post">
                <input type="text" placeholder="Class ID or Instructor" id="classIDInput" name="classIDInput" />
@@ -119,7 +117,7 @@ HTML;
 
 echo <<< HTML
          </table>
-         <h2>Your Enrollments</h2>
+         <h2 id="yourEnrollment">Your Enrollments</h2>
          
        <table border="4">
               <thead>
@@ -148,6 +146,13 @@ else
 echo <<< HTML
         </table>
         
+            <div id="space">
+                <!--   for separating other divs    -->
+            </div>
+        
+        <form id="signOutForm" action="$PHP_SELF" method="post">
+            <input type="submit" value="Log Out" id="logOutSubmit" name="logOutSubmit">
+        </form>
         
     </section>
     
