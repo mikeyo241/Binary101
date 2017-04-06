@@ -118,3 +118,52 @@ footer {
 
     bottom: 0;
 }
+
+
+#space {
+    height: 50px;
+}
+
+#space1 {
+    height: 140px;
+
+    width: 85%;
+    position: relative;
+    margin: auto;
+    text-align: center;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: rgb(237, 28, 36);
+}
+
+
+#posFixed {
+    position: fixed;
+}
+
+#posRelative {
+    position: relative;
+}
+
+#bottomLineFixed {
+    width: 100%;
+    height: 4px;
+    background: rgb(237, 36, 20);
+
+    position: fixed;
+    bottom: 40px;
+}
+
+#bottomLineRelative {
+    width: 100%;
+    height: 4px;
+    background: rgb(237, 36, 20);
+
+    position: relative;
+    bottom: 0px;
+}
