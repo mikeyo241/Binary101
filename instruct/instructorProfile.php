@@ -56,6 +56,8 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             $_SESSION['classID'] = $_POST['class'];
             reDir('gradeBook.php');
         }
+        else
+            echo "Error";
     }
     if (isset($_POST['courseSubmit'])) {
         $courses = getCourses();
@@ -148,13 +150,14 @@ HTML;
 echo <<< HTML
             
                 <!-- where input submit was before i moved it  ~Nathaniel   -->
-                </form>
+                
             </table>
         </div>
         
         <div id="space1">
             <input value="View Grade Book" type="submit" id="submitGradeBook" name="submitGradeBook">
         </div>
+        </form>
     
         <div id="createAClass">
             <table id="createTable">
