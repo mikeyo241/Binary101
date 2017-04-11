@@ -8,7 +8,7 @@
 /*	for the head	*/
 
 header {
-    background: rgb(0, 0, 0);
+    background: rgb(33, 33, 33);
     height: 139px;
     width: 100%;
     position: relative;
@@ -18,7 +18,7 @@ header {
 
 body {
     margin: auto;
-    background: rgb(40, 40, 40);
+    background: rgb(33, 33, 33);
     /* background: rgb(23, 23, 23); */
 }
 
@@ -69,7 +69,7 @@ input {
 
 nav ul li a:hover {
     box-shadow: -5px 5px 5px rgb(237, 28, 36);
-    background: rgb(23, 23, 23);
+    background: rgb(33, 33, 33);
     font-size: 30px;
 }
 
@@ -118,7 +118,7 @@ footer, head, body {
 }
 
 footer {
-    background: black;
+    background: rgb(33, 33, 33);
     height: 40px;
     text-align: center;
     font-family: monospace;

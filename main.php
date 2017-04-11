@@ -149,7 +149,7 @@ echo <<< HTML
             <!-- simply for aesthetics  -->
       </div>
       
-    <section>
+    <section id="mainSection">
           
         <div id="createAccForm">
         <form action="$PHP_SELF" name="createAcc" id="createAcc" method="post">
@@ -215,11 +215,11 @@ echo <<< HTML
         
     </section>
     
-    <div id="bottomLineFixed">
+    <div id="bottomLine">
         <!--   simply for aesthetics   -->
     </div>
 
-    <footer id="posFixed">
+    <footer>
         <a href="about.html" style="color: white"> About Us </a>
         | <a href="privacy.html" style="color: white;"> Privacy Policy </a>
     </footer>
