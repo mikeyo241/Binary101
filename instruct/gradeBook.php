@@ -79,24 +79,34 @@ echo <<< HTML
     <link rel="stylesheet" type="text/css" href="/instruct/instructAssets/styles/instruct.css"/>
 </head>
 <body>
-<h1> This page Is Still Under Construction $fName!!!! </h1>
 
-<p>Check back later for an awesome grade book page!!!</p>
+        <header>           
+          <a href="/main.php"><img id="logo" src="../assets/img/logo.PNG" alt="Website Logo" align="top-left"></a>
+                
+          <h1 id="welcome">Welcome $fName !!!  </h1>
+          <img id="icon" src="../assets/img/icon.png" align="top-left">
+        </header>
+        
+        <div id="line">
+              <!-- simply for aesthetics  -->
+        </div>
 
-<h2> The ClassID for the gradebook you are looking for is $classID </h2>
-</body>
-<div id="classes" name="classes" style="$classesStyle">
-    <h2>$className</h2>
-        <table border="5" style="text-align: center; padding: 5px;">  <!-- Remove the Styling for the table and make your own! -->
-            <thead>
-                <td> </td>
-                <td>Student</td>               
-                <td>Course</td>
-                <td>Available Seats</td>
-                <td>Class Grade Average</td>          
-            </thead>
-                <form id="gradeBook" name="gradeBook" action="$PHP_SELF" method="post">
-                   
+        <section>
+            
+            <h2 id="classID"> The ClassID for the gradebook you are looking for is <p id="red">$classID</p> </h2>
+            
+            <div id="classesEnroll" name="classes" style="$classesStyle">
+                <h2 id="className">$className</h2>
+                    <table class="col-md-8" id="classesEnrollTable" border="5" >  <!-- Remove the Styling for the table and make your own! -->
+                        <thead>
+                            <td> </td>
+                            <td>Student</td>               
+                            <td>Course</td>
+                            <td>Available Seats</td>
+                            <td>Class Grade Average</td>          
+                        </thead>
+                            <form id="gradeBook" name="gradeBook" action="$PHP_SELF" method="post">
+                               
 HTML;
 if(isset($classInfo)) {
     foreach ($classInfo as $value) {
@@ -104,10 +114,28 @@ if(isset($classInfo)) {
     }
 }
 echo <<< HTML
-                <tr><td colspan="5"><input value="View Grade Book" type="submit" id="submitGradeBook" name="submitGradeBook"></td></tr>
-            </form>
-        </table>
+                    
+                    <tr><td colspan="5"><input value="View Grade Book" type="submit" id="submitGradeBook" name="submitGradeBook"></td></tr>
+                </form>
+            </table>
+        </div>
+        
+        
+     </section>
+        
+    
+    <div id="bottomLineRelative">
+        <!--   simply for aesthetics   -->
     </div>
+
+    <footer id="posRelative">
+        <a href="/about.html" style="color: white"> About Us </a>
+        | <a href="/privacy.html" style="color: white;"> Privacy Policy </a>
+    </footer>
+ 
+</body>
+
+
 </html> 
 
 HTML;

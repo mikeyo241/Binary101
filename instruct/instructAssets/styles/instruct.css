@@ -20,11 +20,15 @@ header {
 body {
     margin: auto;
     background: rgb(33, 33, 33);
+
+    font-family: -apple-system, system-ui,
+    BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 }
 
 section {
     position: relative;
-    min-height: 565px;
+    min-height: 566px;
 
     margin: auto;
     object-fit: fill;
@@ -47,6 +51,7 @@ h2 {
 }
 
 h3 {
+    color: white;
     font-family: Andale Mono, monospace;
 }
 
@@ -167,21 +172,31 @@ footer {
     bottom: 40px;
 }
 
-
-#welcome {
-    font-size: 20px;
-    font-style: italic;
-    position: absolute;
-    right: 115px;
-    top: 57px;
-    padding: 0px;
-}
-
 #classes {
     width: 85%;
     position: relative;
     margin: auto;
     text-align: center;
+}
+
+#classesEnroll {
+    width: 70%;
+    position: relative;
+    margin: auto;
+    text-align: center;
+    color: white;
+    height: 280px;
+    top: 20px;
+}
+
+#classesEnrollTable {
+    text-align: center;
+    margin: auto;
+    border: 1px solid white;
+    padding: 0px;
+    width: 100%;
+    font-size: 20px;
+    border-collapse: collapse;
 }
 
 #classesTitle {
@@ -259,7 +274,7 @@ footer {
     position: relative;
     font-size: 16px;
     font-family: monospace;
-    top: 40px;
+    top: 80px;
 }
 
 
@@ -286,7 +301,7 @@ footer {
 
 table {
     text-align: center;
-    border: 1px solid rgb(23, 23, 23);
+    border: 1px solid rgb(255, 255, 255);
 
 }
 
@@ -304,3 +319,36 @@ tr {
     letter-spacing: 1px;
 }
 
+#welcome {
+    font-size: 20px;
+    font-style: italic;
+    position: absolute;
+    right: 115px;
+    top: 57px;
+    padding: 0px;
+}
+
+#space {
+    height: 50px;
+}
+
+#space1 {
+    height: 200px;
+
+    width: 85%;
+    position: relative;
+    margin: auto;
+    text-align: center;
+}
+
+#className {
+    font-weight: normal;
+}
+
+#red {
+    color: rgb(237, 28, 36);
+}
+
+#classID {
+    text-align: center;
+}
