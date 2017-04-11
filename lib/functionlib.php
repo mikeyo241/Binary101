@@ -13,7 +13,7 @@
 require_once('account.php');
 require_once('student.php');
 require_once('instructor.php');
-
+require_once('classroom.php');
 session_start();
 
 //  **  Variables  **
@@ -97,6 +97,8 @@ function sqlSelect($qry) {
             $link->close();
             return $result;
         }
+        else
+            return null;
     } else {
         echo "Error: " . $qry . "<br>" . mysqli_error($link);
         $link->close();

@@ -47,23 +47,20 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                         $result = $user->addCourseToClass($classCreation, $CRS_ID);
                     }
                 }
-            }else $classCreated = 'Class was not created successfully';
-        }else $classCreated = 'Duplicate Class Name';
-
-    }
-    if(isset($_POST['submitGradeBook'])){
-        if(isset($_POST['class'])) {
-            $_SESSION['classID'] = $_POST['class'];
-            reDir('gradeBook.php');
+            }
+            else
+                $classCreated = 'Class was not created successfully';
         }
         else
-            echo "Error";
+            $classCreated = 'Duplicate Class Name';
+
+    }
+    if(isset($_POST['submitGradeBook']) && isset($_POST['class'])){
+        $_SESSION['classID'] = $_POST['class'];
+        reDir('gradeBook.php');
     }
     if (isset($_POST['courseSubmit'])) {
         $courses = getCourses();
-
-
-
     }
 }
 
@@ -73,10 +70,11 @@ if (getClassData($email) != false) {
     if ($searchResult->num_rows > 0) {
         $i = 0;
         while ($row = $searchResult->fetch_assoc()) {
-            $clsID = $row['CLS_ID'];
-            $className = $row['CLS_NAME'];
-            $totalStudents = getStudentEnrollment($row['CLS_ID']);
-            $maxEnrollment = $row['CLS_MAXENROLLMENT'];
+            $class = new Classroom($row['CLS_ID']);
+            $clsID = $class->getCLS_ID();
+            $className = $class->getCLS_NAME();
+            $totalStudents = $class->getStudentEnrollment();
+            $maxEnrollment = $class->getCLS_MAXENROLLMENT();
             $seatsAvailable = $maxEnrollment - $totalStudents;
             if (getClassAverage($row['CLS_ID']) == -1) {  // getClassAverage returns -1 when the glass doesn't any grade data.
                 $classAverage = 'No Grades Yet';
