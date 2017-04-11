@@ -79,7 +79,7 @@ echo <<< HTML
 
 <html lang="en">
 <head>
-    
+    <link rel="stylesheet" type="text/css" href="/instruct/instructAssets/styles/instruct.css"/>
 </head>
 <body>
 <h1> This page Is Still Under Construction $fName!!!! </h1>

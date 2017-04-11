@@ -8,7 +8,8 @@
 /*	for the head	*/
 
 header {
-    background: rgb(0, 0, 0);
+    /* background: rgb(0, 0, 0); */
+    background: rgb(33, 33, 33);
     height: 139px;
     width: 100%;
     position: relative;
@@ -18,17 +19,19 @@ header {
 
 body {
     margin: auto;
-    background: rgb(0, 0, 0);
-    /* background: rgb(23, 23, 23); */
+    background: rgb(33, 33, 33);
 }
 
 section {
     position: relative;
     min-height: 565px;
+
+    margin: auto;
     object-fit: fill;
     /* background: rgb(23, 23, 23); */
-    background: rgb(40, 40, 40);
+    background: rgb(33, 33, 33);
 }
+
 
 h1 {
     color: white;
@@ -106,14 +109,17 @@ footer, head, body {
 }
 
 #line {
-    width: 100%;
-    height: 4px;
-    background: rgb(237, 36, 20);
+    width: 95%;
+    height: 1px;
+    background: white;
     position: relative;
+    margin: auto;
 }
 
+
 footer {
-    background: black;
+    /* background: rgb(0, 0, 0); */
+    background: rgb(33, 33, 33);
     height: 40px;
     text-align: center;
     font-family: monospace;
@@ -122,15 +128,6 @@ footer {
 
     bottom: 0;
 }
-
-section {
-    position: relative;
-    min-height: 565px;
-    object-fit: fill;
-    /* background: rgb(23, 23, 23); */
-    background: rgb(40, 40, 40);
-}
-
 
 #posFixed {
     position: fixed;
@@ -141,22 +138,35 @@ section {
 }
 
 #bottomLineFixed {
-    width: 100%;
-    height: 4px;
-    background: rgb(237, 36, 20);
+    width: 95%;
+    height: 1px;
+    background: white;
+    margin: auto;
 
     position: fixed;
     bottom: 40px;
 }
 
 #bottomLineRelative {
-    width: 100%;
-    height: 4px;
-    background: rgb(237, 36, 20);
+    width: 95%;
+    height: 1px;
+    background: white;
+    margin: auto;
 
     position: relative;
-    bottom: 0px;
+    bottom: 1px;
 }
+
+#bottomLine {
+    width: 95%;
+    height: 1px;
+    background: #ffffff;
+    margin: auto;
+    /* text-align: center; */
+    /* position: fixed; */
+    bottom: 40px;
+}
+
 
 #welcome {
     font-size: 20px;
@@ -180,9 +190,10 @@ section {
 }
 
 #createAClass {
-    width: 85%;
+    width: 80%;
     margin: auto;
     position: relative;
+    border-top: 1px solid white;
 }
 
 #createAClassSubmit {
@@ -199,11 +210,12 @@ section {
 
 #createClassTitle {
     text-align: center;
+    margin-top: 52px;
 }
 
 #createTable {
     text-align: center;
-    border: 1px solid rgb(40, 40, 40);
+    border: 1px solid rgb(33, 33, 33);
     width: 100%;
     font-size: 20px;
 }
@@ -253,14 +265,14 @@ section {
 
 #classesTable {
     text-align: center;
-    border: 1px solid rgb(23, 23, 23);
+    border: 1px solid rgb(255, 255, 255);
     width: 100%;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 #chapterTable {
     text-align: center;
-    border: 1px solid rgb(23, 23, 23);
+    border: 1px solid rgb(255, 255, 255);
     width: 50%;
     margin: auto;
     font-size: 20px;
