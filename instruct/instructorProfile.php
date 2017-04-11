@@ -73,7 +73,8 @@ if (getClassData($email) != false) {
             $class = new Classroom($row['CLS_ID']);
             $clsID = $class->getCLS_ID();
             $className = $class->getCLS_NAME();
-            $totalStudents = $class->getStudentEnrollment();
+            if ($class->getStudentEnrollment() != null)
+            $totalStudents = $class->getStudentEnrollment()->num_rows;
             $maxEnrollment = $class->getCLS_MAXENROLLMENT();
             $seatsAvailable = $maxEnrollment - $totalStudents;
             if (getClassAverage($row['CLS_ID']) == -1) {  // getClassAverage returns -1 when the glass doesn't any grade data.
@@ -125,8 +126,13 @@ echo <<< HTML
        <div id="space">
             <!--   for separating other divs    -->
         </div>
+<<<<<<< HEAD
+        
+        <div id="classes" name="classes" style="$classesStyle">
+=======
 
         <div id="classes" class="col-md-8" name="classes" style="$classesStyle">
+>>>>>>> 958f39ef26a8afb3614d0c5ce4db3a5665bc79ee
         <h2 id="classesTitle">Current Classes</h2>
             <table id="classesTable" border="5">  <!-- Remove the Styling for the table and make your own! -->
                 <thead>
@@ -150,12 +156,12 @@ echo <<< HTML
                 <!-- where input submit was before i moved it  ~Nathaniel   -->
                 
             </table>
-        </div>
         
         <div id="space1">
             <input value="View Grade Book" type="submit" id="submitGradeBook" name="submitGradeBook">
         </div>
         </form>
+        </div>
     
         <div id="createAClass">
             <table id="createTable">

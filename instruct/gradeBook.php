@@ -25,41 +25,44 @@ $email = $user->getEmail();
 $classCreated = '';
 $classesStyle = 'display: block;';
 $classID = $_SESSION['classID'];
+$class = new Classroom($classID);
 $classData = searchClasses($classID);
 $classData = $classData->fetch_assoc();
 $className = $classData['CLS_NAME'];
+$headings = "";
 
-
-if (getClassData($email) != false) {
-
-    $searchResult = $user->getGradesByClass($classID);
-    if ($searchResult->num_rows > 0) {
+if ($class->getStudentEnrollment() != false) {
+    $students = $class->getStudentEnrollment();
+    if ($students->num_rows > 0) {
         $i = 0;
-        while ($row = $searchResult->fetch_assoc()) {
-            $clsID = $row['CLS_ID'];
-            $studentLName = $row['STU_LNAME'];
-            $studentFName = $row['STU_FNAME'];
-            $score = $row['COM_SCORE'];
-            $totalStudents = getStudentEnrollment($row['CLS_ID']);
-            //$maxEnrollment = $row['CLS_MAXENROLLMENT'];
-            $maxEnrollment = 10;
-            $seatsAvailable = $maxEnrollment - $totalStudents;
-            if (getClassAverage($row['CLS_ID']) == -1) {  // getClassAverage returns -1 when the glass doesn't any grade data.
-                $classAverage = 'No Grades Yet';
-            } else $classAverage = getClassAverage($row['CLS_ID']);
-            $classInfo[$i] = "
-                <tr>
-                    <td><input type='radio' name='class' id='class' value='$clsID' </td>
-                    <td>$studentLName, $studentFName</td>
-                    <td>$totalStudents</td>
-                    <td>$seatsAvailable</td>
-                    <td>$classAverage</td>
-                    <td>$clsID</td>
-                </tr>";
-            $i++;
+        $courses = $class->getCourses();
+        $courseArray = array();
+        // Setup course headings
+        if ($courses != null){
+            while ($row = $courses->fetch_assoc()) {
+                $courseArray[$i] = $row['CRS_ID'];
+                $headings = $headings . "<td>" . $row['CRS_NAME'] . "</td>";
+                $i++;
+            }
+            $i = 0;
+        }
+        // Cycle through students' grades
+        $classInfo = "";
+        while ($row = $students->fetch_assoc()) {
+            $student = new Student($row['STU_EMAIL']);
+            $studentName = $student->getLastName() . ", " . $student->getFirstName();
+            $average = $student->getGradeByClass($classID);
+            $classInfo .= "<tr><td>$studentName</td>";
+
+            foreach ($courseArray as $courseID) {
+                $classInfo .= "<td>" . $student->getGradeByCourse($classID, $courseID) . "</td>";
+                $i++;
+            }
+            $i = 0;
+            $classInfo .= "<td>$average</td></tr>";
         }
     } else {
-        $classInfo[0] = 'There are no classes associated with that email!';
+        $classInfo = 'There are no classes associated with that email!';
     }
 }
 
@@ -80,6 +83,7 @@ echo <<< HTML
 </head>
 <body>
 
+<<<<<<< HEAD
         <header>           
           <a href="/main.php"><img id="logo" src="../assets/img/logo.PNG" alt="Website Logo" align="top-left"></a>
                 
@@ -126,6 +130,24 @@ echo <<< HTML
     
     <div id="bottomLineRelative">
         <!--   simply for aesthetics   -->
+=======
+<p>Check back later for an awesome grade book page!!!</p>
+
+<h2> The ClassID for the gradebook you are looking for is $classID </h2>
+</body>
+<div id="classes" name="classes" style="$classesStyle">
+    <h2>$className</h2>
+        <table border="5" style="text-align: center; padding: 5px;">  <!-- Remove the Styling for the table and make your own! -->
+            <thead>
+                <td>Student</td>               
+                $headings
+                <td>Student Average</td>          
+            </thead>
+            <form id="gradeBook" name="gradeBook" action="$PHP_SELF" method="post">
+                $classInfo
+            </form>
+        </table>
+>>>>>>> origin/master
     </div>
 
     <footer id="posRelative">

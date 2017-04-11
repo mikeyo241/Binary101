@@ -638,5 +638,11 @@ function getCourses() {
     return $result;
 }
 
+function getStudentsByClass($classID) {
+    $qry = "SELECT * FROM ENROLLMENT WHERE CLS_ID='$classID'";
+    $result = sqlSelect($qry);
+    return $result;
+}
+
 
 ?>

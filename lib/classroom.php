@@ -55,17 +55,20 @@ class Classroom {
         return $this->INSTRUCT_NAME;
     }
 
+    function getCourses() {
+        $classID = $this->getCLS_ID();
+        $qry = "SELECT * FROM VIEW_CLASS_COURSES WHERE CLS_ID= '$classID'";
+        $result = sqlSelect($qry);
+        return $result;
+    }
+
 
     public function getStudentEnrollment() {
         $classID = $this->getCLS_ID();
 //      *** Database Query **
-        $qry = "SELECT * FROM ENROLLMENT WHERE CLS_ID = '$classID'";
+        $qry = "SELECT * FROM VIEW_ENROLLMENTS WHERE CLS_ID = '$classID'";
         $result = sqlSelect($qry);
-        if($result != null) {       // Implement query
-            $studentsEnrolled = mysqli_num_rows($result);
-            return $studentsEnrolled;
-        }
-        return 0;   // No enrollment
+        return $result;
     }
 
     public function getClassAverage($classID) {
