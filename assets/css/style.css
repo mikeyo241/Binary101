@@ -19,15 +19,17 @@ header {
 
 body {
     margin: auto;
-    background: rgb(40, 40, 40);
+    background: rgb(33, 33, 33);
 }
 
 section {
     position: relative;
     min-height: 565px;
+
+    margin: auto;
     object-fit: fill;
     /* background: rgb(23, 23, 23); */
-    background: rgb(40, 40, 40);
+    background: rgb(33, 33, 33);
 }
 
 h1 {
@@ -466,7 +468,8 @@ footer {
 #resetPassword {
     width: 525px;
     margin: auto;
-    margin-top: 86px;
+    position: relative;
+    top: 60px;
     text-align: center;
 }
 
@@ -517,3 +520,27 @@ footer {
     width: 100%;
 }
 */
+
+#bottomLine {
+    width: 95%;
+    height: 1px;
+    background: #ffffff;
+    margin: auto;
+    /* text-align: center; */
+    /* position: fixed; */
+    bottom: 40px;
+}
+
+#forgotSection {
+    position: relative;
+    min-height: 565px;
+    height: 671px;
+    margin: auto;
+    object-fit: fill;
+    /* background: rgb(23, 23, 23); */
+    background: rgb(33, 33, 33);
+}
+
+#mainSection {
+    height: 700px;
+}

@@ -82,7 +82,7 @@ echo <<< HTML
         <!-- simply for aesthetics  -->
    </div>
    
-   <section>
+   <section id="forgotSection">
    
        <div id="resetPassword">
          
@@ -102,11 +102,11 @@ echo <<< HTML
    </section>
    
    
-   <div id="bottomLineFixed">
+   <div id="bottomLine">
         <!--   simply for aesthetics   -->
     </div>
    
-   <footer id="posFixed">
+   <footer>
         <a href="../about.html" style="color: white"> About Us </a>
         | <a href="../privacy.html" style="color: white;"> Privacy Policy </a>
     </footer>
