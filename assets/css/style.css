@@ -8,7 +8,8 @@
 /*	for the head	*/
 
 header {
-    background: rgb(0, 0, 0);
+    /* background: rgb(0, 0, 0); */
+    background: rgb(33, 33, 33);
     height: 139px;
     width: 100%;
     position: relative;
@@ -64,7 +65,7 @@ a {
 }
 
 input {
-    height: 25px;
+    height: 30px;
     border-radius: 5px;
     width: 100%;
     border: 1px solid black;
@@ -402,10 +403,11 @@ body, header, nav, section, footer, p, div {
 }
 
 #line {
-    width: 100%;
-    height: 4px;
-    background: rgb(237, 36, 20);
+    width: 95%;
+    height: 1px;
+    background: white;
     position: relative;
+    margin: auto;
 }
 
 #resetSubmit {
@@ -422,7 +424,8 @@ body, header, nav, section, footer, p, div {
 }
 
 footer {
-    background: black;
+    /* background: rgb(0, 0, 0); */
+    background: rgb(33, 33, 33);
     height: 40px;
     text-align: center;
     font-family: monospace;
@@ -441,18 +444,20 @@ footer {
 }
 
 #bottomLineFixed {
-    width: 100%;
-    height: 4px;
-    background: rgb(237, 36, 20);
+    width: 95%;
+    height: 1px;
+    background: white;
+    margin: auto;
 
     position: fixed;
     bottom: 40px;
 }
 
 #bottomLineRelative {
-    width: 100%;
-    height: 4px;
-    background: rgb(237, 36, 20);
+    width: 95%;
+    height: 1px;
+    background: white;
+    margin: auto;
 
     position: relative;
     bottom: 0px;
@@ -505,3 +510,10 @@ footer {
 #resetPasswordForm {
     font-family: monospace;
 }
+
+/*
+#backPic {
+    height: 139px;
+    width: 100%;
+}
+*/

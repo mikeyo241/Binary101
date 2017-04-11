@@ -141,7 +141,9 @@ echo <<< HTML
           </tr>
         </table>
       </form>
-     
+      <!--      nevermind this idea~
+      <img id="backPic" src="assets/img/backgroundWallpaper.jpg" align="top">
+      -->
    </header>
       <div id="line">
             <!-- simply for aesthetics  -->
