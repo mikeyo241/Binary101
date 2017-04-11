@@ -19,8 +19,18 @@ header {
 body {
     margin: auto;
     background: rgb(33, 33, 33);
-    /* background: rgb(23, 23, 23); */
 }
+
+section {
+    position: relative;
+    min-height: 565px;
+
+    margin: auto;
+    object-fit: fill;
+    /* background: rgb(23, 23, 23); */
+    background: rgb(33, 33, 33);
+}
+
 
 h1 {
     color: white;
@@ -100,11 +110,13 @@ footer, head, body {
     top: 18px;
 }
 
+
 #line {
-    width: 100%;
-    height: 4px;
-    background: rgb(237, 36, 20);
+    width: 95%;
+    height: 1px;
+    background: white;
     position: relative;
+    margin: auto;
 }
 
 #welcome {
@@ -118,6 +130,7 @@ footer, head, body {
 }
 
 footer {
+    /* background: rgb(0, 0, 0); */
     background: rgb(33, 33, 33);
     height: 40px;
     text-align: center;
@@ -160,9 +173,9 @@ a:hover {
 }
 
 #bottomLineFixed {
-    width: 100%;
-    height: 4px;
-    background: rgb(237, 36, 20);
+    width: 95%;
+    height: 1px;
+    background: white;
     margin: auto;
 
     position: fixed;
@@ -170,17 +183,27 @@ a:hover {
 }
 
 #bottomLineRelative {
-    width: 100%;
-    height: 4px;
-    background: rgb(237, 36, 20);
+    width: 95%;
+    height: 1px;
+    background: white;
     margin: auto;
 
     position: relative;
-    bottom: 0px;
+    bottom: 1px;
 }
 
 a {
     color: rgb(237, 36, 20);
     font-size: 20px;
     font-weight: bold;
+}
+
+#bottomLine {
+    width: 95%;
+    height: 1px;
+    background: #ffffff;
+    margin: auto;
+    /* text-align: center; */
+    /* position: fixed; */
+    bottom: 40px;
 }

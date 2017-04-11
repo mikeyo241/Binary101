@@ -126,7 +126,7 @@ echo <<< HTML
             <!--   for separating other divs    -->
         </div>
 
-        <div id="classes" name="classes" style="$classesStyle">
+        <div id="classes" class="col-md-8" name="classes" style="$classesStyle">
         <h2 id="classesTitle">Current Classes</h2>
             <table id="classesTable" border="5">  <!-- Remove the Styling for the table and make your own! -->
                 <thead>
@@ -165,7 +165,7 @@ echo <<< HTML
                 <td>Start Date</td>
                 <td>End Date</td>
                 <td>Maximum Enrollment</td>
-                <td>  </td>
+                <td> </td>
                 </thead>
                 <tr><form action="$PHP_SELF" method="post" id="createAClass" name="createAClass">
                     <td><input type="text" name="className" id="className" required></td>
@@ -173,8 +173,7 @@ echo <<< HTML
                     <td><input type="date" name="eDate" id="eDate" required</td>
                     <td><input type="number" name="maxEnrollment" id="maxEnrollment" required </td>
                     <td><input type="submit" name="createAClassSubmit" id="createAClassSubmit" value="Create Class"</td>
-               </tr>
-                <tr><td colspan="2" style="color: red">$classCreated</td></tr>
+                    <td colspan="2" style="color: red">$classCreated</td>
             </table>
             <h3 id="selectTitleBABY">Select Required Chapters</h3>
             <table id="chapterTable" border="5">
