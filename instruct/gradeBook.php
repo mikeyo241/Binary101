@@ -130,24 +130,6 @@ echo <<< HTML
     
     <div id="bottomLineRelative">
         <!--   simply for aesthetics   -->
-=======
-<p>Check back later for an awesome grade book page!!!</p>
-
-<h2> The ClassID for the gradebook you are looking for is $classID </h2>
-</body>
-<div id="classes" name="classes" style="$classesStyle">
-    <h2>$className</h2>
-        <table border="5" style="text-align: center; padding: 5px;">  <!-- Remove the Styling for the table and make your own! -->
-            <thead>
-                <td>Student</td>               
-                $headings
-                <td>Student Average</td>          
-            </thead>
-            <form id="gradeBook" name="gradeBook" action="$PHP_SELF" method="post">
-                $classInfo
-            </form>
-        </table>
->>>>>>> origin/master
     </div>
 
     <footer id="posRelative">
