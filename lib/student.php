@@ -49,7 +49,7 @@ class Student extends Account
         $gradeSum = 0.0;
         $email = $this->getEmail();
         // Database Query
-        $qry = "SELECT COM_SCORE FROM VIEW_GRADEBOOK WHERE CLS_ID = '$classID' AND STUD_EMAIL='$email'";
+        $qry = "SELECT COM_SCORE FROM VIEW_GRADEBOOK WHERE CLS_ID = '$classID' AND ACC_EMAIL='$email'";
         $result = sqlQuery($qry);
         if($result = mysqli_query($link,$qry)) {       // Implement query
             $classTotal = mysqli_num_rows($result);
@@ -70,7 +70,22 @@ class Student extends Account
             $link->close();
             return null;
         }
-}
+    }
+
+    public function getGradeByCourse($classID, $courseID) {
+
+        $email = $this->getEmail();
+        // Database Query
+        $qry = "SELECT COM_SCORE FROM VIEW_GRADEBOOK WHERE CLS_ID = '$classID' AND ACC_EMAIL='$email' AND CRS_ID = '$courseID'";
+        $result = sqlSelect($qry);
+        if ($result != null)
+            $result = $result->fetch_assoc()['COM_SCORE'];
+        if ($result != null)
+            return $result;
+        else
+            return 0;
+    }
+
     public function makeStudent() {
         $email = $this->getEmail();
         $link = dbConnect();
