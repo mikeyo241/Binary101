@@ -126,13 +126,10 @@ echo <<< HTML
        <div id="space">
             <!--   for separating other divs    -->
         </div>
-<<<<<<< HEAD
         
         <div id="classes" name="classes" style="$classesStyle">
-=======
 
         <div id="classes" class="col-md-8" name="classes" style="$classesStyle">
->>>>>>> 958f39ef26a8afb3614d0c5ce4db3a5665bc79ee
         <h2 id="classesTitle">Current Classes</h2>
             <table id="classesTable" border="5">  <!-- Remove the Styling for the table and make your own! -->
                 <thead>
