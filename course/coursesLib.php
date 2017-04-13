@@ -43,14 +43,6 @@ function chooseChapter($chapterNumber){
             chap10();
             break;
         }
-        case 11: {
-            chap11();
-            break;
-        }
-        case 12: {
-            chap12();
-            break;
-        }
         default: {
             underConstruction();
             break;
@@ -908,44 +900,12 @@ HTML;
 }
 
 
-function chap11() {
-    echo <<< HTML
-    <div id="learningContent" >
-    <h1> Under Construction</h1>
-    </div>
-HTML;
-
-}
 
 
 
-function chap12() {
-    echo <<< HTML
-    <div id="learningContent" >
-    <h1> Under Construction</h1>
-    </div>
-HTML;
-
-}
-
-function chap13() {
-    echo <<< HTML
-    <div id="learningContent" >
-    <h1> Under Construction</h1>
-    </div>
-HTML;
-
-}
 
 
-function chap14() {
-    echo <<< HTML
-    <div id="learningContent" >
-    <h1> Under Construction</h1>
-    </div>
-HTML;
 
-}
 
 
 function underConstruction() {
