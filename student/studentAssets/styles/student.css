@@ -280,3 +280,17 @@ a {
 a:hover {
     color: rgb(237, 28, 36);
 }
+
+
+/*	this beautiful css restricts users to
+	select anything with the class
+	name: "unselectable"
+	// Example:   class="unselectable"
+ */
+
+*.unselectable {
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
