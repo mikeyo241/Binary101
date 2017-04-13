@@ -89,9 +89,6 @@ echo <<< HTML
     <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
-    <!--  ** Java ** -->
-    <script src="assets/scripts/course.js" type="text/javascript"></script>
-
 </head>
 
 <body>
@@ -199,14 +196,14 @@ echo <<< HTML
    <div id="line">
         <!-- simply for aesthetics  -->
    </div>
-   
-   
-   
+   <div class="col-md-2"></div>
+   <div class="col-md-8">   
 
 HTML;
 chooseChapter($chapter);
 echo <<< HTML
-
+    </div>
+    <div class="col-md-2"></div>
 
     <div id="bottomLineRelative">
         <!--   simply for aesthetics   -->
@@ -217,6 +214,9 @@ echo <<< HTML
         | <a href="/privacy.html" style="color: white;"> Privacy Policy </a>
     </footer>   
 </body>
+<script src="../assets"
+<script src="../assets/script/main.js"></script>
+<script src="assets/scripts/course.js" type="text/javascript"></script>
 
 </html>
 HTML;

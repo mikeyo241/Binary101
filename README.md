@@ -5,7 +5,7 @@ however, after this class is over I will publish this project and make it public
 so we can show this to future employers.  Please keep this in mind as we go forward  
 in creating a great project!!!**
 
-
+ 
 Author & Contributor List
 -----
 Cory Wilson  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      coryw &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **Core JavaScript, PHP, HTML, CSS**  
