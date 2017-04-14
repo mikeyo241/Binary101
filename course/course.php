@@ -102,9 +102,6 @@ echo <<< HTML
     <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
-    <!--  ** Java ** -->
-    <script src="assets/scripts/course.js" type="text/javascript"></script>
-
 </head>
 
 <body>
@@ -234,17 +231,30 @@ echo <<< HTML
 </nav>
   
   
+<<<<<<< HEAD
   
    
    
   <div class="row centered-form center-block">
     <div class="container-fluid col-md-10 col-md-offset-1">
+=======
+   
+   <div id="line">
+        <!-- simply for aesthetics  -->
+   </div>
+   <div class="col-md-2"></div>
+   <div class="col-md-8">   
+>>>>>>> 2cc7ea0760ca5d0c3d626000b752fd4cb6350f13
 
 HTML;
 chooseChapter($chapter);
 echo <<< HTML
     </div>
+<<<<<<< HEAD
 </div> 
+=======
+    <div class="col-md-2"></div>
+>>>>>>> 2cc7ea0760ca5d0c3d626000b752fd4cb6350f13
 
     <div id="bottomLineRelative">
         <!--   simply for aesthetics   -->
@@ -255,6 +265,9 @@ echo <<< HTML
         | <a href="/privacy.html" style="color: white;"> Privacy Policy </a>
     </footer>   
 </body>
+<script src="../assets"
+<script src="../assets/script/main.js"></script>
+<script src="assets/scripts/course.js" type="text/javascript"></script>
 
 </html>
 HTML;

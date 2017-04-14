@@ -1,5 +1,8 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
 <?php
 
+require_once('gameLib.php');
 
 function chooseChapter($chapterNumber){
     switch ($chapterNumber){
@@ -13,6 +16,7 @@ function chooseChapter($chapterNumber){
         }
         case 3: {
             chap3();
+            chap3Game();
             break;
         }
         case 4: {
@@ -154,12 +158,14 @@ function chap3() {
             <h2>Input any number here to see the binary number it produces</h2>
 
             <!-- Game Created by Cory Wilson!!! -->
-            <form>
-                Enter an integer:<br>
-                <input type="number" step="1" min="0" value="12" id="decimalInput" />
-                <input type="button" id="convert" value="Convert" /><br>
-                Binary Output:<br>
-                <input type="text" id="binaryOutput" value="1100" readonly="true">
+            <form class="form-inline">
+                <div class="row">
+                <label class="col-md-3" for="decimalInput">Enter an integer:</label>
+                <input type="number" step="1" min="0" value="12" id="decimalInput" class="col-md-9 form-control" /></div>
+                <br>
+                <div class="row">
+                <label class="col-md-3" for="decimalInput">Binary output:</label>
+                <input type="text" id="binaryOutput" value="1100" readonly="true" class="col-md-9 form-control"></div>
 
             </form>
             <!--  End of Game Created by Cory Wilson  -->
@@ -175,6 +181,7 @@ function chap3() {
             </div>
             <h2>Think you understand? Try it yourself!!!</h2>
 
+<<<<<<< HEAD
 
             <form>
                 <p id="questionNumber">Question 1</p>
@@ -183,6 +190,8 @@ function chap3() {
                 <p id="success" hidden>You did it!</p>
             </form>
 
+=======
+>>>>>>> 2cc7ea0760ca5d0c3d626000b752fd4cb6350f13
         </div>
 HTML;
 

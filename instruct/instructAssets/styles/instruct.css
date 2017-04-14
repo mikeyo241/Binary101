@@ -352,3 +352,17 @@ tr {
 #classID {
     text-align: center;
 }
+
+
+/*	this beautiful css restricts users to
+	select anything with the class
+	name: "unselectable"
+	// Example:   class="unselectable"
+ */
+
+*.unselectable {
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
