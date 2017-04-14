@@ -50,11 +50,22 @@ function chooseChapter($chapterNumber){
     }
 
 }
+
+function shadeActiveChapter(){
+    $activeChapter = array (" "," "," "," "," "," "," "," "," ", " ");
+    $i = 0;
+    while($i <=10) {
+        $activeChapter[$i] = " ";
+        $i++;
+    }
+    $activeChapter[$_GET['xchwe'] - 1] = " active ";
+    return $activeChapter;
+}
 function chap1() {
     echo <<< HTML
     
 <div id="learningContent" >
-<h1>The History of Binary</h1>
+<h1>Chap 1 - The History of Binary</h1>
 <p>We all have seen binary before whether it be in movies, TV shows, or on the internet we all have an understanding
  that binary is the 1's and 0's that computers use to operate.
    To a computer binary is converted to electrical signals a high voltage for a
@@ -65,7 +76,9 @@ function chap1() {
 </p>
 <p><b>Moore's Law</b> -  is the observation that the number of transistors in a dense integrated circuit doubles approximately every two years.</p>
 <p><b>Binary</b> -  a system of numerical notation to the base 2, in which each place of a number, expressed as 0 or 1, corresponds to a power of 2.</p>
-<img src="assets/img/mooresLaw.png" >
+<div class="container-fluid">
+    <img src="assets/img/mooresLaw.png" alt="Microprocessor Transistor Counts 1971-2011 & Moore's Law" class="img-thumbnail">
+</div>
 <p>In 1679 a German polymath and philosopher  named Gottfried Wilhelm Leibniz documented the binary system.
   Binary is used in computers because it is the most practical way for a computer to process data.</p>
 
@@ -89,11 +102,13 @@ function chap2() {
     
     <div id="learningContent" >
 
-            <h1>Powers of 2</h1>
+            <h1>Chap 2 - Powers of 2</h1>
             <p>Before we get into powers of 2 (or the base 2 number system)
                 we must first understand the number system we use: base 10. Take the number 125 for example:
         </p>
-            <img src="assets/img/powersOf2.PNG">
+        <div class="container-fluid">
+            <img src="assets/img/powersOf2.PNG" class="img-thumbnail">
+        </div>
             <p>As you can see, the numbers we use in our day-to-day lives are constructed using powers of 10.
                 Numbers in the 1's column are multiplied by 100 (1). Numbers in the 10's column are multiplied by 101 (10).
     Numbers in the 100's column are multiplied by 102 (100). This process is repeated to create larger numbers,
@@ -102,15 +117,18 @@ function chap2() {
                 Binary (a base 2 number system) works in a similar fashion, but rather than multiply each number by powers of 10,
                 you multiply by powers of two. Let's look at the number 13 represented in binary:
             </p>
-            <img src="assets/img/powersOf2_2.PNG">
+            <div class="container-fluid">
+                <img src="assets/img/powersOf2_2.PNG" class="img-thumbnail">
+            </div>
             <p>Since we're only working with powers of 2, we only need two numbers to represent each column:
                 a 0 or a 1. This on-off relationship (a binary relationship if you will) is the fundamental principle
                 of computer technology. Columns are multiplied by 20, 21, 22, 23, and so on. These "powers of 2" values
                 show up everywhere in computer technology, which is why it's paramount to understand them. Here's a graphical
                 representation of each column's possible value in a full byte (8 bits, or 8 columns):
             </p>
-            <img src="assets/img/powersOf2_3.PNG">
-            <h2>GAME - Quiz HERE!!! </h2>
+            <div class="container-fluid">
+                <img src="assets/img/powersOf2_3.PNG" class="img-thumbnail">
+            </div>          
 
         </div>
 HTML;
@@ -120,15 +138,19 @@ HTML;
 function chap3() {
     echo <<< HTML
     <div id="learningContent" >
-            <h1>Decimal to Binary Conversion</h1>
+            <h1>Chap 3 - Decimal to Binary Conversion</h1>
 
             <p> Converting Decimal or base 10 to Binary could be a very hard task especially using the wrong method.  One of the
                 easiest ways of conversion is to using the powers of 2 discussed in the previous chapter.
                 First we are going to convert 9<sub>10</sub> to binary.
             </p>
-            <img src="assets/img/decimalToBinary1.PNG" >
+            <div class="container">          
+                <img src="assets/img/decimalToBinary1.PNG" alt="Decimal to Binary illustration" class="img-thumbnail"> 
+            </div>          
             <h2>Check out this video from Khan Academy on how to convert Decimal numbers to Binary</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/H4BstqvgBow?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe  class="embed-responsive-item" src="https://www.youtube.com/embed/H4BstqvgBow?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+            </div>
             <h2>Input any number here to see the binary number it produces</h2>
 
             <!-- Game Created by Cory Wilson!!! -->
@@ -144,15 +166,19 @@ function chap3() {
 
 
             <p>Little number conversion game here!</p><br>
-            <img src="assets/img/decimalToBinary2.PNG">
+            <div class="container-fluid">
+                <img src="assets/img/decimalToBinary2.PNG" class="img-thumbnail">
+            </div>
             <h2>Check out Khan Academy's explanation on how to convert bigger numbers to Binary</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/bvcXEJbEzSs?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe  class="embed-responsive-item" src="https://www.youtube.com/embed/bvcXEJbEzSs?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+            </div>
             <h2>Think you understand? Try it yourself!!!</h2>
 
 
             <form>
                 <p id="questionNumber">Question 1</p>
-                <label for="question"><?php echo $questionNumbers[0]; ?></label><br>
+                <label for="question"></label><br>
                 <input type="text" id="question" class="quizInput" /><br>
                 <p id="success" hidden>You did it!</p>
             </form>
@@ -166,18 +192,22 @@ HTML;
 function chap4(){
     echo <<< HTML
 <div id="learningContent" >
-    <h1>Understanding Binary</h1>
+    <h1>Chap 4 - Binary to Decimal Conversion</h1>
     <p>Binary or base 2 is like our regular base 10 numbering system but instead using 1-10 it uses 0-1.
      As an example, counting in binary looks like this:
      <br> 0000 = 0 <br> 0001 = 1 <br> 0010 = 2 <br> 0011 = 3 <br> 0100 = 4 <br> 0101 = 5 <br> 0110 = 6 <br>
     </p>
     <h2>How is this accomplished?</h2>
-    <img src="assets/img/binToDecimalConversion.PNG">
+    <div class="container-fluid">
+        <img src="assets/img/binToDecimalConversion.PNG" class="img-thumbnail">
+    </div>
     <p>The binary number 0111 is converted to decimal or base 10 by taking the values of each bit and adding
      them together to get the decimal number the nibble represents. <br> This can be explained further by the video below
      from techquickie. 
     </p>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/LpuPe81bc2w?rel=0&amp;controls=0&amp;showinfo=0;end=235" frameborder="0" allowfullscreen></iframe>
+    <div class="container-fluid">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/LpuPe81bc2w?rel=0&amp;controls=0&amp;showinfo=0;end=235" frameborder="0" allowfullscreen></iframe>
+    </div>
     <p>Flip the switches to see how turning on and off bits in the nibble changes the number.</p>
 <!-- Flip the switches game by Cory Wilson!!!  -->
     <form>
@@ -220,15 +250,16 @@ HTML;
 function chap5(){
     echo <<< HTML
 <div id="learningContent" >
-	<h1>Binary Math</h1>
+	<h1>Chap 5 - Binary Math</h1>
 	
 	<h2>Position</h2>
 	
 	<p>In the Decimal System there are Ones, Tens, Hundreds, etc<br><nr>
 		In Binary there are Ones, Twos, Fours, etc, like this:
 	</p>
-	
-	<img src="assets/img/binary-number.png" alt="binary-number">
+	<div class="container-fluid">
+	    <img src="assets/img/binary-number.png" class="img-thumbnail" alt="binary-number">
+	</div>
 	
 	<h2>Binary Addition</h2>
 	
@@ -298,7 +329,9 @@ function chap5(){
 	the multiplicand when the current digit of the multiplier is 1.<br><br>
 	</p>
 	
-	<img src="assets/img/binary-multiplication.png" alt="binary multiplication">
+	<div class="container-fluid">
+	    <img src="assets/img/binary-multiplication.png" class="img-thumbnail" alt="binary multiplication">
+	</div>
 	
 	<p>Each step is the placement of an entire partial product, unlike in decimal, 
 	where each step is a single-digit multiplication (and possible addition of a carry).<br><br>
@@ -334,8 +367,9 @@ function chap5(){
 			<td>Meaning less</td>
 		</tr>
 	</table>
-	
-	<img src="assets/img/binary-division.png" alt="binary division">
+	<div class="container-fluid">
+	    <img src="assets/img/binary-division.png" class="img-thumbnail" alt="binary division">
+	</div>
 
 
 </div>	
@@ -351,7 +385,7 @@ HTML;
 function chap6() {
     echo <<< HTML
 <div id="learningContent" >
-    <h1>Binary to Hexadecimal Conversion</h1>
+    <h1>Chap 6 - Binary to Hexadecimal Conversion</h1>
 
 	<h2>About Hexadecimal</h2>
 	
@@ -375,7 +409,9 @@ function chap6() {
 	
 	<h2>Conversion</h2>
 	
-	<img src="assets/img/bin2hex.png" alt="Bin2Hex" style ="width: 600px; height: 50px;">
+	<div class="container-fluid">
+	    <img src="assets/img/bin2hex.png" class="img-thumbnail" alt="Bin2Hex" style ="width: 600px; height: 50px;">
+	</div>  
 	
 	<h2>Subscripts</h2>
 	<p>Decimal and hexadecimal have 10 digits in common, so they can create a lot of 
@@ -385,7 +421,9 @@ function chap6() {
 		base 2). Enter base subscripts:<br>
 	</p>
 	
-	<img src="assets/img/hexbase.png" alt="HexBase">
+	<div class="container-fluid">
+	    <img src="assets/img/hexbase.png" class="img-thumbnail" alt="HexBase">
+	</div>
 	
 	<h2>Converting To/From Decimal</h2>
 	
@@ -418,7 +456,9 @@ function chap6() {
 	
 	<p>There’s an ugly equation that rules over hex-to-decimal conversion:<br></p>
 	
-	<img src="assets/img/hex2bin.png" alt="Hex2Bin">
+	<div class="container-fluid">
+	    <img src="assets/img/hex2bin.png" class="img-thumbnail" alt="Hex2Bin">
+	</div>
 	
 	<p>There are a few important elements to this equation. Each of the h factors (hn, hn-1) is a 
 	single digit of the hex value. If our hex value is F00D, for example, h0 is D, h1 and h2 are 
@@ -461,7 +501,7 @@ HTML;
 function chap7() {
     echo <<< HTML
 <div id="learningContent" >
-    <h1>2's Complement</h1>
+    <h1>Chap 7 - 2's Complement</h1>
 	
 	<h2>2's Complement Notation</h2>
 	
@@ -567,7 +607,7 @@ HTML;
 function chap8() {
     echo <<< HTML
 <div id="learningContent" >
-    <h1>Venn Diagrams</h1>
+    <h1>Chap 8 - Venn Diagrams</h1>
 	
 	<h2>Definition</h2>
 	
@@ -580,7 +620,9 @@ function chap8() {
 	
 	<h3>Intersection of two sets: A &cap; B</h3>
 	
-	<img src="assets/img/intersection.png" alt="intersection">
+	<div class="container-fluid">
+	    <img src="assets/img/intersection.png" class="img-thumbnail" alt="intersection">
+	</div>
 	
 	<p>The intersection of a venn diagram only contains the data that is shared between
 	both of the sets.
@@ -588,21 +630,27 @@ function chap8() {
 	
 	<h3>Union of two sets: A &cup; B</h3>
 	
-	<img src="assets/img/union.png" alt="union">
+	<div class="container-fluid">
+	    <img src="assets/img/union.png" class="img-thumbnail" alt="union">
+	</div>
 	
 	<p>The union of a venn diagram contains all of the data in either and both sets.
 	</p>
 	
 	<h3>Symmetric Difference of two sets: A &#x25B3; B</h3>
 	
-	<img src="assets/img/symmetric-difference.png" alt="symmetric-difference">
+	<div class="container-fluid">
+	    <img src="assets/img/symmetric-difference.png" class="img-thumbnail" alt="symmetric-difference">
+	</div>
 	
 	<p>The symmetric difference of a venn diagram contains only the data that one or
 	the other set has but does not contain the data shared by the sets.
 	
 	<h3>Relative Complement of A(left) in B(right): A<sup>C</sup> &cup; B = B \ A</h3>
 	
-	<img src="assets/img/relative-complement.png" alt="relative-complement">
+	<div class="container-fluid">
+	<img src="assets/img/relative-complement.png" class="img-thumbnail" alt="relative-complement">
+	</div>
 	
 	<p>The relative complement of a venn diagram contain only the data of one set that is 
 	unique to only that set.
@@ -610,7 +658,9 @@ function chap8() {
 	
 	<h3>Absolute Complement of A in U: A<sup>C</sup> = U \ A</h3>
 	
-	<img src="assets/img/absolute-complement.png" alt="absolute-complement">
+	<div class="container-fluid">
+	<img src="assets/img/absolute-complement.png" class="img-thumbnail" alt="absolute-complement">
+	</div>
 	
 	<p>The absolute complement of a venn diagram contains the data of one set that is unique to 
 	only that set and all of the data that is not contained in any of the sets of data.
@@ -624,7 +674,7 @@ HTML;
 function chap9() {
     echo <<< HTML
     <div id="learningContent" >
-    <h1>Truth Tables</h1>
+    <h1>Chap 9 - Truth Tables</h1>
 	
 	<h2>Definition</h2>
 	
@@ -738,7 +788,9 @@ function chap9() {
 	
 	<p>There are 16 possible truth functions of two binary variables.<br>
 	
-	<img src="assets/img/truthtable.png" alt="truthtable">
+	<div class="container-fluid">
+	    <img src="assets/img/truthtable.png" class="img-thumbnail"alt="truthtable">
+	</div>
 	
 	<p>The above table is the extended truth table giving definitions of all 16 of the possible
 	truth functions of two binary variables (P and Q are thus boolean variables) where T = true 
@@ -750,7 +802,9 @@ function chap9() {
 	The output function for each p, q combination, can be read, by row, from the table.
 	</p>
 	
-	<img src="assets/img/truthtablecol.png" alt="truthtable">
+	<div class="container-fluid">
+	    <img src="assets/img/truthtablecol.png" class="img-thumbnail" alt="truthtable">
+	</div>
 	
 	<p>The above table is oriented by column, rather than by row. There are four columns rather 
 	than four rows, to display the four combinations of p, q, as input.<br>
@@ -768,7 +822,7 @@ HTML;
 function chap10() {
     echo <<< HTML
     <div id="learningContent" >
-        <h1>Pseudocode</h1>
+        <h1>Chap 10 - Pseudocode</h1>
 	
 	<h2>Definition</h2>
 	

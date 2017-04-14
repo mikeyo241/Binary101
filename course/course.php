@@ -26,10 +26,23 @@ if(isset($_GET['CLS_ID'])){
 
 if (! isset($_GET['xchwe'])){
     $chapter = 1;
+    $activeChapter = array (" active ", " "," "," "," "," "," "," "," ", " ");
 }else {
     $chapter = $_GET['xchwe'];
+    $activeChapter =   shadeActiveChapter();
+}
+checkIfLoggedIn();
+
+if ($_SERVER['REQUEST_METHOD']=='POST') {
+    if (!empty($_POST['logOutSubmit'])) {
+        session_destroy();
+        reDir('../main.php');
+    }
+
 }
 
+
+$name = " " . $fName . " " . $lName;
 echo <<< HTML
 
 <html lang="en">
@@ -98,115 +111,140 @@ echo <<< HTML
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Binary 101 - Learning Module</a>
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Binary 101 </a>
+      
+      
     </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav">
-    <li class="dropdown">
+    <li class="dropdown $activeChapter[0]">
         <a class="dropdown-toggle" data-toggle="dropdown" href="course.php?xchwe=1">Chapter 1
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="course.php?xchwe=1">Learning Content</a></li>
+          <li class="active"><a href="course.php?xchwe=1">The History Of Binary</a></li>
           <li><a href="#">Start Quiz</a></li>        
         </ul>
       </li>
-      <li class="dropdown">
+      <li class="dropdown $activeChapter[1]">
         <a class="dropdown-toggle" data-toggle="dropdown" href="course.php?xchwe=2">Chapter 2
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="course.php?xchwe=2">Learning Content</a></li>
+          <li><a href="course.php?xchwe=2">Powers of 2</a></li>
           <li><a href="#">Start Quiz</a></li>
         </ul>
       </li>
-      <li class="dropdown">
+      <li class="dropdown $activeChapter[2]">
         <a class="dropdown-toggle" data-toggle="dropdown" href="course.php?xchwe=3">Chapter 3
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="course.php?xchwe=3">Learning Content</a></li>
+          <li><a href="course.php?xchwe=3">Decimal to Binary Conversion</a></li>
           <li><a href="#">Start Quiz</a></li>
+          <li><a href="#">Chapter 1-3 Test</a></li>
         </ul>
         </li>
-        <li><a href="#">Chapter 1-3 Test</a></li>
-        <li class="dropdown">
+       
+        <li class="dropdown $activeChapter[3]">
         <a class="dropdown-toggle" data-toggle="dropdown" href="course.php?xchwe=4">Chapter 4
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="course.php?xchwe=4">Learning Content</a></li> 
+          <li><a href="course.php?xchwe=4">Binary to Decimal Conversion</a></li> 
           <li><a href="#">Start Quiz</a></li>
         </ul>
       </li>
-      <li class="dropdown">
+      <li class="dropdown $activeChapter[4]">
         <a class="dropdown-toggle" data-toggle="dropdown" href="course.php?xchwe=5">Chapter 5
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="course.php?xchwe=5">Learning Content</a></li>
+          <li><a href="course.php?xchwe=5">Binary Math</a></li>
           <li><a href="#">Start Quiz</a></li>
+          <li><a href="#">Chapter 4-5 Test</a></li>
         </ul>
-        <li><a href="#">Chapter 4-5 Test</a></li>
+        
       </li>
-      <li class="dropdown">
+      <li class="dropdown $activeChapter[5]">
         <a class="dropdown-toggle" data-toggle="dropdown" href="course.php?xchwe=6">Chapter 6
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="course.php?xchwe=6">Learning Content</a></li>
+          <li><a href="course.php?xchwe=6">Binary to Hex Conversion</a></li>
           <li><a href="#">Start Quiz</a></li>
         </ul>
       </li>
-      <li class="dropdown">
+      <li class="dropdown $activeChapter[6]">
         <a class="dropdown-toggle" data-toggle="dropdown" href="course.php?xchwe=7">Chapter 7
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="course.php?xchwe=7">Learning Content</a></li>
+          <li><a href="course.php?xchwe=7">2's Complement</a></li>
           <li><a href="#">Start Quiz</a></li>
+          <li><a href="#">Chapter 6-7 Test</a></li>
         </ul>
       </li>
-      <li><a href="#">Chapter 6-7 Test</a></li>
-      <li class="dropdown">
+      <li class="dropdown $activeChapter[7]">
         <a class="dropdown-toggle" data-toggle="dropdown" href="course.php?xchwe=8">Chapter 8
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="course.php?xchwe=8">Learning Content</a></li>
+          <li><a href="course.php?xchwe=8">Venn Diagrams</a></li>
           <li><a href="#">Start Quiz</a></li>
         </ul>
       </li>
-      <li class="dropdown">
+      <li class="dropdown $activeChapter[8]">
         <a class="dropdown-toggle" data-toggle="dropdown" href="course.php?xchwe=9">Chapter 9
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="course.php?xchwe=9">Learning Content</a></li>
+          <li><a href="course.php?xchwe=9">Truth Tables</a></li>
           <li><a href="#">Start Quiz</a></li>
         </ul>
       </li>
-      <li class="dropdown">
+      <li class="dropdown $activeChapter[9]">
         <a class="dropdown-toggle" data-toggle="dropdown" href="course.php?xchwe=10">Chapter 10
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="course.php?xchwe=10">Learning Content</a></li>
+          <li><a href="course.php?xchwe=10">Psuedo Code</a></li>
           <li><a href="#">Start Quiz</a></li>
           <li><a href="#">Chapter 8-10 Test</a></li>
         </ul>
       </li>
       <li><a href="#">Final Exam</a></li>
     </ul>
+    
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="course.php?xchwe=1"><span class="glyphicon glyphicon-user"></span>$name
+       </a>
+        <ul class="dropdown-menu text-center">
+          <li><a href="../student/studentProfile.php">  Profile</a></li>
+          <li><a href="../student/gradebook.php">  Grade Book</a></li>
+          <li class="text-center">
+            <form id="signOutForm" action="$PHP_SELF" method="post">
+                <button type="submit" value="Log Out" id="logOutSubmit" name="logOutSubmit" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-log-out"></span> Log out
+                </button>
+            </form>
+          </li>
+        </ul>
+      </li>
+     
     </ul>
+  </div>
   </div>
 </nav>
   
   
-   
-   <div id="line">
-        <!-- simply for aesthetics  -->
-   </div>
+  
    
    
-   
+  <div class="row centered-form center-block">
+    <div class="container-fluid col-md-10 col-md-offset-1">
 
 HTML;
 chooseChapter($chapter);
 echo <<< HTML
-
+    </div>
+</div> 
 
     <div id="bottomLineRelative">
         <!--   simply for aesthetics   -->
