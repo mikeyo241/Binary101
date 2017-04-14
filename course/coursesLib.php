@@ -210,8 +210,8 @@ function chap4(){
      them together to get the decimal number the nibble represents. <br> This can be explained further by the video below
      from techquickie. 
     </p>
-    <div class="container-fluid">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/LpuPe81bc2w?rel=0&amp;controls=0&amp;showinfo=0;end=235" frameborder="0" allowfullscreen></iframe>
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LpuPe81bc2w?rel=0&amp;controls=0&amp;showinfo=0;end=235" frameborder="0" allowfullscreen></iframe>
     </div>
     <p>Flip the switches to see how turning on and off bits in the nibble changes the number.</p>
 <!-- Flip the switches game by Cory Wilson!!!  -->

@@ -105,7 +105,7 @@ echo <<< HTML
 </head>
 
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -123,7 +123,7 @@ echo <<< HTML
         <a class="dropdown-toggle" data-toggle="dropdown" href="course.php?xchwe=1">Chapter 1
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li class="active"><a href="course.php?xchwe=1">The History Of Binary</a></li>
+          <li><a href="course.php?xchwe=1">The History Of Binary</a></li>
           <li><a href="#">Start Quiz</a></li>        
         </ul>
       </li>
@@ -230,11 +230,8 @@ echo <<< HTML
   </div>
 </nav>
   
-  <div class="row centered-form center-block">
+  <div class="row centered-form center-block" style="margin-top: 60px;">
     <div class="container-fluid col-md-10 col-md-offset-1">
-   <div id="line">
-        <!-- simply for aesthetics  -->
-   </div>
    <div class="col-md-2"></div>
    <div class="col-md-8">   
 
