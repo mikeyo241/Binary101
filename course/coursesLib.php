@@ -181,8 +181,6 @@ function chap3() {
             </div>
             <h2>Think you understand? Try it yourself!!!</h2>
 
-<<<<<<< HEAD
-
             <form>
                 <p id="questionNumber">Question 1</p>
                 <label for="question"></label><br>
@@ -190,8 +188,6 @@ function chap3() {
                 <p id="success" hidden>You did it!</p>
             </form>
 
-=======
->>>>>>> 2cc7ea0760ca5d0c3d626000b752fd4cb6350f13
         </div>
 HTML;
 

@@ -230,32 +230,22 @@ echo <<< HTML
   </div>
 </nav>
   
-  
-<<<<<<< HEAD
-  
-   
-   
   <div class="row centered-form center-block">
     <div class="container-fluid col-md-10 col-md-offset-1">
-=======
-   
    <div id="line">
         <!-- simply for aesthetics  -->
    </div>
    <div class="col-md-2"></div>
    <div class="col-md-8">   
->>>>>>> 2cc7ea0760ca5d0c3d626000b752fd4cb6350f13
 
 HTML;
 chooseChapter($chapter);
 echo <<< HTML
     </div>
-<<<<<<< HEAD
-</div> 
-=======
-    <div class="col-md-2"></div>
->>>>>>> 2cc7ea0760ca5d0c3d626000b752fd4cb6350f13
 
+</div> 
+
+    <div class="col-md-2"></div>
     <div id="bottomLineRelative">
         <!--   simply for aesthetics   -->
     </div>
