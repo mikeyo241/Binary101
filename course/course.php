@@ -232,8 +232,7 @@ echo <<< HTML
   
   <div class="row centered-form center-block" style="margin-top: 60px;">
     <div class="container-fluid col-md-10 col-md-offset-1">
-   <div class="col-md-2"></div>
-   <div class="col-md-8">   
+  
 
 HTML;
 chooseChapter($chapter);
@@ -242,15 +241,6 @@ echo <<< HTML
 
 </div> 
 
-    <div class="col-md-2"></div>
-    <div id="bottomLineRelative">
-        <!--   simply for aesthetics   -->
-    </div>
-   
-    <footer>
-        <a href="/about.html" style="color: white"> About Us </a>
-        | <a href="/privacy.html" style="color: white;"> Privacy Policy </a>
-    </footer>   
 </body>
 <script src="../assets"
 <script src="../assets/script/main.js"></script>

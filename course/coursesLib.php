@@ -10,8 +10,16 @@ function chooseChapter($chapterNumber){
             chap1();
             break;
         }
+        case 1.1: {
+            chap1Quiz();
+            break;
+        }
         case 2: {
             chap2();
+            break;
+        }
+        case 2.1: {
+            chap2Quiz();
             break;
         }
         case 3: {
@@ -19,12 +27,28 @@ function chooseChapter($chapterNumber){
             chap3Game();
             break;
         }
+        case 3.1: {
+            chap3Quiz();
+            break;
+        }
+        case 3.2: {
+            test1();
+            break;
+        }
         case 4: {
             chap4();
             break;
         }
+        case 4.1: {
+            chap4Quiz();
+            break;
+        }
         case 5: {
             chap5();
+            break;
+        }
+        case 5.1: {
+            chap5Quiz();
             break;
         }
         case 6: {
@@ -100,6 +124,42 @@ letters into binary you will learn more about ASCii in later Chapters.
 </div>
 HTML;
 
+}
+function chap1Quiz() {
+    echo <<< HTML
+    <form>
+  <div class="form-group">
+    <label for="q1">1.  The observation that the number of transistors in a dense integrated circuit duoubles approximately every two years is:</label>
+    <input type="radio" class="form-control" id="email">
+  </div>
+  <div class="form-group">
+    <label for="q2">2.  The Base 2 numerical System is called:</label>
+    <input type="password" class="form-control" id="pwd">
+  </div>
+  <div class="form-group">
+    <label for="q3">3.  A Program that transforms source code to machine language is called a?</label>
+    <input type="password" class="form-control" id="pwd">
+  </div>
+  <div class="form-group">
+    <label for="q4">4.  Two examples of low level languages are:</label>
+    <input type="password" class="form-control" id="pwd">
+  </div>
+  <div class="form-group">
+    <label for="q5">5.  A Program that isn't compiled until it is run is called a:</label>
+    <input type="password" class="form-control" id="pwd">
+  </div>
+  <div class="form-group">
+    <label for="q6">5.  What is the standard that computers use to store characters:</label>
+    <input type="password" class="form-control" id="pwd">
+  </div>
+  
+  <div class="checkbox">
+    
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+    
+HTML;
 }
 function chap2() {
     echo <<< HTML
