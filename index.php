@@ -209,7 +209,12 @@ echo <<< HTML
         </div>
         
         <div id=" alertMessage">
-            <h1 style="color: red; size: 40px;">$displayAlert</h1>
+            <h2 style="
+    font-size: 44px;
+    font-family: Andale Mono, monospace;
+    margin-bottom: 35px;     text-align: center;
+    margin-top: 123px;
+    color: red; ">$displayAlert</h2>
         </div>
         
         

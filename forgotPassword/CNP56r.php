@@ -46,8 +46,8 @@ echo <<< HTML
     <meta name="owner" content="Michael Gardner, Nathaniel Merck, Christian Cook, Cory Wilson" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="forgotPassAssets/styles/forgot.css"/>
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="forgotPassAssets/styles/forgot.css"/>
     <style>
         
    
@@ -61,27 +61,27 @@ echo <<< HTML
    <header>           
       <img id="logo" src="../assets/img/logo.PNG" alt="Website Logo" align="top-left">
    </header>
-   
+
    
    <div id="resetPassword">
-        <h2>Welcome $fName $lName</h2>
-        <h3 style="color: black;">$userNotify</h3>
+        <h2 style="color: white; font-family: monospace">Welcome $fName $lName</h2>
+        <h3 style="color: white; font-family: monospace">$userNotify</h3>
    <form id="resetPasswordForm" action="$PHP_SELF" method="post">
         <table>    
           <tr>
-              <td><input placeholder="New Password" type="password" name="pass" id="pass" required> </td>
+              <td><input placeholder=" New Password" type="password" name="pass" id="pass" required> </td>
           </tr>
           <tr>
-              <td><input placeholder="Confirm New Password" type="password" name="cFPass" id="cFPass" required> </td>
+              <td><input placeholder=" Confirm New Password" type="password" name="cFPass" id="cFPass" required> </td>
           </tr>
           
-              <td><input type="submit" value="Reset Password" id="resetSubmit" name="resetSubmit" > </td>
+              <td><input type="submit" value="Reset Password" id="resetSubmit" name="resetSubmit" style="width: 115px"> </td>
           </tr>
         </table>
       </form>
    </div>
    
-   
+
 </body>
 </html>
 
