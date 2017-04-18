@@ -15,7 +15,7 @@ require '../vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
  ******************************************************/
 if ($_SESSION['isLogged'] != 'TuIlI' || !$_SESSION['LOGCHECK']) {  // Make sure the user is logged in!!! This is a private page!!
     session_destroy();
-    reDir('../main.php');
+    reDir('../index.php');
 }
 /*  Variables  */
 $user = $_SESSION['user'];
@@ -85,7 +85,7 @@ echo <<< HTML
 
 <<<<<<< HEAD
         <header>           
-          <a href="/main.php"><img id="logo" src="../assets/img/logo.PNG" alt="Website Logo" align="top-left"></a>
+          <a href="/index.php"><img id="logo" src="../assets/img/logo.PNG" alt="Website Logo" align="top-left"></a>
                 
           <h1 id="welcome">Welcome $fName !!!  </h1>
           <img id="icon" src="../assets/img/icon.png" align="top-left">

@@ -31,7 +31,7 @@ function checkIfLoggedIn()
 {
     if ($_SESSION['isLogged'] != 'TuIlI' || !$_SESSION['LOGCHECK']) {  // Make sure the user is logged in!!! This is a private page!!
         session_destroy();
-        reDir('../main.php');
+        reDir('../index.php');
     }
 }
 /** Function:       dbConnect

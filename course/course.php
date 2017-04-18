@@ -17,7 +17,7 @@ require_once ('coursesLib.php');
 
 //checkUser();
 if (! isset($_GET['xchwe']) && ! isset($_GET['CLS_ID'])){
-    reDir('../main.php');
+    reDir('../index.php');
 }
 if(isset($_GET['CLS_ID'])){
     $_SESSION['CLS_ID'] = $_GET['CLS_ID'];
@@ -36,7 +36,7 @@ checkIfLoggedIn();
 if ($_SERVER['REQUEST_METHOD']=='POST') {
     if (!empty($_POST['logOutSubmit'])) {
         session_destroy();
-        reDir('../main.php');
+        reDir('../index.php');
     }
 
 }

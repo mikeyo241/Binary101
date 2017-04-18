@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             } else {
                 echo "Message has been sent";
                 $_SESSION['displayAlert'] = "Check Your Email for your Temporary Password.";
-                reDir('../main.php');
+                reDir('../index.php');
             }
 
         }
@@ -75,7 +75,7 @@ echo <<< HTML
 
 <body>
    <header>           
-      <a href="../main.php"><img id="logo" src="../assets/img/logo.PNG" alt="Website Logo" align="top-left"></a>
+      <a href="../index.php"><img id="logo" src="../assets/img/logo.PNG" alt="Website Logo" align="top-left"></a>
    </header>
    
    <div id="line">

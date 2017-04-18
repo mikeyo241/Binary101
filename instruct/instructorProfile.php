@@ -32,7 +32,7 @@ if (getClassNum($email) == 0){
 if ($_SERVER['REQUEST_METHOD']=='POST') {
     if (isset($_POST['logOutSubmit'])) {
     session_destroy();
-    reDir('../main.php');
+    reDir('../index.php');
     }
     if(isset($_POST['createAClassSubmit'])){
         if(checkClass($email, $_POST['className'])){
@@ -110,7 +110,7 @@ echo <<< HTML
 </head>
 <body>
     <header>           
-      <a href="/main.php"><img id="logo" src="../assets/img/logo.PNG" alt="Website Logo" align="top-left"></a>
+      <a href="/index.php"><img id="logo" src="../assets/img/logo.PNG" alt="Website Logo" align="top-left"></a>
             
       <h1 id="welcome">Welcome $fName !!!  </h1>
       <img id="icon" src="../assets/img/icon.png" align="top-left">
