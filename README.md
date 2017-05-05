@@ -15,7 +15,7 @@ Michael A Gardner &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--      mikeyo241  &nbsp;- **Cor
 ## Testing Logins and Sign up features
 
 If you want to test the login part of the site you must view it from the CIT server at:  
-http://205.186.33.94/~mgardne1/Group6/Binary101/main.php
+http://205.186.33.94/~mgardne1/Group6/Binary101/
 
 I will try to keep it updated as much as possible if you update the site you can upload the   
 project to your folder on the CIT server it will still work.
